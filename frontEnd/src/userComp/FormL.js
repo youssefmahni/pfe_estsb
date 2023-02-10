@@ -1,6 +1,6 @@
 import { useState , useRef } from "react";
 
-const FormL = ({ email, setApplicant }) => {
+const FormL = ({ email, setApplicant, setSecond }) => {
     const fileInput = useRef(null);
     const [cne, setCne] = useState("");
     const [fname, setFname] = useState("");
@@ -54,6 +54,7 @@ const FormL = ({ email, setApplicant }) => {
         if (data.status === "ok") {
             console.log(data.message);
             setApplicant(true);
+            setSecond(false);
         }
     };
     return (

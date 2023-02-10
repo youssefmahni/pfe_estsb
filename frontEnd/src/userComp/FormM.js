@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const FormM = ({ email }) => {
+const FormM = ({ email, setApplicant, setSecond }) => {
     const fileInput = useRef(null);
     const [cne, setCne] = useState("");
     const [fname, setFname] = useState("");
@@ -53,6 +53,8 @@ const FormM = ({ email }) => {
         const data = await responce.json();
         if (data.status === "ok") {
             console.log(data.message);
+            setApplicant(true);
+            setSecond(false);
         }
     };
     return (

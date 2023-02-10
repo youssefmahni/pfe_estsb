@@ -1,7 +1,7 @@
 const logout = async () => {
     try {
         sessionStorage.clear();
-        await fetch("http://localhost:3600/logout", {
+        await fetch("http://localhost:3500/logout", {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });

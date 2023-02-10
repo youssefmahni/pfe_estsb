@@ -11,16 +11,16 @@ function Body({ email, applicant, setApplicant }) {
                 <Col sm={2}>
                     <Nav variant="pills" className="flex-column">
                         <Nav.Item>
-                            <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                            <Nav.Link eventKey="first">APPLICATION</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="second" disabled>
-                                Tab 2
+                            <Nav.Link eventKey="second" disabled={!applicant}>
+                                PRINT FORM
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="third" disabled>
-                                Tab 3
+                            <Nav.Link eventKey="third" disabled={!applicant}>
+                                FOLLOW PROCESS
                             </Nav.Link>
                         </Nav.Item>
                     </Nav>

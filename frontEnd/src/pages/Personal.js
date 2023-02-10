@@ -4,11 +4,11 @@ import Body from "../userComp/Body";
 
 const Personal = () => {
     const [email, setEmail] = useState("");
-    const [applicant , setApplicant] = useState(false);
+    const [applicant, setApplicant] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
-            const responce = await fetch("http://localhost:3500/personal",{
+            const responce = await fetch("http://localhost:3500/personal", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

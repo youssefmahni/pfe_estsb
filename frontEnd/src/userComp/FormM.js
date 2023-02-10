@@ -18,11 +18,11 @@ const FormM = ({ email }) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("diplom", fileInput.current.files[0]);
-        await fetch("http://localhost:3600/upload", {
+        await fetch("http://localhost:3500/upload", {
             method: "POST",
             body: formData,
         });
-        const responce = await fetch("http://localhost:3600/apply", {
+        const responce = await fetch("http://localhost:3500/apply", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -39,19 +39,20 @@ const FormM = ({ email }) => {
                 diplom,
             }),
         });
-        const resID = await fetch("http://localhost:3600/getid", {
-            method: "GET",
-            body: { cne: cne },
-        });
-        const ID = resID.json();
-        await fetch("http://localhost:3600/saveapp", {
+        const resID = await fetch("http://localhost:3500/getid", {
             method: "POST",
-            body: { email: email, _id: ID },
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ cne: cne }),
+        });
+        const ID = await resID.json();
+        await fetch("http://localhost:3500/saveapp", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: email, _id: ID.response._id }),
         });
         const data = await responce.json();
         if (data.status === "ok") {
             console.log(data.message);
-            setSubmited(true);
         }
     };
     return (

@@ -23,6 +23,6 @@ router.post(
     applicationController.upload,
     applicationController.sendFile
 );
-router.get("/getid", applicationController.getid);
+router.post("/getid", applicationController.getid);
 
 module.exports = router;

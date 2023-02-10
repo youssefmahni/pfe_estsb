@@ -11,7 +11,7 @@ const RegistrationForm = () => {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    const responce = await fetch("http://localhost:3600/register", {
+    const responce = await fetch("http://localhost:3500/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -17,7 +17,7 @@ const register = async (req, res, next) => {
         const response = await user.save();
         res.json({ status: "ok", message: response });
     } catch (err) {
-        res.json({ status: "error", message: "error occured!" });
+        res.json({ status: "error", message: err });
     }
 };
 //signin user

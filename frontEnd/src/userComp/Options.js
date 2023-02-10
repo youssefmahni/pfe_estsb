@@ -4,7 +4,7 @@ import Tabs from "react-bootstrap/Tabs";
 import FormL from "./FormL";
 import FormM from "./FormM";
 
-function Options({ email, applicant }) {
+function Options({ email, applicant, setApplicant }) {
     return (
         <div className="container">
             <div className="row justify-content-center m-2  ">
@@ -25,7 +25,10 @@ function Options({ email, applicant }) {
                         >
                             <Tab eventKey="home" title="Licences Fondamentales">
                                 <div>
-                                    <FormL email={email} />
+                                    <FormL
+                                        email={email}
+                                        setApplicant={setApplicant}
+                                    />
                                 </div>
                             </Tab>
                             <Tab
@@ -33,7 +36,10 @@ function Options({ email, applicant }) {
                                 title="Licences Professionnelles"
                             >
                                 <div>
-                                    <FormM email={email} />
+                                    <FormM
+                                        email={email}
+                                        setApplicant={setApplicant}
+                                    />
                                 </div>
                             </Tab>
                         </Tabs>

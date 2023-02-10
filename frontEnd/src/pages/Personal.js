@@ -8,7 +8,7 @@ const Personal = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const responce = await fetch("http://localhost:3600/personal",{
+            const responce = await fetch("http://localhost:3500/personal",{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -18,7 +18,6 @@ const Personal = () => {
             const data = await responce.json();
             setEmail(data.response.email);
             setApplicant(data.response.applicant);
-            
         }
         fetchData();
     }, []);
@@ -27,7 +26,11 @@ const Personal = () => {
         <div>
             <h1>hello {email}</h1>
             <Header />
-            <Body email={email} applicant={applicant} />
+            <Body
+                email={email}
+                applicant={applicant}
+                setApplicant={setApplicant}
+            />
         </div>
     );
 };

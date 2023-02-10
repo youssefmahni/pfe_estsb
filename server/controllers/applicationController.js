@@ -45,8 +45,8 @@ const apply = async (req, res) => {
 const getid = async(req,res )=>{
     try {
         const response = await Lapp.findOne({ cne: req.body.cne });
-        res.json(response._id);
-        console.log(response._id);
+        res.json({response});
+        
     } catch (error) {
         console.log("something went wrong in getid in applicationController.js" ,error);
     }

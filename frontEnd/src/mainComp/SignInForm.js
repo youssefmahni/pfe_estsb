@@ -12,7 +12,7 @@ const SignInForm = () => {
 
     const loginUser = async (e) => {
         e.preventDefault();
-        const responce = await fetch("http://localhost:3600/signin", {
+        const responce = await fetch("http://localhost:3500/signin", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),

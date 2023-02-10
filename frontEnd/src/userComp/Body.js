@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import Options from "./Options";
 
-function Body({email, applicant}) {
+function Body({ email, applicant, setApplicant }) {
     return (
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row>
@@ -28,7 +28,11 @@ function Body({email, applicant}) {
                 <Col sm={10}>
                     <Tab.Content>
                         <Tab.Pane eventKey="first">
-                            <Options email={email} applicant={applicant} />
+                            <Options
+                                email={email}
+                                applicant={applicant}
+                                setApplicant={setApplicant}
+                            />
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">hello</Tab.Pane>
                         <Tab.Pane eventKey="third">bye</Tab.Pane>

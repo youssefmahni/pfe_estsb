@@ -17,8 +17,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/USERS");
 
 app.use("/", userRoute);
 
-app.listen(3600, () => {
-  console.log("server running on port 3600");
+app.listen(3500, () => {
+  console.log("server running on port 3500");
 });
 
 

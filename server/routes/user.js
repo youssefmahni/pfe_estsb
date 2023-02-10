@@ -11,12 +11,18 @@ router.post(
 );
 router.get("/refresh", userController.refreshToken);
 router.get("/logout", userController.logOut);
+router.post("/saveapp", userController.saveapp);
 
 // *******************************************************
 
 const applicationController = require("../controllers/applicationController");
 
 router.post("/apply", applicationController.apply);
-router.post("/upload",applicationController.upload, applicationController.sendFile);
+router.post(
+    "/upload",
+    applicationController.upload,
+    applicationController.sendFile
+);
+router.get("/getid", applicationController.getid);
 
 module.exports = router;

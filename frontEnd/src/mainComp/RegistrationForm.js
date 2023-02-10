@@ -6,13 +6,22 @@ const RegistrationForm = () => {
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const applicant = false;
+  const applicationid = "";
 
   const registerUser = async (e) => {
     e.preventDefault();
-    const responce = await fetch("http://localhost:3500/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fname, lname, email, password }),
+    const responce = await fetch("http://localhost:3600/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            fname,
+            lname,
+            email,
+            password,
+            applicant,
+            applicationid,
+        }),
     });
     const data = await responce.json();
     if (data.status === "ok") {

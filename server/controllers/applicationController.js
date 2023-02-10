@@ -42,4 +42,13 @@ const apply = async (req, res) => {
     }
 };
 
-module.exports = { apply, upload,sendFile };
+const getid = async(req,res )=>{
+    try {
+        const response = await Lapp.findOne({ cne: req.body.cne });
+        res.json(response._id);
+        console.log(response._id);
+    } catch (error) {
+        console.log("something went wrong in getid in applicationController.js" ,error);
+    }
+}
+module.exports = { apply, upload,sendFile, getid };

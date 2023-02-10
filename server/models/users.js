@@ -8,6 +8,8 @@ const userSchema = new Schema(
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         refreshToken: { type: String },
+        applicant: { type: Boolean },
+        applicationid: { type: String },
     },
     { timestamps: true }
 );

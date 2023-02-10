@@ -10,6 +10,8 @@ const register = async (req, res, next) => {
         email: req.body.email,
         password: req.body.password,
         refreshToken: req.body.refreshToken,
+        applicant: req.body.applicant,
+        applicationid: req.body.applicationid,
     });
     try {
         const response = await user.save();
@@ -129,6 +131,19 @@ const logOut = async (req, res, next) => {
     
     
 };
+
+const saveapp = async(req, res)=>{
+    try {
+        const response = await User.findOne({ email: req.body.email });
+        res.json({ response });
+        await User.findByIdAndUpdate(response._id, {
+            $set: { applicant: true, applicationid: req.body._id },
+        });
+    } catch (error) {
+        console.log("something went wrong in saveapp in userController.js", error);
+    }
+}
+
 module.exports = {
     signin,
     register,
@@ -136,4 +151,5 @@ module.exports = {
     authenticateToken,
     refreshToken,
     logOut,
+    saveapp,
 };

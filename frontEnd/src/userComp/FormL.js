@@ -1,6 +1,6 @@
 import { useState , useRef } from "react";
 
-const FormL = () => {
+const FormL = ({email}) => {
     const fileInput = useRef(null);
 
     const [cne, setCne] = useState("");
@@ -19,11 +19,11 @@ const FormL = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("diplom", fileInput.current.files[0]);
-         await fetch("http://localhost:3500/upload", {
+        await fetch("http://localhost:3600/upload", {
             method: "POST",
             body: formData,
         });
-        const responce = await fetch("http://localhost:3500/apply", {
+        const responce = await fetch("http://localhost:3600/apply", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -39,10 +39,19 @@ const FormL = () => {
                 master,
                 diplom,
             }),
-        });      
+        });
+        const resID = await fetch("http://localhost:3600/getid", {
+            method: "GET",
+            body: {cne:cne},
+        });
+        const ID = resID.json();
+        await fetch("http://localhost:3600/saveapp", {
+            method: "POST",
+            body: { email: email, _id: ID.response},
+        });
         const data = await responce.json();
         if (data.status === "ok") {
-            console.log(data.responce);
+            console.log(data.response);
         }
     };
     return (

@@ -1,8 +1,8 @@
 problems.tosolve.txt
 
-frontEnd/.gitignore
+# frontEnd/.gitignore
 
-server/.gitignore
+# server/.gitignore
 
 frontEnd/node_modules
 

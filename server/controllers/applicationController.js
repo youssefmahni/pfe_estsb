@@ -12,13 +12,13 @@ const storage = multer.diskStorage({
     },
 });
 const upload = multer({ storage }).single("diplom");
-const sendFile = async (req,res)=>{
+const sendFile = async (req, res) => {
     try {
         res.json({ status: "ok", message: "uploaded successfuly" });
     } catch (err) {
         res.json({ status: "error", message: "error occured!" });
     }
-}
+};
 
 const apply = async (req, res) => {
     let applicant = new Lapp({
@@ -42,13 +42,17 @@ const apply = async (req, res) => {
     }
 };
 
-const getid = async(req,res )=>{
+const getid = async (req, res) => {
     try {
-        const response = await Lapp.findOne({ cne: req.body.cne });
-        res.json({response});
-        
+        const response = await Lapp.findOne({
+            cne: req.body.cne,
+        });
+        res.json({ response });
     } catch (error) {
-        console.log("something went wrong in getid in applicationController.js" ,error);
+        console.log(
+            "something went wrong in getid in applicationController.js",
+            error
+        );
     }
-}
-module.exports = { apply, upload,sendFile, getid };
+};
+module.exports = { apply, upload, sendFile, getid };

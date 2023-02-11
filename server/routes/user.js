@@ -24,5 +24,6 @@ router.post(
     applicationController.sendFile
 );
 router.post("/getid", applicationController.getid);
+router.post("/find", applicationController.findApplicantById);
 
 module.exports = router;

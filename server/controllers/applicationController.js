@@ -55,4 +55,17 @@ const getid = async (req, res) => {
         );
     }
 };
-module.exports = { apply, upload, sendFile, getid };
+const findApplicantById = async (req, res) => {
+    try {
+        let userId = req.body.id;
+        const response = await Lapp.findById(userId);
+        res.json({ response });
+    } catch (error) {
+        console.log(
+            "the first and second useEffect send empty ID (no worry) : ",
+            error.message
+        );
+    }
+        
+};
+module.exports = { apply, upload, sendFile, getid, findApplicantById };

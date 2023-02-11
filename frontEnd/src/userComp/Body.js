@@ -25,18 +25,23 @@ function Body({ email, applicant, setApplicant }) {
                         </Nav.Item>
                     </Nav>
                 </Col>
+
                 <Col sm={10}>
-                    <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                            <Options
-                                email={email}
-                                applicant={applicant}
-                                setApplicant={setApplicant}
-                            />
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">hello</Tab.Pane>
-                        <Tab.Pane eventKey="third">bye</Tab.Pane>
-                    </Tab.Content>
+                    {!applicant ? (
+                        <Tab.Content>
+                            <Tab.Pane eventKey="first">
+                                <Options
+                                    email={email}
+                                    applicant={applicant}
+                                    setApplicant={setApplicant}
+                                />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="second">hello</Tab.Pane>
+                            <Tab.Pane eventKey="third">bye</Tab.Pane>
+                        </Tab.Content>
+                    ) : (
+                        <h1>you already applyed</h1>
+                    )}
                 </Col>
             </Row>
         </Tab.Container>

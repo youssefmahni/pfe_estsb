@@ -1,10 +1,14 @@
+import { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import Options from "./Options";
+import PrintableForm from "./PrintableForm";
+
 
 function Body({ email, applicant, setApplicant }) {
+    const [toPrint, setToPrint] = useState([]);
     return (
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row>
@@ -25,23 +29,21 @@ function Body({ email, applicant, setApplicant }) {
                         </Nav.Item>
                     </Nav>
                 </Col>
-
                 <Col sm={10}>
-                    {!applicant ? (
-                        <Tab.Content>
-                            <Tab.Pane eventKey="first">
-                                <Options
-                                    email={email}
-                                    applicant={applicant}
-                                    setApplicant={setApplicant}
-                                />
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="second">hello</Tab.Pane>
-                            <Tab.Pane eventKey="third">bye</Tab.Pane>
-                        </Tab.Content>
-                    ) : (
-                        <h1>you already applyed</h1>
-                    )}
+                    <Tab.Content>
+                        <Tab.Pane eventKey="first">
+                            <Options
+                                email={email}
+                                applicant={applicant}
+                                setApplicant={setApplicant}
+                                setToPrint={setToPrint}
+                            />
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="second">
+                            <PrintableForm toPrint={toPrint} />
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="third">bye</Tab.Pane>
+                    </Tab.Content>
                 </Col>
             </Row>
         </Tab.Container>

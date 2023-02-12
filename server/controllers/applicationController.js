@@ -62,10 +62,8 @@ const findApplicantById = async (req, res) => {
         res.json({ response });
     } catch (error) {
         console.log(
-            "the first and second useEffect send empty ID (no worry) : ",
-            error.message
+            "the first and second useEffect send empty ID (no worry) : "
         );
     }
-        
 };
 module.exports = { apply, upload, sendFile, getid, findApplicantById };

@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const FormM = ({ email, setApplicant, setSecond, setToPrint }) => {
+const FormM = ({ email, setApplicant, setSecond }) => {
     const fileInput = useRef(null);
     const [cne, setCne] = useState("");
     const [fname, setFname] = useState("");
@@ -45,19 +45,7 @@ const FormM = ({ email, setApplicant, setSecond, setToPrint }) => {
             body: JSON.stringify({ cne: cne }),
         });
         const ID = await resID.json();
-        setToPrint([
-            ID.response.cne,
-            ID.response.fname,
-            ID.response.lname,
-            ID.response.sex,
-            ID.response.age,
-            ID.response.phone,
-            ID.response.city,
-            ID.response.codepostal,
-            ID.response.master,
-            ID.response.licence,
-            ID.response.diplom,
-        ]);
+        
         await fetch("http://localhost:3500/saveapp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -1,14 +1,14 @@
-import { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import Options from "./Options";
 import PrintableForm from "./PrintableForm";
-
+import { useState } from "react";
 
 function Body({ email, applicant, setApplicant }) {
-    const [toPrint, setToPrint] = useState([]);
+    
+
     return (
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row>
@@ -18,12 +18,15 @@ function Body({ email, applicant, setApplicant }) {
                             <Nav.Link eventKey="first">APPLICATION</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="second" disabled={!applicant}>
+                            <Nav.Link
+                                eventKey="second"
+                                disabled={!applicant}
+                            >
                                 PRINT FORM
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="third" disabled={!applicant}>
+                            <Nav.Link eventKey="third" disabled>
                                 FOLLOW PROCESS
                             </Nav.Link>
                         </Nav.Item>
@@ -36,11 +39,10 @@ function Body({ email, applicant, setApplicant }) {
                                 email={email}
                                 applicant={applicant}
                                 setApplicant={setApplicant}
-                                setToPrint={setToPrint}
                             />
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
-                            <PrintableForm toPrint={toPrint} />
+                            <PrintableForm/>
                         </Tab.Pane>
                         <Tab.Pane eventKey="third">bye</Tab.Pane>
                     </Tab.Content>

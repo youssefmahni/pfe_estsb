@@ -4,7 +4,7 @@ import Tabs from "react-bootstrap/Tabs";
 import FormL from "./FormL";
 import FormM from "./FormM";
 
-function Options({ email, applicant, setApplicant, setToPrint }) {
+function Options({ email, applicant, setApplicant }) {
     return (
         <div className="container">
             <div className="row justify-content-center m-2  ">
@@ -28,7 +28,7 @@ function Options({ email, applicant, setApplicant, setToPrint }) {
                                     <FormL
                                         email={email}
                                         setApplicant={setApplicant}
-                                        setToPrint={setToPrint}
+                                        
                                     />
                                 </div>
                             </Tab>
@@ -40,7 +40,7 @@ function Options({ email, applicant, setApplicant, setToPrint }) {
                                     <FormM
                                         email={email}
                                         setApplicant={setApplicant}
-                                        setToPrint={setToPrint}
+                                        
                                     />
                                 </div>
                             </Tab>

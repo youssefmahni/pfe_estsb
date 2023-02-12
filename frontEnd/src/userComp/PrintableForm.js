@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
-const PrintableForm = ({ toPrint }) => {
+const PrintableForm = () => {
 
   const [appID, setAppID] = useState("");
   const [app, setApp] = useState([]);
+  const [licenceORmaster, setLicenceORmaster]= useState("");
     useEffect(() => {
         async function fetchData() {
             try {
@@ -18,11 +19,10 @@ const PrintableForm = ({ toPrint }) => {
                 });
                 const data = await responce.json();
                 setAppID(data.response.applicationid);
-                console.log(appID);
                 const resApp = await fetch("http://localhost:3500/find", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id: appID }),
+                    body: JSON.stringify({ id: data.response.applicationid }),
                 });
                 const App = await resApp.json();
                 setApp([
@@ -38,6 +38,7 @@ const PrintableForm = ({ toPrint }) => {
                     App.response.licence,
                     App.response.diplom,
                 ]);
+                App.response.licence?setLicenceORmaster("LICENCE"):setLicenceORmaster("MASTER");
             } catch (error) {
                 window.location.href = "/missing";
             }
@@ -49,9 +50,17 @@ const PrintableForm = ({ toPrint }) => {
     return (
         <div>
             <h1>PrintableForm</h1>
+            <h1>{licenceORmaster}</h1>
             <h1>{app[0]}</h1>
             <h1>{app[1]}</h1>
             <h1>{app[2]}</h1>
+            <h1>{app[3]}</h1>
+            <h1>{app[4]}</h1>
+            <h1>{app[5]}</h1>
+            <h1>{app[6]}</h1>
+            <h1>{app[7]}</h1>
+            <h1>{app[8]}</h1>
+            <h1>{app[9]}</h1>
         </div>
     );
 };

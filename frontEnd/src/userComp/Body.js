@@ -4,11 +4,9 @@ import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import Options from "./Options";
 import PrintableForm from "./PrintableForm";
-import { useState } from "react";
 
 function Body({ email, applicant, setApplicant }) {
     
-
     return (
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row>

@@ -1,30 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Alert from "./Alert";
+import Alert from "../mainComp/Alert";
 
-
-const SignInForm = () => {  
-    const [email, setEmail] = useState("");
+const SignInForm = () => {
+    const [fname, setFname] = useState("");
+    const [lname, setLname] = useState("");
     const [password, setPassword] = useState("");
     const [wrong, setWrong] = useState(false);
     const [show, setShow] = useState(false);
 
     const loginUser = async (e) => {
-        e.preventDefault();
-        const responce = await fetch("http://localhost:3500/signin", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-        });
-        const data = await responce.json();
-        if (data.accessToken) {
-            sessionStorage.setItem("token", data.accessToken);
-            window.location.href = "/personal" ;
-        } else {
-            setWrong(true);
-            setShow(true);
-            console.log(wrong);
+        try {
+            e.preventDefault();
+            const responce = await fetch("http://localhost:3500/admin/signin", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fname, lname, password }),
+            });
+            const data = await responce.json();
+            if (data.status === "ok") {
+                sessionStorage.setItem("token", data.accessToken);
+                window.location.href = "/admin/dashboard";
+            } else {
+                setWrong(true);
+                setShow(true);
+            }
+        } catch (error) {
+            console.log("something went wrong check signAdmin", error);
         }
     };
     return (
@@ -38,23 +41,36 @@ const SignInForm = () => {
                         className="col-lg-5 border mt-3 p-4 rounded"
                         style={{ background: "white" }}
                     >
-                        <h2 className="mb-4 p-3">Sign In</h2>
+                        <h2 className="mb-4 p-3">Admins Area</h2>
                         <form
                             className="d-flex flex-column"
                             onSubmit={loginUser}
                         >
                             <div className="d-flex flex-column p-1">
-                                <label htmlFor="email">Email address</label>
+                                <label htmlFor="fname">First name</label>
                                 <input
-                                    type="email"
-                                    value={email}
-                                    id="email"
+                                    type="text"
+                                    value={fname}
+                                    id="fname"
                                     className="p-1 border"
                                     required
                                     autoComplete="off"
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => setFname(e.target.value)}
                                 />
-                                <p className="text-danger">error email</p>
+                                <p className="text-danger">error first name</p>
+                            </div>
+                            <div className="d-flex flex-column p-1">
+                                <label htmlFor="lname">Last name</label>
+                                <input
+                                    type="text"
+                                    value={lname}
+                                    id="lname"
+                                    className="p-1 border"
+                                    required
+                                    autoComplete="off"
+                                    onChange={(e) => setLname(e.target.value)}
+                                />
+                                <p className="text-danger">error last name</p>
                             </div>
                             <div className="d-flex flex-column p-1">
                                 <label htmlFor="pw">PassWord</label>
@@ -76,17 +92,9 @@ const SignInForm = () => {
                                 Start
                             </button>
                         </form>
-                        <p>
-                            These first and last names must match your official
-                            identification papers. You will receive an email to
-                            confirm your registration
-                        </p>
-                        <Link to={"/register"} className="text-dark mt-4">
-                            Register
-                        </Link>
-                        <br/>
-                        <Link to={"/admin/signin"} className="text-dark mt-4">
-                            other login 
+
+                        <Link to={"/signin"} className="text-dark mt-4">
+                            back to normal
                         </Link>
                     </div>
                 </div>

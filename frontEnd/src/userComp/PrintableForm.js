@@ -1,10 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const PrintableForm = () => {
+    const contentRef = useRef(null);
+    const handlePrint = () => {
+        const content = contentRef.current.innerHTML;
+        const newWindow = window.open("", "", "width=1000,height=1000");
+        newWindow.document.write(
+            `<html><head><style>body { color: red; display:flex;flex-direction:column; justify-content:center; } </style></head><body>${content}</body></html>`
+        );
+        newWindow.print();
+    };
 
-  const [appID, setAppID] = useState("");
-  const [app, setApp] = useState([]);
-  const [licenceORmaster, setLicenceORmaster]= useState("");
+    const [appID, setAppID] = useState("");
+    const [app, setApp] = useState([]);
+    const [licenceORmaster, setLicenceORmaster] = useState("");
     useEffect(() => {
         async function fetchData() {
             try {
@@ -38,7 +47,9 @@ const PrintableForm = () => {
                     App.response.licence,
                     App.response.diplom,
                 ]);
-                App.response.licence?setLicenceORmaster("LICENCE"):setLicenceORmaster("MASTER");
+                App.response.licence
+                    ? setLicenceORmaster("LICENCE")
+                    : setLicenceORmaster("MASTER");
             } catch (error) {
                 window.location.href = "/missing";
             }
@@ -46,21 +57,33 @@ const PrintableForm = () => {
         fetchData();
     }, [appID]);
 
-
     return (
-        <div>
-            <h1>PrintableForm</h1>
-            <h1>{licenceORmaster}</h1>
-            <h1>{app[0]}</h1>
-            <h1>{app[1]}</h1>
-            <h1>{app[2]}</h1>
-            <h1>{app[3]}</h1>
-            <h1>{app[4]}</h1>
-            <h1>{app[5]}</h1>
-            <h1>{app[6]}</h1>
-            <h1>{app[7]}</h1>
-            <h1>{app[8]}</h1>
-            <h1>{app[9]}</h1>
+        <div className="container px-4 ">
+            <div className="row ">
+                <div class="col">
+                    <div class="p-3 border text-center" ref={contentRef}>
+                        <div className="row gx-5 p-5">
+                            <h1>
+                                fiche de preinscription en {licenceORmaster} "
+                                {app[9] ? app[9] : app[8]}"
+                            </h1>
+                        </div>
+                        <div className="row  p-5">
+                            <h3>nom : {app[2]}</h3>
+                            <h3> prenom : {app[2]}</h3>
+                            <h3> cne : {app[0]}</h3>
+                            <h3> gender : {app[3]}</h3>
+                            <h3>date de naissance : {app[4]}</h3>
+                            <h3> phone : {app[5]}</h3>
+                            <h3> ville : {app[6]}</h3>
+                            <h3> codepostal : {app[7]}</h3>
+                        </div>
+                    </div>
+                    <div>
+                        <button onClick={handlePrint}>Print</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

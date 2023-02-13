@@ -10,22 +10,27 @@ import Personal from "./pages/Personal";
 import Missing from "./pages/Missing";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import SignAdmin from "./adminComp/SignAdmin"
+import DashBoard from "./adminComp/DashBoard";
+
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/licence" element={<Licence />} />
-          <Route path="/master" element={<Master />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/personal" element={<Personal />} />
-          <Route path="*" element={<Missing />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+      <div className="App">
+          <BrowserRouter>
+              <Routes>
+                  <Route exact path="/" element={<Home />} />
+                  <Route path="/faq" element={<Faq />} />
+                  <Route path="/licence" element={<Licence />} />
+                  <Route path="/master" element={<Master />} />
+                  <Route path="/signin" element={<SignIn />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/personal" element={<Personal />} />
+                  <Route path="/admin/signin" element={<SignAdmin />} />
+                  <Route path="/admin/dashboard" element={<DashBoard />} />
+                  <Route path="*" element={<Missing />} />
+              </Routes>
+          </BrowserRouter>
+      </div>
   );
 }
 

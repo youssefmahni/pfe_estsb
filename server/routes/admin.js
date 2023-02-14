@@ -9,5 +9,7 @@ router.post(
 );
 
 router.get("/refresh", adminController.refreshTokenAdmin);
+router.post("/licences", adminController.getlicences);
+router.post("/masters", adminController.getmasters);
 
 module.exports = router;

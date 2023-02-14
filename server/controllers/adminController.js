@@ -1,4 +1,5 @@
 const Admin = require("../models/admins");
+const Lapp = require("../models/licenseApplications");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
@@ -24,11 +25,11 @@ const signinAdmin = async (req, res, next) => {
             { expiresIn: "3d" }
         );
 
-        const response = await Admin.findOne({
-            fname: req.body.fname,
-            lname: req.body.lname,
-            password: req.body.password,
+        const cursor1 = await Lapp.find({
+            licence: req.body.licence,
+            master: req.body.master,
         });
+
         if (response) {
             await Admin.findByIdAndUpdate(response._id, {
                 $set: { refreshToken: refreshToken },
@@ -59,7 +60,7 @@ const authenticateTokenAdmin = (req, res, next) => {
     if (token == null) return res.sendStatus(401);
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) return res.sendStatus(403); // invalid token (forbiden)
-        req.user = user;     
+        req.user = user;
     });
 };
 //refresh token
@@ -85,9 +86,44 @@ const refreshTokenAdmin = async (req, res, next) => {
         res.json({ accessToken });
     });
 };
+//find right licences
+const getlicences = async (req,res)=>{
+    try {
+        const cursor = await Lapp.find({
+            licence: req.body.licence
+        });
+        if(!cursor){
+            res.status(201).json({})
+        }else{
+            res.status(201).json({cursor: cursor});
+            console.log({cursor: cursor});
+        }
+    } catch (error) {
+        console.log("something went wrong in getlicences : ", error);
+    }
+}
+
+
+//find right masters
+const getmasters = async (req, res) => {
+    try {
+        const cursor = await Lapp.find({
+            master: req.body.master,
+        });
+        if (!cursor) {
+            res.status(201).json({});
+        } else {
+            res.status(201).json({ cursor: cursor });
+        }
+    } catch (error) {
+        console.log("something went wrong in getmasters : ", error);
+    }
+};
 
 module.exports = {
     signinAdmin,
     authenticateTokenAdmin,
     refreshTokenAdmin,
+    getlicences,
+    getmasters,
 };

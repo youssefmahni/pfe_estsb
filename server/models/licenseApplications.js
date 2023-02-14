@@ -11,8 +11,8 @@ const lappSchema = new Schema(
         phone: { type: String, required: true },
         city: { type: String, required: true },
         codepostal: { type: String, required: true },
-        licence: { type: String,  },
-        master: { type: String,  },
+        licence: { type: String},
+        master: { type: String},
         diplom: { type: String },
     },
     { timestamps: true }

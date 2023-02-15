@@ -6,6 +6,7 @@ router.post("/signin", adminController.signinAdmin);
 router.post(
     "/dashboard",
     adminController.authenticateTokenAdmin,
+    adminController.index,
 );
 
 router.get("/refresh", adminController.refreshTokenAdmin);

@@ -25,7 +25,7 @@ const signinAdmin = async (req, res, next) => {
             { expiresIn: "3d" }
         );
 
-        const cursor1 = await Lapp.find({
+        const response = await Lapp.find({
             licence: req.body.licence,
             master: req.body.master,
         });
@@ -61,7 +61,21 @@ const authenticateTokenAdmin = (req, res, next) => {
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) return res.sendStatus(403); // invalid token (forbiden)
         req.user = user;
+        next();
     });
+};
+//get right user
+const index = async (req, res) => {
+    try {
+        const response = await Admin.findOne({
+            fname: req.user.fname,
+            lname: req.user.lname,
+            password: req.user.password,
+        });
+        res.json({ response });
+    } catch (err) {
+        res.json({ message: "error occured!" });
+    }
 };
 //refresh token
 const refreshTokenAdmin = async (req, res, next) => {
@@ -87,22 +101,20 @@ const refreshTokenAdmin = async (req, res, next) => {
     });
 };
 //find right licences
-const getlicences = async (req,res)=>{
+const getlicences = async (req, res) => {
     try {
         const cursor = await Lapp.find({
-            licence: req.body.licence
+            licence: req.body.licence,
         });
-        if(!cursor){
-            res.status(201).json({})
-        }else{
-            res.status(201).json({cursor: cursor});
-            console.log({cursor: cursor});
+        if (!cursor) {
+            res.status(201).json({});
+        } else {
+            res.status(201).json({ cursor: cursor });
         }
     } catch (error) {
         console.log("something went wrong in getlicences : ", error);
     }
-}
-
+};
 
 //find right masters
 const getmasters = async (req, res) => {
@@ -126,4 +138,5 @@ module.exports = {
     refreshTokenAdmin,
     getlicences,
     getmasters,
+    index,
 };

@@ -29,7 +29,7 @@ const Lone = () => {
     }, []);
     return (
         <>
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover >
                 <thead>
                     <tr>
                         <th>#</th>

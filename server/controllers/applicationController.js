@@ -2,16 +2,16 @@ const Lapp = require("../models/licenseApplications");
 
 // Multer Configurations
 const multer = require("multer");
-const storage = multer.diskStorage({
+const storage1 = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "./public");
+        cb(null, "./public/diploms");
     },
     filename: (req, file, cb) => {
         const fileName = file.originalname;
         cb(null, fileName);
     },
 });
-const upload = multer({ storage }).single("diplom");
+const upload = multer({ storage:storage1 }).single("diplom");
 const sendFile = async (req, res) => {
     try {
         res.json({ status: "ok", message: "uploaded successfuly" });

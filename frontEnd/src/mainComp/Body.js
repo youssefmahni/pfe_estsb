@@ -1,11 +1,14 @@
 import Anonce from "./Anonce"
+import Formations from "./Formations";
 
 const Body = () => {
   return (
-    <div  id='body' >
-      <Anonce/>
-    </div>
-  )
+      <div className="body">
+        <br />
+          <Anonce />
+          <Formations/>
+      </div>
+  );
 }
 
 export default Body

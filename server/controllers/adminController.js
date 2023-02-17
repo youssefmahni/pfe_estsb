@@ -1,5 +1,5 @@
 const Admin = require("../models/admins");
-const Lapp = require("../models/licenseApplications");
+const Lapp = require("../models/Applications");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
@@ -115,7 +115,6 @@ const getlicences = async (req, res) => {
         console.log("something went wrong in getlicences : ", error);
     }
 };
-
 //find right masters
 const getmasters = async (req, res) => {
     try {

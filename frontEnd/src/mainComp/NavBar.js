@@ -9,7 +9,7 @@ const NavBar = () => {
           <div className="row justify-content-center">
               <Navbar expand="lg" style={{ padding: "0px 10px" }}>
                   <Navbar.Brand>
-                      <Link to={"/"} className="link-logo">
+                      <Link to={"/"}>
                           <img
                               src="http://localhost:3500/media/logo.jpg"
                               alt="logo"
@@ -24,15 +24,11 @@ const NavBar = () => {
 
                       <Nav className="navbar">
                           <Nav.Link>
-                              <Link
-                                  to={"/faq"}
-                                  className="link-text"
-                                  style={{ color: "#37352f" }}
-                              >
+                              <Link to={"/faq"} className="link-text">
                                   FAQ
                               </Link>
                           </Nav.Link>
-                          <NavDropdown title="Formation" id="formations">
+                          <NavDropdown title="Formation">
                               <NavDropdown.Item>
                                   <Link to={"/licence"} className="link">
                                       Licence
@@ -44,14 +40,17 @@ const NavBar = () => {
                                   </Link>
                               </NavDropdown.Item>
                           </NavDropdown>
-                          <NavDropdown title="ESTSB" id="formations">
+                          <NavDropdown title="ESTSB">
                               <NavDropdown.Item>
                                   <Link to={"#"} className="link">
                                       mot du directeur
                                   </Link>
                               </NavDropdown.Item>
                               <NavDropdown.Item>
-                                  <Link to={"#"} className="link">
+                                  <Link
+                                      to={"/estsb/presentation"}
+                                      className="link"
+                                  >
                                       presentation
                                   </Link>
                               </NavDropdown.Item>

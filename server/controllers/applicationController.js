@@ -1,17 +1,17 @@
-const Lapp = require("../models/licenseApplications");
+const Lapp = require("../models/Applications");
 
 // Multer Configurations
 const multer = require("multer");
 const storage1 = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "./public/diploms");
+        cb(null, "./public/photos");
     },
     filename: (req, file, cb) => {
         const fileName = file.originalname;
         cb(null, fileName);
     },
 });
-const upload = multer({ storage:storage1 }).single("diplom");
+const upload = multer({ storage:storage1 }).single("profile");
 const sendFile = async (req, res) => {
     try {
         res.json({ status: "ok", message: "uploaded successfuly" });
@@ -22,30 +22,39 @@ const sendFile = async (req, res) => {
 
 const apply = async (req, res) => {
     let applicant = new Lapp({
-        cne: req.body.cne,
-        fname: req.body.fname,
-        lname: req.body.lname,
+        cin: req.body.cin,
+        nom: req.body.nom,
+        prenom: req.body.prenom,
         sex: req.body.sex,
-        age: req.body.age,
+        datenaissance: req.body.datenaissance,
         phone: req.body.phone,
-        city: req.body.city,
-        codepostal: req.body.codepostal,
-        licence: req.body.licence,
-        master: req.body.master || null,
-        diplom: req.body.diplom,
+        ville: req.body.ville,
+        anneebac: req.body.anneebac,
+        licence: req.body.licence , 
+        master: req.body.master,
+        profile: req.body.profile,
+        nationalite: req.body.nationalite,
+        seriebac: req.body.seriebac,
+        mentionbac: req.body.mentionbac,
+        dernierdiplom: req.body.dernierdiplom,
+        anneediplom: req.body.anneediplom,
+        specialitediplom: req.body.specialitediplom,
+        etablissement: req.body.etablissement,
+        email:req.body.email,
+        code:req.body.code,
     });
     try {
         const response = await applicant.save();
         res.json({ status: "ok", message: response });
     } catch (err) {
-        res.json({ status: "error", message: "error occured!" });
+        res.json({ status: "error", message: err });
     }
 };
 
 const getid = async (req, res) => {
     try {
         const response = await Lapp.findOne({
-            cne: req.body.cne,
+            cin: req.body.cin,
         });
         res.json({ response });
     } catch (error) {

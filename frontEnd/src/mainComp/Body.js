@@ -3,7 +3,7 @@ import Formations from "./Formations";
 
 const Body = () => {
   return (
-      <div className="body">
+      <div>
         <br />
           <Anonce />
           <Formations/>

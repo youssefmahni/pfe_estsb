@@ -28,7 +28,7 @@ const signin = async (req, res, next) => {
                 email: req.body.email,
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "5m" }
+            { expiresIn: "15m" }
         );
         const refreshToken = jwt.sign(
             {

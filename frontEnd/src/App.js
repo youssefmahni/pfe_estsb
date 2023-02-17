@@ -12,6 +12,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import SignAdmin from "./adminComp/SignAdmin"
 import DashBoard from "./adminComp/DashBoard";
+import Presentation from './pages/Presentation';
+import Application from './pages/Application';
+import CSTC from './pages/CSTC';
+import ISITW from './pages/ISITW';
 
 function App() {
   return (
@@ -25,8 +29,15 @@ function App() {
                   <Route path="/signin" element={<SignIn />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/personal" element={<Personal />} />
+                  <Route path="/application" element={<Application />} />\
                   <Route path="/admin/signin" element={<SignAdmin />} />
                   <Route path="/admin/dashboard" element={<DashBoard />} />
+                  <Route
+                      path="/estsb/presentation"
+                      element={<Presentation />}
+                  />
+                  <Route path="/estsb/cstc" element={<CSTC />} />
+                  <Route path="/estsb/isitw" element={<ISITW />} />
                   <Route path="*" element={<Missing />} />
               </Routes>
           </BrowserRouter>

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Question from '../mainComp/Question';
 import Footer from '../mainComp/Footer';
+import UpperMenu from '../mainComp/UpperMenu';
+import Copyright from '../mainComp/Copyright'
 
 const Faq = () => {
   const [isOpen0, setIsOpen0] = useState(false);
@@ -18,6 +20,7 @@ const Faq = () => {
   return (
     <div>
       <div id='licence'>
+        <UpperMenu/>
         <NavBar/>
         <div className="container">
           <div className='row justify-content-center '>
@@ -36,6 +39,7 @@ const Faq = () => {
       
       <div className=' bg-dark' id='footerDark' >
           <Footer />
+          <Copyright/>
       </div>
     </div>
     

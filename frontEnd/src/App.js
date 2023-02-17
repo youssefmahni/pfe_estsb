@@ -16,6 +16,7 @@ import Presentation from './pages/Presentation';
 import Application from './pages/Application';
 import CSTC from './pages/CSTC';
 import ISITW from './pages/ISITW';
+import PrintableForm from './userComp/PrintableForm';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
                       path="/estsb/presentation"
                       element={<Presentation />}
                   />
+                  <Route path="/form" element={<PrintableForm />} /> 
+                  {/* /form to be removed  */}
                   <Route path="/estsb/cstc" element={<CSTC />} />
                   <Route path="/estsb/isitw" element={<ISITW />} />
                   <Route path="*" element={<Missing />} />

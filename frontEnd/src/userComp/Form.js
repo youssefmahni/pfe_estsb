@@ -10,11 +10,25 @@ import Modal from "react-bootstrap/Modal";
 const Form = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = (e) => {
+    const handleShow = async () => {
+        // e.preventDefault();
+        // const responce = await fetch("http://localhost:3500/check", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify({
+        //         cin,
+        //     }),
+        // });
+        // const data = await responce.json();
+        // if (data.status === "ok") {
+        //     localStorage.setItem("old", false);
+        // } else {
+        //     localStorage.setItem("old", true);
+
+        // }
         setShow(true);
-        e.preventDefault();
     };
-    
+
     const fileInput = useRef(null);
     const [cin, setCin] = useState("");
     const [prenom, setPrenom] = useState("");
@@ -51,7 +65,7 @@ const Form = () => {
                 prenom,
                 sex,
                 datenaissance,
-                phone,
+                phone: "212 " + phone,
                 ville,
                 anneebac,
                 licence: sessionStorage.getItem("licence"),
@@ -68,22 +82,12 @@ const Form = () => {
                 code: "000",
             }),
         });
-        // const resID = await fetch("http://localhost:3500/getid", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({ cin: cin }),
-        // });
-        // const ID = await resID.json();
 
-        // await fetch("http://localhost:3500/saveapp", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({ email: email, _id: ID.response._id }),
-        // });
         const data = await responce.json();
         if (data.status === "ok") {
+            localStorage.setItem("cin", cin);
             window.location.href = "/personal";
-        }
+        } 
     };
 
     return (
@@ -418,21 +422,24 @@ const Form = () => {
             {/* confirmation */}
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>informaions</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Woohoo, you're reading this text in a modal!
+                     revise bien tes informaions puis valider l'opertion
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Retourn
-                    </Button>
-                    <Button variant="primary" onClick={apply}>
-                        Confirme formulaire
-                    </Button>
-                </Modal.Footer>
+                
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Retourn
+                        </Button>
+
+                        <Button variant="primary" onClick={apply}>
+                            Confirme formulaire
+                        </Button>
+                    </Modal.Footer>
             </Modal>
         </div>
     );
 };
+
 export default Form;

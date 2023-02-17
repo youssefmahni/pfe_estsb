@@ -15,7 +15,7 @@ const Presentation = () => {
                         <h1>PRESENTATION</h1>
                         <img
                             src="http://localhost:3500/media/presentation.png"
-                            alt="photo ecole"
+                            alt="ecole logo"
                             style={{ height: "auto", width: "100%" }}
                             className="mb-5 mt-5"
                         />

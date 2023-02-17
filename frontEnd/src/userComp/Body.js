@@ -1,6 +1,5 @@
 import Form from "./Form";
 
-
 function Body() {
     return (
         <div className="container rounded p-5" style={{ background: "#eee" }}>
@@ -17,7 +16,7 @@ function Body() {
                         </h5>
                         <h6>
                             Année universitaire : {new Date().getFullYear()}-
-                            {new Date().getFullYear()+1}
+                            {new Date().getFullYear() + 1}
                         </h6>
                     </>
                 ) : (

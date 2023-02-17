@@ -17,12 +17,14 @@ router.post("/saveapp", userController.saveapp);
 
 const applicationController = require("../controllers/applicationController");
 
+router.post("/check", applicationController.check);
 router.post("/apply", applicationController.apply);
 router.post(
     "/upload",
     applicationController.upload,
     applicationController.sendFile
 );
+
 router.post("/getid", applicationController.getid);
 router.post("/find", applicationController.findApplicantById);
 

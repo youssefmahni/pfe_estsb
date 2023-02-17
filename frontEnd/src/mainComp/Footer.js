@@ -1,5 +1,4 @@
 import React from "react";
-import { FaPhone } from "react-icons/fa";
 
 const Footer = () => {
     return (
@@ -50,7 +49,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/occupational-integration/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Occupational integration
                                 </a>
@@ -59,7 +58,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/useful-addresses/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Useful informations
                                 </a>
@@ -68,7 +67,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/library/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Online services
                                 </a>
@@ -77,7 +76,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/activities/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Activities
                                 </a>
@@ -86,7 +85,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/insurance/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Free Health Insurance
                                 </a>
@@ -95,7 +94,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/medicalcover/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Health Insurance
                                 </a>
@@ -104,7 +103,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/mobility/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Mobility
                                 </a>
@@ -113,7 +112,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/scholarship/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Scholarship
                                 </a>
@@ -122,7 +121,7 @@ const Footer = () => {
                             <li>
                                 <a
                                     href="http://www.ucd.ac.ma/student-area/student-guide/"
-                                    target={"_blank"}
+                                    rel="noopener"
                                 >
                                     Student Guide
                                 </a>

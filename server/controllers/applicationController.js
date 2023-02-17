@@ -11,7 +11,7 @@ const storage1 = multer.diskStorage({
         cb(null, fileName);
     },
 });
-const upload = multer({ storage:storage1 }).single("profile");
+const upload = multer({ storage: storage1 }).single("profile");
 const sendFile = async (req, res) => {
     try {
         res.json({ status: "ok", message: "uploaded successfuly" });
@@ -30,7 +30,7 @@ const apply = async (req, res) => {
         phone: req.body.phone,
         ville: req.body.ville,
         anneebac: req.body.anneebac,
-        licence: req.body.licence , 
+        licence: req.body.licence,
         master: req.body.master,
         profile: req.body.profile,
         nationalite: req.body.nationalite,
@@ -40,12 +40,26 @@ const apply = async (req, res) => {
         anneediplom: req.body.anneediplom,
         specialitediplom: req.body.specialitediplom,
         etablissement: req.body.etablissement,
-        email:req.body.email,
-        code:req.body.code,
+        email: req.body.email,
+        code: req.body.code,
     });
     try {
         const response = await applicant.save();
         res.json({ status: "ok", message: response });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+const check = async (req, res) => {
+    try {
+        const old = await Lapp.findOne({
+            cin: req.body.cin,
+        });
+        if (!old) {
+            res.json({ status: "ok" });
+        } else {
+            res.json({ status: "error" });
+        }
     } catch (err) {
         res.json({ status: "error", message: err });
     }
@@ -75,4 +89,4 @@ const findApplicantById = async (req, res) => {
         );
     }
 };
-module.exports = { apply, upload, sendFile, getid, findApplicantById };
+module.exports = { apply, upload, sendFile, getid, findApplicantById,check };

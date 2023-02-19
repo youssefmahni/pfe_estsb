@@ -6,10 +6,10 @@ import Copyright from "../mainComp/Copyright";
 const Application = () => {
 
     return (
-        <div>
+        <div >
             <Header />
-            <Body/>
-            <Copyright />
+            <Body />
+            <Copyright className="bottom" />
         </div>
     );
 }

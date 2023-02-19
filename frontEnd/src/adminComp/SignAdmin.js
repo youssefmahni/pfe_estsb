@@ -1,13 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import Alert from "../mainComp/Alert";
+import NavBar from "../mainComp/NavBar";
+import Footer from "../mainComp/Footer";
+import UpperMenu from "../mainComp/UpperMenu";
+import Copyright from "../mainComp/Copyright";
 
 const SignInForm = () => {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [password, setPassword] = useState("");
-    const [wrong, setWrong] = useState(false);
     const [show, setShow] = useState(false);
 
     const loginUser = async (e) => {
@@ -23,7 +25,6 @@ const SignInForm = () => {
                 sessionStorage.setItem("token", data.accessToken);
                 window.location.href = "/admin/dashboard";
             } else {
-                setWrong(true);
                 setShow(true);
             }
         } catch (error) {
@@ -32,7 +33,9 @@ const SignInForm = () => {
     };
     return (
         <div>
-            <div className="container">
+            <UpperMenu />
+            <NavBar />
+            <div className="container p-5">
                 <div
                     className="row d-flex mt-3 m-1"
                     style={{ justifyContent: "center" }}
@@ -57,7 +60,6 @@ const SignInForm = () => {
                                     autoComplete="off"
                                     onChange={(e) => setFname(e.target.value)}
                                 />
-                                <p className="text-danger">error first name</p>
                             </div>
                             <div className="d-flex flex-column p-1">
                                 <label htmlFor="lname">Last name</label>
@@ -70,7 +72,6 @@ const SignInForm = () => {
                                     autoComplete="off"
                                     onChange={(e) => setLname(e.target.value)}
                                 />
-                                <p className="text-danger">error last name</p>
                             </div>
                             <div className="d-flex flex-column p-1">
                                 <label htmlFor="pw">PassWord</label>
@@ -85,21 +86,18 @@ const SignInForm = () => {
                                         setPassword(e.target.value)
                                     }
                                 />
-                                <p className="text-danger">error password</p>
                             </div>
 
                             <button type="submit" class="btn btn-primary mt-3">
                                 Start
                             </button>
                         </form>
-
-                        <Link to={"/signin"} className="text-dark mt-4">
-                            back to normal
-                        </Link>
                     </div>
                 </div>
             </div>
-            {{ wrong } ? <Alert show={show} setShow={setShow} /> : null}
+             <Alert show={show} setShow={setShow} />
+            <Footer />
+            <Copyright />
         </div>
     );
 };

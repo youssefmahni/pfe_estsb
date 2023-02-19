@@ -17,6 +17,10 @@ import Application from './pages/Application';
 import CSTC from './pages/CSTC';
 import ISITW from './pages/ISITW';
 import PrintableForm from './userComp/PrintableForm';
+import CCA from './pages/CCA';
+import FBA from "./pages/FBA";
+import GCF from "./pages/GCF";
+import MO from "./pages/MO";
 
 function App() {
   return (
@@ -37,10 +41,14 @@ function App() {
                       path="/estsb/presentation"
                       element={<Presentation />}
                   />
-                  <Route path="/form" element={<PrintableForm />} /> 
+                  <Route path="/form" element={<PrintableForm />} />
                   {/* /form to be removed  */}
                   <Route path="/estsb/cstc" element={<CSTC />} />
                   <Route path="/estsb/isitw" element={<ISITW />} />
+                  <Route path="/estsb/cca" element={<CCA />} />
+                  <Route path="/estsb/fba" element={<FBA />} />
+                  <Route path="/estsb/gcf" element={<GCF />} />
+                  <Route path="/estsb/mo" element={<MO />} />
                   <Route path="*" element={<Missing />} />
               </Routes>
           </BrowserRouter>

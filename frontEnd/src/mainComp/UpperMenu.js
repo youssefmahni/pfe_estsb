@@ -12,7 +12,7 @@ const UpperMenu = () => {
                     rel="noreferrer"
                     href="http://www.ucd.ac.ma/en/"
                 >
-                    l'ecole
+                    l'univercite
                 </a>
                 <div className="d-flex ">
                     <a

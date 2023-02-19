@@ -270,22 +270,22 @@ const CSTC = () => {
                                 </h3>
                             </div>
                             <ul className="list-group list-group-flush">
-                                <Link to={"/estsb/cstc"} className="link">
+                                <Link to={"/estsb/cca"} className="link">
                                     <li className="list-group-item item">
                                         CCA : COMPTABILITE, CONTROLE ET AUDIT
                                     </li>
                                 </Link>
-                                <Link to={"/"} className="link">
+                                <Link to={"/estsb/fba"} className="link">
                                     <li className="list-group-item item">
                                         FBA : FINANCE, BANQUE ET ASSURANCE
                                     </li>
                                 </Link>
-                                <Link to={"/"} className="link">
+                                <Link to={"/estsb/gcf"} className="link">
                                     <li className="list-group-item item">
                                         GCF : GESTION COMPTABLE ET FINANCIERE
                                     </li>
                                 </Link>
-                                <Link to={"/"} className="link">
+                                <Link to={"/estsb/mo"} className="link">
                                     <li className="list-group-item item">
                                         MO : MANAGEMENT DES ORGANISATIONS.
                                     </li>

@@ -46,8 +46,8 @@ const End = () => {
                     <div className="col col-lg-2 m-1 text-center ">
                         <a
                             className="col col-lg-2 m-1 text-center "
-                            href="http://localhost:3500/media/piece-a-fournir.docx"
-                            download
+                            href="http://localhost:3500/media/piece-a-fournir.pdf"
+                            rel="noreferrer"
                         >
                             <Button
                                 variant="light"
@@ -64,7 +64,7 @@ const End = () => {
                         <a
                             className="col col-lg-2 m-1 text-center "
                             href="http://localhost:3500/media/ESTSB_Dates_à_retenir_2023.pdf"
-                            download
+                            rel="noreferrer"
                         >
                             <Button
                                 variant="light"
@@ -81,7 +81,7 @@ const End = () => {
                         <a
                             className="col col-lg-2 m-1 text-center "
                             href="http://localhost:3500/media/estsb-reglementation.pdf"
-                            download
+                            rel="noreferrer"
                         >
                             <Button
                                 variant="light"
@@ -98,7 +98,7 @@ const End = () => {
                         <a
                             className="col col-lg-2 m-1 text-center "
                             href="http://localhost:3500/media/ASSURANCE_2023.pdf"
-                            download
+                            rel="noreferrer"
                         >
                             <Button
                                 variant="light"

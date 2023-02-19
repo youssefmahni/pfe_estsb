@@ -10,26 +10,36 @@ import Modal from "react-bootstrap/Modal";
 const Form = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = async () => {
-        // e.preventDefault();
-        // const responce = await fetch("http://localhost:3500/check", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({
-        //         cin,
-        //     }),
-        // });
-        // const data = await responce.json();
-        // if (data.status === "ok") {
-        //     localStorage.setItem("old", false);
-        // } else {
-        //     localStorage.setItem("old", true);
-
-        // }
+    const handleShow = async (e) => {
+        e.preventDefault();
         setShow(true);
     };
+    //regex
+    const NAME_REGEX = /[a-zA-Z ]{2,33}$/;
+    const PHONE_REGEX = /[6,7]{1}[0-9]{8}$/;
+    const CIN_REGEX = /^[A-Z]{2}[0-9]{5}$/;
+    const DATE_REGEX = /^(20[0-2])$/;
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    //refs
     const fileInput = useRef(null);
+    const prenomRef = useRef(null);
+    const nomRef = useRef(null);
+    const sexRef = useRef(null);
+    const dnaissaceRef = useRef(null);
+    const lieuRef = useRef(null);
+    const natioRef = useRef(null);
+    const phoneRef = useRef(null);
+    const cinRef = useRef(null);
+    const seriebacRef = useRef(null);
+    const anneebacRef = useRef(null);
+    const mentionRef = useRef(null);
+    const diplomRef = useRef(null);
+    const anneedipRef = useRef(null);
+    const specialiteRef = useRef(null);
+    const etabliRef = useRef(null);
+    const emailRef = useRef(null);
+
     const [cin, setCin] = useState("");
     const [prenom, setPrenom] = useState("");
     const [nom, setNom] = useState("");
@@ -87,7 +97,7 @@ const Form = () => {
         if (data.status === "ok") {
             localStorage.setItem("cin", cin);
             window.location.href = "/personal";
-        } 
+        }
     };
 
     return (
@@ -106,17 +116,18 @@ const Form = () => {
                                     Photo d'identite
                                 </label>
                                 <input
-                                    class="form-control is-valid"
+                                    className="form-control"
                                     type="file"
                                     id="image"
                                     name="profile"
                                     value={profile}
-                                    onChange={(e) => setProfile(e.target.value)}
+                                    onChange={(e) => {
+                                        setProfile(e.target.value);
+                                        fileInput.current.className =
+                                            "form-control is-valid";
+                                    }}
                                     ref={fileInput}
                                 />
-                                <div className="valid-feedback">
-                                    Looks good!
-                                </div>
                             </div>
                         </div>
                         <div className="col">
@@ -156,13 +167,25 @@ const Form = () => {
                     </label>
                     <input
                         type="text"
-                        className="form-control is-valid"
+                        className="form-control"
                         id="fname"
                         value={prenom}
-                        onChange={(e) => setPrenom(e.target.value)}
+                        ref={prenomRef}
+                        onChange={(e) => {
+                            setPrenom(e.target.value);
+                            if (NAME_REGEX.test(prenom)) {
+                                prenomRef.current.className =
+                                    "form-control is-valid";
+                            } else {
+                                prenomRef.current.className =
+                                    "form-control is-invalid";
+                            }
+                        }}
                         required
                     />
-                    <div className="valid-feedback">Looks good!</div>
+                    <div className="invalid-feedback">
+                        fournir votre prenom légal
+                    </div>
                 </div>
                 {/* nom */}
                 <div className="col-md-4">
@@ -171,13 +194,25 @@ const Form = () => {
                     </label>
                     <input
                         type="text"
-                        className="form-control is-valid"
+                        className="form-control"
                         id="lname"
                         value={nom}
                         required
-                        onChange={(e) => setNom(e.target.value)}
+                        ref={nomRef}
+                        onChange={(e) => {
+                            setNom(e.target.value);
+                            if (NAME_REGEX.test(nom)) {
+                                nomRef.current.className =
+                                    "form-control is-valid";
+                            } else {
+                                nomRef.current.className =
+                                    "form-control is-invalid";
+                            }
+                        }}
                     />
-                    <div className="valid-feedback">Looks good!</div>
+                    <div className="invalid-feedback">
+                        fournir votre nom légal
+                    </div>
                 </div>
                 {/* sex */}
                 <div className="col-md-4">
@@ -186,10 +221,15 @@ const Form = () => {
                     </label>
                     <div>
                         <select
-                            class="form-select is-valid"
+                            class="form-select"
                             id="sex"
                             value={sex}
-                            onChange={(e) => setSex(e.target.value)}
+                            ref={sexRef}
+                            onChange={(e) => {
+                                setSex(e.target.value);
+                                sexRef.current.className =
+                                    "form-control is-valid";
+                            }}
                         >
                             <option value={""}>---</option>
 
@@ -207,13 +247,20 @@ const Form = () => {
                     </label>
                     <input
                         type="date"
-                        className="form-control is-valid"
+                        className="form-control "
                         id="age"
                         value={datenaissance}
-                        onChange={(e) => setDatenaissance(e.target.value)}
+                        onChange={(e) => {
+                            setDatenaissance(e.target.value);
+                            dnaissaceRef.current.className =
+                                "form-control is-valid";
+                        }}
                         required
+                        ref={dnaissaceRef}
                     />
-                    <div className="valid-feedback">Looks good!</div>
+                    <div className="invalid-feedback">
+                        fournir votre date naissance mm/dd/yyyy
+                    </div>
                 </div>
                 {/* ville */}
                 <div className="col-md-4">
@@ -222,13 +269,25 @@ const Form = () => {
                     </label>
                     <input
                         type="text"
-                        className="form-control is-valid"
+                        className="form-control "
                         id="ville"
                         value={ville}
                         required
-                        onChange={(e) => setVille(e.target.value)}
+                        ref={lieuRef}
+                        onChange={(e) => {
+                            setVille(e.target.value);
+                            if (NAME_REGEX.test(ville)) {
+                                lieuRef.current.className =
+                                    "form-control is-valid";
+                            } else {
+                                lieuRef.current.className =
+                                    "form-control is-invalid";
+                            }
+                        }}
                     />
-                    <div className="valid-feedback">Looks good!</div>
+                    <div className="invalid-feedback">
+                        fournir une ville valid
+                    </div>
                 </div>
                 {/* Nationalite */}
                 <div className="col-md-4">
@@ -237,10 +296,15 @@ const Form = () => {
                     </label>
                     <div>
                         <select
-                            class="form-select is-valid"
+                            class="form-select"
                             id="natio"
                             value={nationalite}
-                            onChange={(e) => setNationalite(e.target.value)}
+                            ref={natioRef}
+                            onChange={(e) => {
+                                setNationalite(e.target.value);
+                                natioRef.current.className =
+                                    "form-select is-valid";
+                            }}
                         >
                             <option value={""}>---</option>
                             <Nationalities />
@@ -256,15 +320,25 @@ const Form = () => {
                         <span class="input-group-text">+212</span>
                         <input
                             type="text"
-                            class="form-control is-valid"
+                            class="form-control"
                             placeholder="Recipient's phone number"
                             id="phone"
                             value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            ref={phoneRef}
+                            onChange={(e) => {
+                                setPhone(e.target.value);
+                                if (PHONE_REGEX.test(phone)) {
+                                    phoneRef.current.className =
+                                        "form-control is-valid";
+                                } else {
+                                    phoneRef.current.className =
+                                        "form-control is-invalid";
+                                }
+                            }}
                             required
                         />
-                        <div className="valid-feedback">
-                            Please provide a valid city.
+                        <div className="invalid-feedback">
+                            Founie un numero de telephone morocain
                         </div>
                     </div>
                 </div>
@@ -275,14 +349,24 @@ const Form = () => {
                     </label>
                     <input
                         type="text"
-                        className="form-control is-invalid"
+                        className="form-control"
                         id="cne"
                         value={cin}
-                        onChange={(e) => setCin(e.target.value)}
+                        ref={cinRef}
+                        onChange={(e) => {
+                            setCin(e.target.value);
+                            if (CIN_REGEX.test(cin)) {
+                                cinRef.current.className =
+                                    "form-control is-valid";
+                            } else {
+                                cinRef.current.className =
+                                    "form-control is-invalid";
+                            }
+                        }}
                         required
                     />
                     <div className="invalid-feedback">
-                        Please provide a valid zip.
+                        Founie un CIN morocain
                     </div>
                 </div>
                 {/* serie bac */}
@@ -292,10 +376,15 @@ const Form = () => {
                     </label>
                     <div>
                         <select
-                            class="form-select is-valid"
+                            class="form-select"
                             id="choice"
                             value={seriebac}
-                            onChange={(e) => setSeriebac(e.target.value)}
+                            ref={seriebacRef}
+                            onChange={(e) => {
+                                setSeriebac(e.target.value);
+                                seriebacRef.current.className =
+                                    "form-control is-valid";
+                            }}
                         >
                             <BacSeries />
                         </select>
@@ -308,13 +397,25 @@ const Form = () => {
                     </label>
                     <input
                         type="text"
-                        className="form-control is-valid"
+                        className="form-control"
                         id="anneebac"
                         value={anneebac}
-                        onChange={(e) => setAnneebac(e.target.value)}
+                        ref={anneebacRef}
+                        onChange={(e) => {
+                            setAnneebac(e.target.value);
+                            if (DATE_REGEX.test(anneebac)) {
+                                anneebacRef.current.className =
+                                    "form-control is-valid";
+                            } else {
+                                anneebacRef.current.className =
+                                    "form-control is-invalid";
+                            }
+                        }}
                         required
                     />
-                    <div className="valid-feedback">Looks good!</div>
+                    <div className="invalid-feedback">
+                        fourni une annee valid
+                    </div>
                 </div>
                 {/* mention bac */}
                 <div className="col-md-4">
@@ -323,10 +424,15 @@ const Form = () => {
                     </label>
                     <div>
                         <select
-                            class="form-select is-valid"
+                            class="form-select"
                             id="choice"
                             value={mentionbac}
-                            onChange={(e) => setMentionbac(e.target.value)}
+                            ref={mentionRef}
+                            onChange={(e) => {
+                                setMentionbac(e.target.value);
+                                mentionRef.current.className =
+                                    "form-control is-valid";
+                            }}
                         >
                             <MentionBac />
                         </select>
@@ -339,10 +445,15 @@ const Form = () => {
                     </label>
                     <div>
                         <select
-                            class="form-select is-valid"
+                            class="form-select"
                             id="choice"
                             value={dernierdiplom}
-                            onChange={(e) => setDernierdiplom(e.target.value)}
+                            ref={diplomRef}
+                            onChange={(e) => {
+                                setDernierdiplom(e.target.value);
+                                diplomRef.current.className =
+                                    "form-control is-valid";
+                            }}
                         >
                             <Diploms />
                         </select>
@@ -355,13 +466,25 @@ const Form = () => {
                     </label>
                     <input
                         type="text"
-                        className="form-control is-valid"
+                        className="form-control"
                         id="anneedip"
                         value={anneediplom}
-                        onChange={(e) => setAnneediplom(e.target.value)}
+                        ref={anneedipRef}
+                        onChange={(e) => {
+                            setAnneediplom(e.target.value);
+                            if (DATE_REGEX.test(anneediplom)) {
+                                anneedipRef.current.className =
+                                    "form-control is-valid";
+                            } else {
+                                anneedipRef.current.className =
+                                    "form-control is-invalid";
+                            }
+                        }}
                         required
                     />
-                    <div className="valid-feedback">Looks good!</div>
+                    <div className="invalid-feedback">
+                        fourni une annee valid
+                    </div>
                 </div>
                 {/* specialite */}
                 <div className="col-md-4">
@@ -370,12 +493,15 @@ const Form = () => {
                     </label>
                     <div>
                         <select
-                            class="form-select is-valid"
+                            class="form-select"
                             id="choice"
                             value={specialitediplom}
-                            onChange={(e) =>
-                                setSpecialitediplom(e.target.value)
-                            }
+                            ref={specialiteRef}
+                            onChange={(e) => {
+                                setSpecialitediplom(e.target.value);
+                                specialiteRef.current.className =
+                                    "form-select is-valid";
+                            }}
                         >
                             <Specialities />
                         </select>
@@ -388,31 +514,53 @@ const Form = () => {
                     </label>
                     <input
                         type="text"
-                        className="form-control is-valid"
+                        className="form-control"
                         id="fname"
                         value={etablissement}
-                        onChange={(e) => setEtablissement(e.target.value)}
-                        required
+                        ref={etabliRef}
+                        onChange={(e) => {
+                            setEtablissement(e.target.value);
+                            if (NAME_REGEX.test(etablissement)) {
+                                etabliRef.current.className =
+                                    "form-control is-valid";
+                            } else {
+                                etabliRef.current.className =
+                                    "form-control is-invalid";
+                            }
+                        }}
                     />
-                    <div className="valid-feedback">Looks good!</div>
+                    <div className="invalid-feedback">
+                        fournir un nom d'etablissement correct
+                    </div>
                 </div>
                 {/* email */}
-
                 <div className="col-md-7">
                     <label for="mail" className="form-label">
                         Adresse Email
                     </label>
                     <input
                         type="email"
-                        className="form-control is-invalid"
+                        className="form-control"
                         id="mail"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        ref={emailRef}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                            if (EMAIL_REGEX.test(email)) {
+                                emailRef.current.className =
+                                    "form-control is-valid";
+                            } else {
+                                emailRef.current.className =
+                                    "form-control is-invalid";
+                            }
+                        }}
                         required
                     />
-                    <div className="invalid-feedback">provide valid email!</div>
+                    <div className="invalid-feedback">
+                        fournir une adresse email correct!
+                    </div>
                 </div>
-
+                {/* button */}
                 <div className="col-12">
                     <button className="btn btn-primary" type="submit">
                         Terminer
@@ -425,18 +573,18 @@ const Form = () => {
                     <Modal.Title>informaions</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                     revise bien tes informaions puis valider l'opertion
+                    revise bien tes informaions puis valider l'opertion
                 </Modal.Body>
-                
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Retourn
-                        </Button>
 
-                        <Button variant="primary" onClick={apply}>
-                            Confirme formulaire
-                        </Button>
-                    </Modal.Footer>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Retourn
+                    </Button>
+
+                    <Button variant="primary" onClick={apply}>
+                        Confirme formulaire
+                    </Button>
+                </Modal.Footer>
             </Modal>
         </div>
     );

@@ -3,6 +3,22 @@ const Lapp = require("../models/Applications");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+//register user
+const register = async (req, res, next) => {
+    let user = new Admin({
+        fname: req.body.fname,
+        lname: req.body.lname,
+        password: req.body.password,
+        refreshToken: req.body.refreshToken,
+    });
+    try {
+        const response = await user.save();
+        res.json({ status: "ok", message: response });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+
 //signin user
 const signinAdmin = async (req, res, next) => {
     try {
@@ -25,12 +41,12 @@ const signinAdmin = async (req, res, next) => {
             { expiresIn: "3d" }
         );
 
-        const response = await Lapp.find({
-            licence: req.body.licence,
-            master: req.body.master,
+        const response = await Admin.find({
+            fname: req.body.fname,
+            lname: req.body.lname,
+            password: req.body.password,
         });
-
-        if (response) {
+        if (response[0].fname) {
             await Admin.findByIdAndUpdate(response._id, {
                 $set: { refreshToken: refreshToken },
             });
@@ -138,4 +154,5 @@ module.exports = {
     getlicences,
     getmasters,
     index,
+    register,
 };

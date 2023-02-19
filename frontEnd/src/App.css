@@ -114,3 +114,9 @@
     background: #262626;
 }
 /* copyright */
+
+.bottom{           
+position: absolute;
+    bottom: 0px;
+    width: 100%;
+}

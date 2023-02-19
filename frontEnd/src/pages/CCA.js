@@ -8,12 +8,9 @@ import Tabs from "react-bootstrap/Tabs";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-const ISITW = () => {
-    const applyIsitw = () => {
-        sessionStorage.setItem(
-            "licence",
-            "ingenierie des systems informatiques et technologies web"
-        );
+const CCA = () => {
+    const applyCca = () => {
+        sessionStorage.setItem("licence", "comptabilite, control et audit");
         sessionStorage.setItem("master", null);
         window.location.href = "/application";
     };
@@ -23,7 +20,7 @@ const ISITW = () => {
             <NavBar />
             <div className="container">
                 <h1 style={{ textAlign: "center", margin: "40px" }}>
-                    INGENIERIE DES SYSTEMES INFORMATIQUES ET TECHNOLOGIES WEB
+                    COMPTABILITE, CONTROLE ET AUDIT
                 </h1>
                 <div className="row d-flex justify-content-center">
                     <div className="col col-lg-8 p-3 mt-5">
@@ -97,7 +94,7 @@ const ISITW = () => {
                                     <h3>Condidature</h3>
                                     <Button
                                         variant="secondary"
-                                        onClick={applyIsitw}
+                                        onClick={applyCca}
                                     >
                                         Pre-inscription
                                     </Button>
@@ -301,4 +298,4 @@ const ISITW = () => {
     );
 };
 
-export default ISITW;
+export default CCA;

@@ -1,10 +1,13 @@
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Lone from "./Lone";
-import Ltwo from "./Ltwo";
-import Mone from "./Mone";
-import Mtwo from "./Mtwo";
+import TabCCA from "./TabCCA";
+import TabISITW from "./TabISITW";
+import TabFBA from "./TabFBA";
+import TabGCF from "./TabGCF";
 import { useEffect, useState } from "react";
+import Copyright from '../mainComp/Copyright';
+import TabCSTC from "./TabCSTC";
+import TabMO from "./TabMO";
 
 const DashBoard = () => {
     const [admin, setAdmin] = useState("");
@@ -33,7 +36,7 @@ const DashBoard = () => {
         fetchData();
     }, []);
     return (
-        <div className="container">
+        <div>
             <h1>DashBoard</h1>
             <h1>hello {admin}</h1>
             <br />
@@ -44,33 +47,48 @@ const DashBoard = () => {
                 justify
                 style={{ background: "transparent" }}
             >
-                <Tab eventKey="profile" title="Licences one">
-                    <div className="p-5 ">
-                        <h3>Licences one</h3>
-                        <Lone />
+                <Tab eventKey="profile" title="CCA">
+                    <div className="p-3">
+                        <h3>Comptabilite, Controle et Audit</h3>
+                        <TabCCA />
                     </div>
                 </Tab>
-                <Tab eventKey="home" title="Licences two">
-                    <div className="p-5 ">
-                        <h3>Licences two</h3>
-                        <Ltwo />
+                <Tab eventKey="home" title="CSTC">
+                    <div className="p-3 ">
+                        <h3>Cyber Securite et Technologie Cloud</h3>
+                        <TabCSTC />
                     </div>
                 </Tab>
 
-                <Tab eventKey="profile2" title="Master one">
-                    <div className="p-5 ">
-                        <h3>Master one</h3>
-                        <Mone />
+                <Tab eventKey="profile2" title="FBA">
+                    <div className="p-3 ">
+                        <h3>Finance, Banque et Assurance</h3>
+                        <TabFBA />
                     </div>
                 </Tab>
-                <Tab eventKey="profile3" title="Master two">
-                    <div className="p-5 ">
-                        <h3>Master two</h3>
-                        <Mtwo />
+                <Tab eventKey="profile3" title="GCF">
+                    <div className="p-3 ">
+                        <h3>Gestion Comptable et Financiere</h3>
+                        <TabGCF />
+                    </div>
+                </Tab>
+                <Tab eventKey="profile4" title="ISITW">
+                    <div className="p-3 ">
+                        <h3>ISITW</h3>
+                        <TabISITW />
+                    </div>
+                </Tab>
+                <Tab eventKey="profile5" title="MO">
+                    <div className="p-3 ">
+                        <h3>management des organizations</h3>
+                        <TabMO />
                     </div>
                 </Tab>
             </Tabs>
             <br />
+            <div className="bottom">
+                <Copyright />
+            </div>
         </div>
     );
 };

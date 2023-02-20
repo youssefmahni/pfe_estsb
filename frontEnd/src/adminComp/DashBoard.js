@@ -44,37 +44,37 @@ const DashBoard = () => {
             <Tabs
                 defaultActiveKey="profile"
                 id="uncontrolled-tab-example"
-                className="mb-3"
+                className="mb-3 "
                 justify
                 style={{ background: "transparent" }}
             >
                 <Tab eventKey="profile" title="CCA">
-                    <div className="p-3">
+                    <div className="p-3" style={{ overflowX: "auto" }}>
                         <h3>Comptabilite, Controle et Audit</h3>
                         <TabCCA />
                     </div>
                 </Tab>
                 <Tab eventKey="home" title="CSTC">
-                    <div className="p-3 ">
+                    <div className="p-3" style={{ overflowX: "auto" }}>
                         <h3>Cyber Securite et Technologie Cloud</h3>
                         <TabCSTC />
                     </div>
                 </Tab>
 
                 <Tab eventKey="profile2" title="FBA">
-                    <div className="p-3 ">
+                    <div className="p-3 " style={{ overflowX: "auto" }}>
                         <h3>Finance, Banque et Assurance</h3>
                         <TabFBA />
                     </div>
                 </Tab>
                 <Tab eventKey="profile3" title="GCF">
-                    <div className="p-3 ">
+                    <div className="p-3 " style={{ overflowX: "auto" }}>
                         <h3>Gestion Comptable et Financiere</h3>
                         <TabGCF />
                     </div>
                 </Tab>
                 <Tab eventKey="profile4" title="ISITW">
-                    <div className="p-3 ">
+                    <div className="p-3 " style={{ overflowX: "auto" }}>
                         <h3>
                             Ingenierie des Systemes Informatiques et
                             Technologies Web
@@ -83,7 +83,7 @@ const DashBoard = () => {
                     </div>
                 </Tab>
                 <Tab eventKey="profile5" title="MO">
-                    <div className="p-3 ">
+                    <div className="p-3 " style={{ overflowX: "auto" }}>
                         <h3>Management des Organizations</h3>
                         <TabMO />
                     </div>

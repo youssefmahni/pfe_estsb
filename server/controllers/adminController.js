@@ -146,6 +146,22 @@ const getmasters = async (req, res) => {
     }
 };
 
+// filters
+// const filter = async (req, res) => {
+//     try {
+//         const cursor = await Lapp.find({
+//             licence: req.body.licence,
+//         });
+//         if (!cursor) {
+//             res.status(201).json({});
+//         } else {
+//             res.status(201).json({ cursor: cursor });
+//         }
+//     } catch (error) {
+//         console.log("something went wrong in getlicences : ", error);
+//     }
+// };
+
 module.exports = {
     signinAdmin,
     authenticateTokenAdmin,

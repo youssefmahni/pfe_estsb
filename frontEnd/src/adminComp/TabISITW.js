@@ -2,9 +2,24 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import * as XLSX from "xlsx";
 
-
 const TabISITW = () => {
-    const [ISITW, setISITW] = useState([]);
+    const [CCA, setCCA] = useState([]);
+    const [etablissement, setEtablissement] = useState("");
+    const [specialite, setSpecialite] = useState("");
+    const [diplom, setDiplom] = useState("");
+    const [cin, setCin] = useState("");
+    const [nom, setNom] = useState("");
+    const [prenom, setPrenom] = useState("");
+    const [sexe, setSexe] = useState("");
+    const [datenaissance, setDatenaissance] = useState("");
+    const [ville, setVille] = useState("");
+    const [natio, setNatio] = useState("");
+    const [mobile, setMobile] = useState("");
+    const [serie, setSerie] = useState("");
+    const [anneeb, setAnneeb] = useState("");
+    const [mention, setMention] = useState("");
+    const [anneed, setAnneed] = useState("");
+    const [email, setEmail] = useState("");
     useEffect(() => {
         const fetchTable = async () => {
             try {
@@ -23,7 +38,7 @@ const TabISITW = () => {
                 );
                 const cursor = await response.json();
                 const result = cursor.cursor;
-                setISITW(result);
+                setCCA(result);
             } catch (error) {
                 console.log(error);
             }
@@ -32,7 +47,7 @@ const TabISITW = () => {
         console.log("finish");
     }, []);
     const exportExcel = () => {
-        const minimalized = ISITW.map(
+        const minimalized = CCA.map(
             ({
                 cin,
                 nom,
@@ -82,46 +97,184 @@ const TabISITW = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>CIN</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Sexe</th>
-                        <th>Date naissance</th>
-                        <th>Ville</th>
-                        <th>Nationalte</th>
-                        <th>Mobile</th>
-                        <th>Serie bac</th>
-                        <th>Annee bac</th>
-                        <th>Mention bac</th>
-                        <th>Diplom</th>
-                        <th>Annee diplom</th>
-                        <th>Specialite</th>
-                        <th>Nom etablissement</th>
-                        <th>Email</th>
+                        <th>
+                            CIN <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setCin(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Nom <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setNom(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Prenom <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setPrenom(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Sexe <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setSexe(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Date naissance <br />
+                            <input
+                                type="text"
+                                onChange={(e) =>
+                                    setDatenaissance(e.target.value)
+                                }
+                            />
+                        </th>
+                        <th>
+                            Ville <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setVille(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Nationalte <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setNatio(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Mobile <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setMobile(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Serie bac <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setSerie(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Annee bac <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setAnneeb(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Mention bac <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setMention(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Diplom <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setDiplom(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Annee diplom <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setAnneed(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Specialite <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setSpecialite(e.target.value)}
+                            />
+                        </th>
+                        <th>
+                            Nom etablissement
+                            <br />
+                            <input
+                                type="text"
+                                onChange={(e) =>
+                                    setEtablissement(e.target.value)
+                                }
+                            />
+                        </th>
+                        <th>
+                            Email <br />
+                            <input
+                                type="text"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {ISITW.map((item) => {
-                        return (
-                            <tr>
-                                <td>{item.cin}</td>
-                                <td>{item.nom}</td>
-                                <td>{item.prenom}</td>
-                                <td>{item.sex}</td>
-                                <td>{item.datenaissance}</td>
-                                <td>{item.ville}</td>
-                                <td>{item.nationalite}</td>
-                                <td>{item.phone}</td>
-                                <td>{item.seriebac}</td>
-                                <td>{item.anneebac}</td>
-                                <td>{item.mentionbac}</td>
-                                <td>{item.dernierdiplom}</td>
-                                <td>{item.anneediplom}</td>
-                                <td>{item.specialitediplom}</td>
-                                <td>{item.etablissement}</td>
-                                <td>{item.email}</td>
-                            </tr>
-                        );
+                    {CCA.map((item) => {
+                        if (
+                            item.etablissement
+                                .toLocaleLowerCase()
+                                .includes(etablissement) &&
+                            item.specialitediplom
+                                .toLocaleLowerCase()
+                                .includes(specialite) &&
+                            item.dernierdiplom
+                                .toLocaleLowerCase()
+                                .includes(diplom) &&
+                            item.cin.toLocaleLowerCase().includes(cin) &&
+                            item.nom.toLocaleLowerCase().includes(nom) &&
+                            item.prenom.toLocaleLowerCase().includes(prenom) &&
+                            item.sex.toLocaleLowerCase().includes(sexe) &&
+                            item.datenaissance
+                                .toLocaleLowerCase()
+                                .includes(datenaissance) &&
+                            item.ville.toLocaleLowerCase().includes(ville) &&
+                            item.nationalite
+                                .toLocaleLowerCase()
+                                .includes(natio) &&
+                            item.phone.toLocaleLowerCase().includes(mobile) &&
+                            item.seriebac.toLocaleLowerCase().includes(serie) &&
+                            item.anneebac
+                                .toLocaleLowerCase()
+                                .includes(anneeb) &&
+                            item.mentionbac
+                                .toLocaleLowerCase()
+                                .includes(mention) &&
+                            item.anneediplom
+                                .toLocaleLowerCase()
+                                .includes(anneed) &&
+                            item.email.toLocaleLowerCase().includes(email)
+                        ) {
+                            return (
+                                <tr>
+                                    <td>{item.cin}</td>
+                                    <td>{item.nom}</td>
+                                    <td>{item.prenom}</td>
+                                    <td>{item.sex}</td>
+                                    <td>{item.datenaissance}</td>
+                                    <td>{item.ville}</td>
+                                    <td>{item.nationalite}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.seriebac}</td>
+                                    <td>{item.anneebac}</td>
+                                    <td>{item.mentionbac}</td>
+                                    <td>{item.dernierdiplom}</td>
+                                    <td>{item.anneediplom}</td>
+                                    <td>{item.specialitediplom}</td>
+                                    <td>{item.etablissement}</td>
+                                    <td>{item.email}</td>
+                                </tr>
+                            );
+                        } else {
+                            return [];
+                        }
                     })}
                 </tbody>
             </Table>

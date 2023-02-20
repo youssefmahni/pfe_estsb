@@ -221,3 +221,8 @@ border-radius: 6px;
   box-shadow: none;
   transform: translate(3px, 3px);
 }
+
+th input{
+    max-width: 145px;
+    padding-left: 3px;
+}

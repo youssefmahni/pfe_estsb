@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
+import * as XLSX from "xlsx";
+
 
 const TabCCA = () => {
     const [CCA, setCCA] = useState([]);
@@ -29,8 +31,54 @@ const TabCCA = () => {
         fetchTable();
         console.log("finish");
     }, []);
+    const exportExcel = () => {
+        const minimalized = CCA.map(
+            ({
+                cin,
+                nom,
+                prenom,
+                sex,
+                datenaissance,
+                ville,
+                nationalite,
+                phone,
+                seriebac,
+                anneebac,
+                mentionbac,
+                dernierdiplom,
+                anneediplom,
+                specialitediplom,
+                etablissement,
+                email,
+            }) => ({
+                cin,
+                nom,
+                prenom,
+                sex,
+                datenaissance,
+                ville,
+                nationalite,
+                phone,
+                seriebac,
+                anneebac,
+                mentionbac,
+                dernierdiplom,
+                anneediplom,
+                specialitediplom,
+                etablissement,
+                email,
+            })
+        );
+        var wb = XLSX.utils.book_new();
+        var ws = XLSX.utils.json_to_sheet(minimalized);
+        XLSX.utils.book_append_sheet(wb, ws, "CCA");
+        XLSX.writeFile(wb, "CCA.xlsx");
+    };
     return (
         <>
+            <button onClick={exportExcel} className={"xlsx"}>
+                Export
+            </button>
             <Table striped bordered hover>
                 <thead>
                     <tr>

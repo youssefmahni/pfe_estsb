@@ -182,6 +182,7 @@ const Form = () => {
                             }
                         }}
                         required
+                        autoComplete="off"
                     />
                     <div className="invalid-feedback">
                         fournir votre prenom légal
@@ -193,6 +194,7 @@ const Form = () => {
                         Nom
                     </label>
                     <input
+                        autoComplete="off"
                         type="text"
                         className="form-control"
                         id="lname"
@@ -273,6 +275,7 @@ const Form = () => {
                         id="ville"
                         value={ville}
                         required
+                        autoComplete="off"
                         ref={lieuRef}
                         onChange={(e) => {
                             setVille(e.target.value);
@@ -336,6 +339,7 @@ const Form = () => {
                                 }
                             }}
                             required
+                            autoComplete="off"
                         />
                         <div className="invalid-feedback">
                             Founie un numero de telephone morocain
@@ -364,6 +368,7 @@ const Form = () => {
                             }
                         }}
                         required
+                        autoComplete="off"
                     />
                     <div className="invalid-feedback">
                         Founie un CIN morocain
@@ -412,6 +417,7 @@ const Form = () => {
                             }
                         }}
                         required
+                        autoComplete="off"
                     />
                     <div className="invalid-feedback">
                         fourni une annee valid
@@ -481,6 +487,7 @@ const Form = () => {
                             }
                         }}
                         required
+                        autoComplete="off"
                     />
                     <div className="invalid-feedback">
                         fourni une annee valid
@@ -528,6 +535,8 @@ const Form = () => {
                                     "form-control is-invalid";
                             }
                         }}
+                        required
+                        autoComplete="off"
                     />
                     <div className="invalid-feedback">
                         fournir un nom d'etablissement correct
@@ -555,6 +564,7 @@ const Form = () => {
                             }
                         }}
                         required
+                        autoComplete="off"
                     />
                     <div className="invalid-feedback">
                         fournir une adresse email correct!

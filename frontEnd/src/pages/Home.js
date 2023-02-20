@@ -11,7 +11,10 @@ const Home = () => {
       <div>
           <UpperMenu />
           <NavBar />
-          <Body />
+          <div className='shadow container '>
+              <Body />
+          </div>
+          <br />
           <Footer />
           <Copyright />
       </div>

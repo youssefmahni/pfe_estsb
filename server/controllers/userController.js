@@ -28,7 +28,7 @@ const signin = async (req, res, next) => {
                 email: req.body.email,
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "15m" }
+            { expiresIn: "15s" }
         );
         const refreshToken = jwt.sign(
             {
@@ -91,7 +91,7 @@ const refreshToken = async (req, res, next) => {
     if (!cookies?.jwt) return res.sendStatus(401); //unhautorized
     const refreshToken = cookies.jwt;
     const foundUser = await User.findOne({
-        accessToken: req.body.accessToken,
+        refreshToken: refreshToken,
     });
     if (!foundUser) return res.sendStatus(401);
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
@@ -101,7 +101,7 @@ const refreshToken = async (req, res, next) => {
                 email: user.email,
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "5m" }
+            { expiresIn: "15s" }
         );
         res.json({ accessToken });
     });

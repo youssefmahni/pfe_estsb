@@ -29,7 +29,6 @@ const signinAdmin = async (req, res, next) => {
                 password: req.body.password,
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "15m" }
         );
         const refreshToken = jwt.sign(
             {
@@ -38,15 +37,15 @@ const signinAdmin = async (req, res, next) => {
                 password: req.body.password,
             },
             process.env.REFRESH_TOKEN_SECRET,
-            { expiresIn: "3d" }
+            { expiresIn: "1d" }
         );
 
-        const response = await Admin.find({
+        const response = await Admin.findOne({
             fname: req.body.fname,
             lname: req.body.lname,
             password: req.body.password,
         });
-        if (response[0].fname) {
+        if (response) {
             await Admin.findByIdAndUpdate(response._id, {
                 $set: { refreshToken: refreshToken },
             });
@@ -63,7 +62,7 @@ const signinAdmin = async (req, res, next) => {
             res.json({ status: "error", user: false });
         }
     } catch (err) {
-        res.json({ status: "error", message: "error occured!" });
+        res.json({ status: "error", message: err.message });
     } finally {
         next();
     }
@@ -75,7 +74,7 @@ const authenticateTokenAdmin = (req, res, next) => {
     const token = authHeader.split(" ")[1];
     if (token == null) return res.sendStatus(401);
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) return res.sendStatus(403); // invalid token (forbiden)
+        if (err) return res.status(403).json({ message: err }); // invalid token (forbiden)
         req.user = user;
         next();
     });
@@ -94,28 +93,28 @@ const index = async (req, res) => {
     }
 };
 //refresh token
-const refreshTokenAdmin = async (req, res, next) => {
-    const cookies = req.cookies;
-    if (!cookies?.jwt) return res.sendStatus(401); //unhautorized
-    const refreshToken = cookies.jwt;
-    const foundAdmin = await Admin.findOne({
-        accessToken: req.body.accessToken,
-    });
-    if (!foundAdmin) return res.sendStatus(401);
-    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-        if (err || foundAdmin.email != user.email) return res.sendStatus(403);
-        const accessToken = jwt.sign(
-            {
-                fname: req.body.fname,
-                lname: req.body.lname,
-                password: req.body.password,
-            },
-            process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: "15m" }
-        );
-        res.json({ accessToken });
-    });
-};
+// const refreshTokenAdmin = (req, res, next) => {
+//     // const cookies = req.cookies;
+//     // if (!cookies?.jwt) return res.sendStatus(401); //unhautorized
+//     // const refreshToken = cookies.jwt;
+//     // const foundAdmin = await Admin.findOne({
+//     //     refreshToken: refreshToken,
+//     // });
+//     // if (!foundAdmin) return res.sendStatus(401);
+//     // jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+//     //     if (err || foundAdmin.password != user.password) return res.sendStatus(403);
+//         const accessToken = jwt.sign(
+//             {
+//                 fname: req.body.fname,
+//                 lname: req.body.lname,
+//                 password: req.body.password,
+//             },
+//             process.env.ACCESS_TOKEN_SECRET,
+//             { expiresIn: "10s" }
+//         );
+//         res.json({ accessToken });
+//     // });
+// };
 //find right licences
 const getlicences = async (req, res) => {
     try {
@@ -150,7 +149,6 @@ const getmasters = async (req, res) => {
 module.exports = {
     signinAdmin,
     authenticateTokenAdmin,
-    refreshTokenAdmin,
     getlicences,
     getmasters,
     index,

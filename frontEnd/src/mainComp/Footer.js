@@ -1,4 +1,5 @@
 import React from "react";
+import {Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -137,6 +138,13 @@ const Footer = () => {
                             Moroccan scholar, theologian, and politician Abou
                             Chouaib Doukkali (1878–1937)
                         </p>
+                        <Link
+                            to={"/admin/signin"}
+                            className=" bn3"
+                        >
+                            ZONE ADMINS
+                        </Link>
+                        
                     </div>
                     <div class="col col-lg-4">
                         <h6>CONTACTEZ NOUS</h6>

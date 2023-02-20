@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
+import * as XLSX from "xlsx";
+
 
 const TabISITW = () => {
     const [ISITW, setISITW] = useState([]);
@@ -29,8 +31,54 @@ const TabISITW = () => {
         fetchTable();
         console.log("finish");
     }, []);
+    const exportExcel = () => {
+        const minimalized = ISITW.map(
+            ({
+                cin,
+                nom,
+                prenom,
+                sex,
+                datenaissance,
+                ville,
+                nationalite,
+                phone,
+                seriebac,
+                anneebac,
+                mentionbac,
+                dernierdiplom,
+                anneediplom,
+                specialitediplom,
+                etablissement,
+                email,
+            }) => ({
+                cin,
+                nom,
+                prenom,
+                sex,
+                datenaissance,
+                ville,
+                nationalite,
+                phone,
+                seriebac,
+                anneebac,
+                mentionbac,
+                dernierdiplom,
+                anneediplom,
+                specialitediplom,
+                etablissement,
+                email,
+            })
+        );
+        var wb = XLSX.utils.book_new();
+        var ws = XLSX.utils.json_to_sheet(minimalized);
+        XLSX.utils.book_append_sheet(wb, ws, "ISITW");
+        XLSX.writeFile(wb, "ISITW.xlsx");
+    };
     return (
         <>
+            <button onClick={exportExcel} className={"xlsx"}>
+                Export
+            </button>
             <Table striped bordered hover>
                 <thead>
                     <tr>

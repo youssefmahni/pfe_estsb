@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const LicenceTab = () => {
     return (
-        <div className="container">
+        <div className="container shadow">
             <div className="row justify-content-center mt-5 ">
                 <div className="col col-lg-6 p-3">
                     <div className="card">
@@ -80,7 +80,7 @@ const LicenceTab = () => {
                                     GCF : GESTION COMPTABLE ET FINANCIERE
                                 </li>
                             </Link>
-                            <Link to={"/estsb/ma"} className="link">
+                            <Link to={"/estsb/mo"} className="link">
                                 <li className="list-group-item item">
                                     MO : MANAGEMENT DES ORGANISATIONS
                                 </li>

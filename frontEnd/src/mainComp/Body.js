@@ -3,10 +3,11 @@ import Formations from "./Formations";
 
 const Body = () => {
   return (
-      <div>
-        <br />
-          <Anonce />
-          <Formations/>
+      <div className="container mt-5">
+          <div className="row pt-4">
+              <Anonce />
+              <Formations />
+          </div>
       </div>
   );
 }

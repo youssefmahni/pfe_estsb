@@ -12,7 +12,7 @@ const UpperMenu = () => {
                     rel="noreferrer"
                     href="http://www.ucd.ac.ma/en/"
                 >
-                    l'univercite
+                    univesite
                 </a>
                 <div className="d-flex ">
                     <a
@@ -25,7 +25,7 @@ const UpperMenu = () => {
                     </a>
                     <a
                         className="nav-link me-4"
-                        href="https://www.google.com.mx/maps/search/est+sidi+bennour/@32.6525096,-8.4399575,14.89z"
+                        href="https://www.google.com.mx/maps/place/EST-Ecole+Sup%C3%A9rieure+de+Technologie+SB/@32.6486208,-8.4324086,15z/data=!4m15!1m8!3m7!1s0xdaf28e15c89e487:0x274db028f84d4095!2sSidi+Bennour!3b1!8m2!3d32.6521619!4d-8.4266472!16s%2Fm%2F09rtwbv!3m5!1s0xdaf299e18cb8409:0xb0ac92f5afdcef5d!8m2!3d32.6486208!4d-8.4236539!16s%2Fg%2F11h565y6w8"
                     >
                         <FaSearchLocation />
                     </a>

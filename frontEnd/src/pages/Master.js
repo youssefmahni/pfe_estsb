@@ -1,23 +1,20 @@
-import React from 'react';
-import Nav from '../mainComp/NavBar';
-import MasterTab from '../mainComp/MasterTab';
-import Footer from '../mainComp/Footer';
+import Nav from "../mainComp/NavBar";
+import MasterTab from "../mainComp/MasterTab";
+import Footer from "../mainComp/Footer";
+import Copyright from "../mainComp/Copyright";
+import UpperMenu from "../mainComp/UpperMenu";
 
+const Licence = () => {
+    return (
+        <div>
+            <UpperMenu />
+            <Nav />
+            <MasterTab />
+            <br />
+            <Footer />
+            <Copyright />
+        </div>
+    );
+};
 
-const Master = () => {
-  return (
-    <div>
-      <div id='licence'>
-      <Nav/>
-      <MasterTab/>
-      </div>
-      
-
-      <div className=' bg-dark' id='footerDark' >
-          <Footer />
-      </div>
-    </div>
-  )
-}
-
-export default Master
+export default Licence;

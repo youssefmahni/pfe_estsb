@@ -10,7 +10,6 @@ router.post(
     adminController.index,
 );
 
-router.get("/refresh", adminController.refreshTokenAdmin);
 router.post("/licences", adminController.getlicences);
 router.post("/masters", adminController.getmasters);
 

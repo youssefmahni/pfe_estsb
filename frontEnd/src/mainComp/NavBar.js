@@ -40,10 +40,10 @@ const NavBar = () => {
                                   </Link>
                               </NavDropdown.Item>
                           </NavDropdown>
-                          <NavDropdown title="ESTSB">
+                          <NavDropdown title="l'ecole">
                               <NavDropdown.Item>
                                   <Link to={"#"} className="link">
-                                      mot du directeur
+                                      Mot du directeur
                                   </Link>
                               </NavDropdown.Item>
                               <NavDropdown.Item>
@@ -51,13 +51,21 @@ const NavBar = () => {
                                       to={"/estsb/presentation"}
                                       className="link"
                                   >
-                                      presentation
+                                      Presentation
+                                  </Link>
+                              </NavDropdown.Item>
+                              <NavDropdown.Item>
+                                  <Link
+                                      to={"/estsb/presentation"}
+                                      className="link"
+                                  >
+                                      Galerie
                                   </Link>
                               </NavDropdown.Item>
                           </NavDropdown>
                           <Nav.Link>
-                              <Link className="btn btn-primary" to={"/admin/signin"}>
-                                  administrateurs
+                              <Link to={"/"} className="link-text">
+                                  contact
                               </Link>
                           </Nav.Link>
                       </Nav>

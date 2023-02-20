@@ -41,16 +41,16 @@ const SignInForm = () => {
                     style={{ justifyContent: "center" }}
                 >
                     <div
-                        className="col-lg-5 border mt-3 p-4 rounded"
+                        className="col-lg-5 mt-3 p-4 shadow"
                         style={{ background: "white" }}
                     >
-                        <h2 className="mb-4 p-3">Admins Area</h2>
+                        <h2 className="mb-4 p-3">ZONE ADMINS</h2>
                         <form
                             className="d-flex flex-column"
                             onSubmit={loginUser}
                         >
-                            <div className="d-flex flex-column p-1">
-                                <label htmlFor="fname">First name</label>
+                            <div className="d-flex flex-column p-2">
+                                <label htmlFor="fname">Prenom admin</label>
                                 <input
                                     type="text"
                                     value={fname}
@@ -61,8 +61,8 @@ const SignInForm = () => {
                                     onChange={(e) => setFname(e.target.value)}
                                 />
                             </div>
-                            <div className="d-flex flex-column p-1">
-                                <label htmlFor="lname">Last name</label>
+                            <div className="d-flex flex-column p-2">
+                                <label htmlFor="lname">Nom admin</label>
                                 <input
                                     type="text"
                                     value={lname}
@@ -73,8 +73,8 @@ const SignInForm = () => {
                                     onChange={(e) => setLname(e.target.value)}
                                 />
                             </div>
-                            <div className="d-flex flex-column p-1">
-                                <label htmlFor="pw">PassWord</label>
+                            <div className="d-flex flex-column p-2">
+                                <label htmlFor="pw">Mot de passe</label>
                                 <input
                                     type="password"
                                     value={password}
@@ -89,13 +89,13 @@ const SignInForm = () => {
                             </div>
 
                             <button type="submit" class="btn btn-primary mt-3">
-                                Start
+                                Entrer
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-             <Alert show={show} setShow={setShow} />
+            <Alert show={show} setShow={setShow} />
             <Footer />
             <Copyright />
         </div>

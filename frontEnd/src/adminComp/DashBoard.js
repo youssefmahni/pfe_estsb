@@ -5,13 +5,12 @@ import TabISITW from "./TabISITW";
 import TabFBA from "./TabFBA";
 import TabGCF from "./TabGCF";
 import { useEffect, useState } from "react";
-import Copyright from '../mainComp/Copyright';
+import Copyright from "../mainComp/Copyright";
 import TabCSTC from "./TabCSTC";
 import TabMO from "./TabMO";
 
 const DashBoard = () => {
     const [admin, setAdmin] = useState("");
-
     useEffect(() => {
         async function fetchData() {
             try {
@@ -34,7 +33,9 @@ const DashBoard = () => {
             }
         }
         fetchData();
+        
     }, []);
+    
     return (
         <div>
             <h1>DashBoard</h1>
@@ -74,13 +75,16 @@ const DashBoard = () => {
                 </Tab>
                 <Tab eventKey="profile4" title="ISITW">
                     <div className="p-3 ">
-                        <h3>ISITW</h3>
+                        <h3>
+                            Ingenierie des Systemes Informatiques et
+                            Technologies Web
+                        </h3>
                         <TabISITW />
                     </div>
                 </Tab>
                 <Tab eventKey="profile5" title="MO">
                     <div className="p-3 ">
-                        <h3>management des organizations</h3>
+                        <h3>Management des Organizations</h3>
                         <TabMO />
                     </div>
                 </Tab>

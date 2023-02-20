@@ -9,12 +9,13 @@ const Presentation = () => {
         <div>
             <UpperMenu />
             <NavBar />
-            <div className="container">
-                <div className="row d-flex justify-content-center">
-                    <div className="col col-lg-9 d-flex flex-column align-items-center p-5 m-3 bg-light rounded  ">
+            
+            <div className="container mt-5">
+                <div className="row d-flex justify-content-center shadow">
+                    <div className="col col-lg-8 d-flex flex-column align-items-center p-5 m-3   ">
                         <h1>PRESENTATION</h1>
                         <img
-                            src="http://localhost:3500/media/presentation.png"
+                            src="http://localhost:3500/media/estsbPhoto.jpeg"
                             alt="ecole logo"
                             style={{ height: "auto", width: "100%" }}
                             className="mb-5 mt-5"

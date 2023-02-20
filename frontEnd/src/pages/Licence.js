@@ -10,6 +10,7 @@ const Licence = () => {
             <UpperMenu />
             <Nav />
             <LicenceTab />
+            <br />
             <Footer />
             <Copyright />
         </div>

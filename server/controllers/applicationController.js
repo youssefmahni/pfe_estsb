@@ -1,4 +1,6 @@
 const Lapp = require("../models/Applications");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // Multer Configurations
 const multer = require("multer");
@@ -19,7 +21,6 @@ const sendFile = async (req, res) => {
         res.json({ status: "error", message: "error occured!" });
     }
 };
-
 const apply = async (req, res) => {
     let applicant = new Lapp({
         cin: req.body.cin,
@@ -42,6 +43,7 @@ const apply = async (req, res) => {
         etablissement: req.body.etablissement,
         email: req.body.email,
         code: req.body.code,
+        etat: req.body.etat,
     });
     try {
         const response = await applicant.save();
@@ -58,35 +60,91 @@ const check = async (req, res) => {
         if (!old) {
             res.json({ status: "ok" });
         } else {
-            res.json({ status: "error" });
+            res.json({ status: "ko" });
         }
     } catch (err) {
         res.json({ status: "error", message: err });
     }
 };
+// const getid = async (req, res) => {
+//     try {
+//         const response = await Lapp.findOne({
+//             cin: req.body.cin,
+//         });
+//         res.json({ response });
+//     } catch (error) {
+//         console.log(
+//             "something went wrong in getid in applicationController.js",
+//             error
+//         );
+//     }
+// };
+// const findApplicantById = async (req, res) => {
+//     try {
+//         let userId = req.body.id;
+//         const response = await Lapp.findById(userId);
+//         res.json({ response });
+//     } catch (error) {
+//         console.log(
+//             "the first and second useEffect send empty ID (no worry) : "
+//         );
+//     }
+// };
 
-const getid = async (req, res) => {
+const poursuivre = async (req, res) => {
+    try {
+        const accessToken = jwt.sign(
+            {
+                cin: req.body.cin,
+                code: req.body.code,
+            },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: "15m" }
+        );
+        const old = await Lapp.findOne({
+            cin: req.body.cin,
+            code: req.body.code,
+        });
+        if (!old) {
+            res.json({ status: "ko" });
+        } else {
+            res.json({ status: "ok", accessToken: accessToken });
+            
+        }
+    } catch (err) {
+        res.json({ status: "error", message: err.message });
+    }
+};
+//authentication
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers["authorization"];
+    if (!authHeader) return res.sendStatus(401);
+    const token = authHeader.split(" ")[1];
+    if (token == null) return res.sendStatus(401);
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) return res.status(403).json({ message: err }); // invalid token (forbiden)
+        req.user = user;
+        next();
+    });
+};
+//get right user
+const index = async (req, res) => {
     try {
         const response = await Lapp.findOne({
-            cin: req.body.cin,
+            cin: req.user.cin,
+            code: req.user.code,
         });
         res.json({ response });
-    } catch (error) {
-        console.log(
-            "something went wrong in getid in applicationController.js",
-            error
-        );
+    } catch (err) {
+        res.json({ message: "error occured!" });
     }
 };
-const findApplicantById = async (req, res) => {
-    try {
-        let userId = req.body.id;
-        const response = await Lapp.findById(userId);
-        res.json({ response });
-    } catch (error) {
-        console.log(
-            "the first and second useEffect send empty ID (no worry) : "
-        );
-    }
+module.exports = {
+    apply,
+    upload,
+    sendFile,
+    authenticateToken,
+    index,
+    check,
+    poursuivre,
 };
-module.exports = { apply, upload, sendFile, getid, findApplicantById,check };

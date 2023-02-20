@@ -18,7 +18,6 @@ const register = async (req, res, next) => {
         res.json({ status: "error", message: err });
     }
 };
-
 //signin user
 const signinAdmin = async (req, res, next) => {
     try {

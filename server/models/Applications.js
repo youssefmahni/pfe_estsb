@@ -23,6 +23,7 @@ const lappSchema = new Schema(
         etablissement: { type: String, required: true },
         email: { type: String, required: true },
         code: { type: String, required: true },
+        etat: { type: String },
     },
     { timestamps: true }
 );

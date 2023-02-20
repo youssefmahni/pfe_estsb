@@ -16,7 +16,7 @@ import {Link} from 'react-router-dom';
 // };
 const Header = () => {
     return (
-        <div className="container d-flex justify-content-center p-2">
+        <div className="container d-flex justify-content-center p-4">
             <Link to={"/"}>
                 <img
                     src="http://localhost:3500/media/logo.jpg"

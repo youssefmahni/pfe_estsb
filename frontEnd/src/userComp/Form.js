@@ -9,11 +9,28 @@ import Modal from "react-bootstrap/Modal";
 import { v4 as uuidv4 } from "uuid";
 
 const Form = () => {
+    const [error,setError]= useState("");
     const [show, setShow] = useState(false);
+    const [show1, setShow1] = useState(false);
     const handleClose = () => setShow(false);
+    const handleClose1 = () => setShow1(false);
     const handleShow = async (e) => {
         e.preventDefault();
-        setShow(true);
+        const responce = await fetch("http://localhost:3500/check", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                cin,
+            }),
+        });
+        const data = await responce.json();
+        if (data.status === "ko") {
+            setShow1(true);
+        }else{
+            setShow(true);
+        }
+
+        
     };
     //regex
     const NAME_REGEX = /[a-zA-Z ]{2,33}$/;
@@ -59,6 +76,8 @@ const Form = () => {
     const [etablissement, setEtablissement] = useState("");
     const [email, setEmail] = useState("");
     const code = uuidv4();
+    const [cin1, setCin1] = useState("");
+    const [code1, setCode1] = useState("");
 
     const apply = async (e) => {
         e.preventDefault();
@@ -92,18 +111,69 @@ const Form = () => {
                 etablissement,
                 email,
                 code: code,
+                etat:"dossier sous traitement"
             }),
         });
-
         const data = await responce.json();
         if (data.status === "ok") {
             localStorage.setItem("cin", cin);
             sessionStorage.setItem("code", code);
             window.location.href = "/personal";
         }
+
     };
+    const poursuivre = async(e)=>{
+        e.preventDefault();
+        const responce = await fetch("http://localhost:3500/poursuivre", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                cin: cin1,
+                code: code1,
+            }),
+        });
+        const data = await responce.json();
+        if (data.status === "ok") {
+            sessionStorage.setItem("token", data.accessToken);
+            console.log(data.accessToken);
+            window.location.href = `/poursuivre/${code}`;
+        }else{
+            setError("CIN or code d’accès incorrect !");
+        }
+        
+    }
     return (
         <div className=" border p-4 bg-light rounded">
+            <div className="border p-2 rounded">
+                <p>
+                    Pour poursuivre votre dossier de préinscription, veuillez
+                    saisir votre numéro de CIN ainsi que votre code d’accès.
+                </p>
+                <form onSubmit={poursuivre}>
+                    <input
+                        className="m-1 p-1"
+                        type="text"
+                        placeholder="votre cin"
+                        value={cin1}
+                        onChange={(e) => {
+                            setCin1(e.target.value);
+                        }}
+                    />
+                    <input
+                        className="m-1 p-1"
+                        type="text"
+                        placeholder="votre code d'acces"
+                        value={code1}
+                        onChange={(e) => {
+                            setCode1(e.target.value);
+                        }}
+                    />
+                    <button className="m-1 p-1 rounded" type="submit">
+                        acceder
+                    </button>
+                </form>
+                <p className="text-danger">{error}</p>
+            </div>
             <form className="row g-3" onSubmit={handleShow}>
                 <div className="container mt-4">
                     <div className="row">
@@ -132,34 +202,7 @@ const Form = () => {
                                 />
                             </div>
                         </div>
-                        <div className="col">
-                            <div className="border p-2 rounded">
-                                <p>
-                                    Pour modifier votre dossier de
-                                    préinscription, veuillez saisir votre numéro
-                                    de CIN ainsi que votre code d’accès reçu par
-                                    mail.
-                                </p>
-                                <form>
-                                    <input
-                                        className="m-1"
-                                        type="text"
-                                        placeholder="votre cin"
-                                    />
-                                    <input
-                                        className="m-1"
-                                        type="text"
-                                        placeholder="votre code d'acces"
-                                    />
-                                    <button
-                                        className="m-1 ps-1 pe-1 rounded"
-                                        type="submit"
-                                    >
-                                        acceder
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                        <div className="col"></div>
                     </div>
                 </div>
                 {/* prenom */}
@@ -582,10 +625,11 @@ const Form = () => {
             {/* confirmation */}
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>informaions</Modal.Title>
+                    <Modal.Title>Confirmation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    revise bien tes informaions puis valider l'opertion
+                    Assurez-vous que les informations fournies sont correctes
+                    avant de valider le formulaire
                 </Modal.Body>
 
                 <Modal.Footer>
@@ -594,7 +638,19 @@ const Form = () => {
                     </Button>
 
                     <Button variant="primary" onClick={apply}>
-                        Confirme formulaire
+                        Je confirme
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={show1} onHide={handleClose1}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Attention!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Cet utilisateur est deja inscrit</Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose1}>
+                        Retourn
                     </Button>
                 </Modal.Footer>
             </Modal>

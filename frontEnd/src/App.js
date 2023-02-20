@@ -16,7 +16,7 @@ import Presentation from './pages/Presentation';
 import Application from './pages/Application';
 import CSTC from './pages/CSTC';
 import ISITW from './pages/ISITW';
-import PrintableForm from './userComp/PrintableForm';
+import Poursuivre from "./pages/Poursuivre";
 import CCA from './pages/CCA';
 import FBA from "./pages/FBA";
 import GCF from "./pages/GCF";
@@ -34,15 +34,14 @@ function App() {
                   <Route path="/signin" element={<SignIn />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/personal" element={<Personal />} />
-                  <Route path="/application" element={<Application />} />\
+                  <Route path="/application" element={<Application />} />
+                  <Route path="/poursuivre/:code" element={<Poursuivre />} />
                   <Route path="/admin/signin" element={<SignAdmin />} />
                   <Route path="/admin/dashboard" element={<DashBoard />} />
                   <Route
                       path="/estsb/presentation"
                       element={<Presentation />}
                   />
-                  <Route path="/form" element={<PrintableForm />} />
-                  {/* /form to be removed  */}
                   <Route path="/estsb/cstc" element={<CSTC />} />
                   <Route path="/estsb/isitw" element={<ISITW />} />
                   <Route path="/estsb/cca" element={<CCA />} />

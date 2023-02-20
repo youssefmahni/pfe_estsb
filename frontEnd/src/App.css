@@ -105,11 +105,6 @@
 }
 /* copyright */
 
-.bottom {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-}
 
 .shadow {
     box-shadow: 2.3px 2.3px 1.9px rgba(0, 0, 0, 0.018),
@@ -234,7 +229,7 @@
     font-size: 70px;
     font-weight: 700;
     letter-spacing: 10px;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 /* admins area */
 

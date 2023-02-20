@@ -5,7 +5,6 @@ import TabISITW from "./TabISITW";
 import TabFBA from "./TabFBA";
 import TabGCF from "./TabGCF";
 import { useEffect, useState } from "react";
-import Copyright from "../mainComp/Copyright";
 import TabCSTC from "./TabCSTC";
 import TabMO from "./TabMO";
 import "animate.css";
@@ -48,28 +47,28 @@ const DashBoard = () => {
                 style={{ height: "20vh" }}
             >
                 <h3>{admin}</h3>
-                <h1
-                    className="title animate__bounceIn"
-                >
-                    Les licences
-                </h1>
+                <h1 className="title animate__bounceIn">Les licences</h1>
 
                 <button className="logout" onClick={logout}>
                     Log Out
                 </button>
             </div>
 
-            <br />
             <Tabs
                 defaultActiveKey="profile"
                 // id="uncontrolled-tab-exampl"
                 justify
                 style={{ background: "transparent" }}
             >
-                <Tab eventKey="profile" title="CCA" style={{ color: "#fff" }}>
+                <Tab eventKey="profile" title="CCA">
                     <div
                         className="p-3 "
-                        style={{ overflowX: "auto", background: "#fff" }}
+                        style={{
+                            overflowX: "auto",
+                            background: "#fff",
+                            color: "#000",
+                            minHeight: "71.6vh",
+                        }}
                     >
                         <h3>Comptabilite, Controle et Audit</h3>
                         <TabCCA />
@@ -78,7 +77,12 @@ const DashBoard = () => {
                 <Tab eventKey="home" title="CSTC">
                     <div
                         className="p-3"
-                        style={{ overflowX: "auto", background: "#fff" }}
+                        style={{
+                            overflowX: "auto",
+                            background: "#fff",
+                            color: "#000",
+                            minHeight: "71.6vh",
+                        }}
                     >
                         <h3>Cyber Securite et Technologie Cloud</h3>
                         <TabCSTC />
@@ -87,7 +91,12 @@ const DashBoard = () => {
                 <Tab eventKey="profile2" title="FBA">
                     <div
                         className="p-3 "
-                        style={{ overflowX: "auto", background: "#fff" }}
+                        style={{
+                            overflowX: "auto",
+                            background: "#fff",
+                            color: "#000",
+                            minHeight: "71.6vh",
+                        }}
                     >
                         <h3>Finance, Banque et Assurance</h3>
                         <TabFBA />
@@ -96,7 +105,12 @@ const DashBoard = () => {
                 <Tab eventKey="profile3" title="GCF">
                     <div
                         className="p-3 "
-                        style={{ overflowX: "auto", background: "#fff" }}
+                        style={{
+                            overflowX: "auto",
+                            background: "#fff",
+                            color: "#000",
+                            minHeight: "71.6vh",
+                        }}
                     >
                         <h3>Gestion Comptable et Financiere</h3>
                         <TabGCF />
@@ -105,7 +119,12 @@ const DashBoard = () => {
                 <Tab eventKey="profile4" title="ISITW">
                     <div
                         className="p-3 "
-                        style={{ overflowX: "auto", background: "#fff" }}
+                        style={{
+                            overflowX: "auto",
+                            background: "#fff",
+                            color: "#000",
+                            minHeight: "71.6vh",
+                        }}
                     >
                         <h3>
                             Ingenierie des Systemes Informatiques et
@@ -117,7 +136,12 @@ const DashBoard = () => {
                 <Tab eventKey="profile5" title="MO">
                     <div
                         className="p-3 "
-                        style={{ overflowX: "auto", background: "#fff" }}
+                        style={{
+                            overflowX: "auto",
+                            background: "#fff",
+                            color: "#000",
+                            minHeight: "71.6vh",
+                        }}
                     >
                         <h3>Management des Organizations</h3>
                         <TabMO />
@@ -125,9 +149,6 @@ const DashBoard = () => {
                 </Tab>
             </Tabs>
             <br />
-            <div className="bottom">
-                <Copyright />
-            </div>
         </div>
     );
 };

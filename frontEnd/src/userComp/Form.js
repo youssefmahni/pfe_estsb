@@ -6,6 +6,7 @@ import Diploms from "./Diploms";
 import Specialities from "./Specialities";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { v4 as uuidv4 } from "uuid";
 
 const Form = () => {
     const [show, setShow] = useState(false);
@@ -16,7 +17,7 @@ const Form = () => {
     };
     //regex
     const NAME_REGEX = /[a-zA-Z ]{2,33}$/;
-    const PHONE_REGEX = /[6,7]{1}[0-9]{8}$/;
+    const PHONE_REGEX = /[6,7]{1}[0-9]{7}$/;
     const CIN_REGEX = /^[A-Z]{2}[0-9]{5}$/;
     const DATE_REGEX = /^(20[0-2])$/;
     const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -57,6 +58,7 @@ const Form = () => {
     const [specialitediplom, setSpecialitediplom] = useState("");
     const [etablissement, setEtablissement] = useState("");
     const [email, setEmail] = useState("");
+    const code = uuidv4();
 
     const apply = async (e) => {
         e.preventDefault();
@@ -89,17 +91,17 @@ const Form = () => {
                 specialitediplom,
                 etablissement,
                 email,
-                code: "000",
+                code: code,
             }),
         });
 
         const data = await responce.json();
         if (data.status === "ok") {
             localStorage.setItem("cin", cin);
+            sessionStorage.setItem("code", code);
             window.location.href = "/personal";
         }
     };
-
     return (
         <div className=" border p-4 bg-light rounded">
             <form className="row g-3" onSubmit={handleShow}>

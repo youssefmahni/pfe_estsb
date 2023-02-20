@@ -27,7 +27,7 @@ const End = () => {
                 </p>
                 <p>
                     votre code d'acces :{" "}
-                    <span className="text-danger">000</span>{" "}
+                    <span className="text-danger">{sessionStorage.getItem("code")}</span>
                 </p>
 
                 <div className="row justify-content-center">

@@ -250,9 +250,7 @@ const TabCSTC = () => {
                             item.anneediplom
                                 .toLocaleLowerCase()
                                 .includes(anneed) &&
-                            item.email
-                                .toLocaleLowerCase()
-                                .includes(email)
+                            item.email.toLocaleLowerCase().includes(email)
                         ) {
                             return (
                                 <tr>

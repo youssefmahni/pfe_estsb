@@ -95,7 +95,7 @@ const TabCCA = () => {
             <button onClick={exportExcel} className={"xlsx"}>
                 Export
             </button>
-            <Table striped bordered hover>
+            <Table striped bordered hover >
                 <thead>
                     <tr>
                         <th>

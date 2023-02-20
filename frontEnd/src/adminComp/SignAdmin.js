@@ -44,36 +44,67 @@ const SignInForm = () => {
                         className="col-lg-5 mt-3 p-4 shadow"
                         style={{ background: "white" }}
                     >
-                        <h2 className="mb-4 p-3">ZONE ADMINS</h2>
+                        <h2 className="mb-4 p-3 pb-0 ">ZONE ADMINS</h2>
                         <form
                             className="d-flex flex-column"
                             onSubmit={loginUser}
                         >
-                            <div className="d-flex flex-column p-2">
-                                <label htmlFor="fname">Prenom admin</label>
-                                <input
-                                    type="text"
-                                    value={fname}
-                                    id="fname"
-                                    className="p-1 border"
-                                    required
-                                    autoComplete="off"
-                                    onChange={(e) => setFname(e.target.value)}
-                                />
+                            <div className="d-flex flex-column p-3">
+                                <div class="group">
+                                    <input
+                                        type="text"
+                                        value={fname}
+                                        id="fname"
+                                        required
+                                        autoComplete="off"
+                                        onChange={(e) =>
+                                            setFname(e.target.value)
+                                        }
+                                        class="input"
+                                    />
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label className="label">Prenom</label>
+                                </div>
                             </div>
-                            <div className="d-flex flex-column p-2">
-                                <label htmlFor="lname">Nom admin</label>
-                                <input
-                                    type="text"
-                                    value={lname}
-                                    id="lname"
-                                    className="p-1 border"
-                                    required
-                                    autoComplete="off"
-                                    onChange={(e) => setLname(e.target.value)}
-                                />
+                            <div className="d-flex flex-column p-3">
+                                <div class="group">
+                                    <input
+                                        type="text"
+                                        value={lname}
+                                        id="fname"
+                                        required
+                                        autoComplete="off"
+                                        onChange={(e) =>
+                                            setLname(e.target.value)
+                                        }
+                                        class="input"
+                                    />
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label className="label">Nom</label>
+                                </div>
                             </div>
-                            <div className="d-flex flex-column p-2">
+                            <div className="d-flex flex-column p-3">
+                                <div class="group">
+                                    <input
+                                        type="password"
+                                        value={password}
+                                        id="fname"
+                                        required
+                                        autoComplete="off"
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        class="input"
+                                    />
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label className="label">Password</label>
+                                </div>
+                            </div>
+
+                            {/* <div className="d-flex flex-column p-2">
                                 <label htmlFor="pw">Mot de passe</label>
                                 <input
                                     type="password"
@@ -86,7 +117,7 @@ const SignInForm = () => {
                                         setPassword(e.target.value)
                                     }
                                 />
-                            </div>
+                            </div> */}
 
                             <button type="submit" class="btn btn-primary mt-3">
                                 Entrer

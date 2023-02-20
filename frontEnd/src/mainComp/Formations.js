@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaUniversity } from "react-icons/fa";
-import { FaSchool } from "react-icons/fa";
 
 
 const Formations = () => {

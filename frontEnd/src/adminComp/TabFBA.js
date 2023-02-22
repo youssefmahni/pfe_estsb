@@ -44,51 +44,51 @@ const TabCCA = () => {
             }
         };
         fetchTable();
-        console.log("finish");
     }, []);
     const exportExcel = () => {
-        const minimalized = CCA.map(
-            ({
-                cin,
-                nom,
-                prenom,
-                sex,
-                datenaissance,
-                ville,
-                nationalite,
-                phone,
-                seriebac,
-                anneebac,
-                mentionbac,
-                dernierdiplom,
-                anneediplom,
-                specialitediplom,
-                etablissement,
-                email,
-            }) => ({
-                cin,
-                nom,
-                prenom,
-                sex,
-                datenaissance,
-                ville,
-                nationalite,
-                phone,
-                seriebac,
-                anneebac,
-                mentionbac,
-                dernierdiplom,
-                anneediplom,
-                specialitediplom,
-                etablissement,
-                email,
-            })
-        );
+        // const minimalized = CCA.map(
+        //     ({
+        //         cin,
+        //         nom,
+        //         prenom,
+        //         sex,
+        //         datenaissance,
+        //         ville,
+        //         nationalite,
+        //         phone,
+        //         seriebac,
+        //         anneebac,
+        //         mentionbac,
+        //         dernierdiplom,
+        //         anneediplom,
+        //         specialitediplom,
+        //         etablissement,
+        //         email,
+        //     }) => ({
+        //         cin,
+        //         nom,
+        //         prenom,
+        //         sex,
+        //         datenaissance,
+        //         ville,
+        //         nationalite,
+        //         phone,
+        //         seriebac,
+        //         anneebac,
+        //         mentionbac,
+        //         dernierdiplom,
+        //         anneediplom,
+        //         specialitediplom,
+        //         etablissement,
+        //         email,
+        //     })
+        // );
         var wb = XLSX.utils.book_new();
-        var ws = XLSX.utils.json_to_sheet(minimalized);
+        var ws = XLSX.utils.json_to_sheet(printable);
         XLSX.utils.book_append_sheet(wb, ws, "FBA");
         XLSX.writeFile(wb, "FBA.xlsx");
     };
+    let printable = [];
     return (
         <>
             <button onClick={exportExcel} className={"xlsx"}>
@@ -252,6 +252,27 @@ const TabCCA = () => {
                                 .includes(anneed) &&
                             item.email.toLocaleLowerCase().includes(email)
                         ) {
+                            printable = [
+                                ...printable,
+                                {
+                                    cin: item.cin,
+                                    nom: item.nom,
+                                    prenom: item.prenom,
+                                    sex: item.sex,
+                                    datenaissance: item.datenaissance,
+                                    ville: item.ville,
+                                    nationalite: item.nationalite,
+                                    phone: item.phone,
+                                    seriebac: item.seriebac,
+                                    anneebac: item.anneebac,
+                                    mentionbac: item.mentionbac,
+                                    dernierdiplom: item.dernierdiplom,
+                                    anneediplom: item.anneediplom,
+                                    specialitediplom: item.specialitediplom,
+                                    etablissement: item.etablissement,
+                                    email: item.email,
+                                },
+                            ];
                             return (
                                 <tr>
                                     <td>{item.cin}</td>

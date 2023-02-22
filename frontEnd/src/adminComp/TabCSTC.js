@@ -43,7 +43,6 @@ const TabCSTC = () => {
             }
         };
         fetchTable();
-        console.log("finish");
     }, []);
     const exportExcel = () => {
         const minimalized = CCA.map(
@@ -97,6 +96,7 @@ const TabCSTC = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th className="pb-4">Accepte</th>
                         <th>
                             CIN <br />
                             <input

@@ -14,6 +14,7 @@ import SignAdmin from "./adminComp/SignAdmin"
 import DashBoard from "./adminComp/DashBoard";
 import Presentation from './pages/Presentation';
 import Application from './pages/Application';
+import PrintableForm from "./userComp/PrintableForm";
 import CSTC from './pages/CSTC';
 import ISITW from './pages/ISITW';
 import Poursuivre from "./pages/Poursuivre";
@@ -34,6 +35,7 @@ function App() {
                   <Route path="/signin" element={<SignIn />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/personal" element={<Personal />} />
+                  <Route path="/form" element={<PrintableForm />} />
                   <Route path="/application" element={<Application />} />
                   <Route path="/poursuivre/:code" element={<Poursuivre />} />
                   <Route path="/admin/signin" element={<SignAdmin />} />

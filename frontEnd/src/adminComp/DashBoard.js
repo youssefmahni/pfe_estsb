@@ -55,25 +55,11 @@ const DashBoard = () => {
             </div>
 
             <Tabs
-                defaultActiveKey="profile"
+                defaultActiveKey="home"
                 // id="uncontrolled-tab-exampl"
                 justify
                 style={{ background: "transparent" }}
             >
-                <Tab eventKey="profile" title="CCA">
-                    <div
-                        className="p-3 "
-                        style={{
-                            overflowX: "auto",
-                            background: "#fff",
-                            color: "#000",
-                            minHeight: "71.6vh",
-                        }}
-                    >
-                        <h3>Comptabilite, Controle et Audit</h3>
-                        <TabCCA />
-                    </div>
-                </Tab>
                 <Tab eventKey="home" title="CSTC">
                     <div
                         className="p-3"
@@ -86,6 +72,37 @@ const DashBoard = () => {
                     >
                         <h3>Cyber Securite et Technologie Cloud</h3>
                         <TabCSTC />
+                    </div>
+                </Tab>
+                <Tab eventKey="profile4" title="ISITW">
+                    <div
+                        className="p-3 "
+                        style={{
+                            overflowX: "auto",
+                            background: "#fff",
+                            color: "#000",
+                            minHeight: "71.6vh",
+                        }}
+                    >
+                        <h3>
+                            Ingenierie des Systemes Informatiques et
+                            Technologies Web
+                        </h3>
+                        <TabISITW />
+                    </div>
+                </Tab>
+                <Tab eventKey="profile" title="CCA">
+                    <div
+                        className="p-3 "
+                        style={{
+                            overflowX: "auto",
+                            background: "#fff",
+                            color: "#000",
+                            minHeight: "71.6vh",
+                        }}
+                    >
+                        <h3>Comptabilite, Controle et Audit</h3>
+                        <TabCCA />
                     </div>
                 </Tab>
                 <Tab eventKey="profile2" title="FBA">
@@ -116,23 +133,7 @@ const DashBoard = () => {
                         <TabGCF />
                     </div>
                 </Tab>
-                <Tab eventKey="profile4" title="ISITW">
-                    <div
-                        className="p-3 "
-                        style={{
-                            overflowX: "auto",
-                            background: "#fff",
-                            color: "#000",
-                            minHeight: "71.6vh",
-                        }}
-                    >
-                        <h3>
-                            Ingenierie des Systemes Informatiques et
-                            Technologies Web
-                        </h3>
-                        <TabISITW />
-                    </div>
-                </Tab>
+
                 <Tab eventKey="profile5" title="MO">
                     <div
                         className="p-3 "

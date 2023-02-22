@@ -7,7 +7,7 @@ const End = () => {
         newWindow.onload = () => {
             setTimeout(() => {
                 newWindow.print();
-            }, 100);
+            }, 200);
         };
     };
     return (

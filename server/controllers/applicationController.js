@@ -109,7 +109,6 @@ const poursuivre = async (req, res) => {
             res.json({ status: "ko" });
         } else {
             res.json({ status: "ok", accessToken: accessToken });
-            
         }
     } catch (err) {
         res.json({ status: "error", message: err.message });
@@ -139,7 +138,19 @@ const index = async (req, res) => {
         res.json({ message: "error occured!" });
     }
 };
-
+const update = async (req, res) => {
+    try {
+        const old = await Lapp.findOne({
+            cin: req.body.cin,
+        });
+        await Lapp.findByIdAndUpdate(old._id, {
+            $set: { phone: req.body.phone, email: req.body.email },
+        });
+        res.json({ status: "ok" });
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
 module.exports = {
     apply,
     upload,
@@ -148,4 +159,5 @@ module.exports = {
     index,
     check,
     poursuivre,
+    update,
 };

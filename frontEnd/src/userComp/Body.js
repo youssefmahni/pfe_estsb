@@ -1,6 +1,7 @@
 import Form from "./Form";
 
 function Body() {
+    
     return (
         <div className="container rounded p-5" style={{ background: "#eee" }}>
             <div className="d-flex align-items-center flex-column pb-3">

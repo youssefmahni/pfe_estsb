@@ -10,6 +10,8 @@ router.post(
     adminController.index,
 );
 
+router.post("/open", adminController.OnOff);
+router.get("/checklorm", adminController.checkLorM);
 router.post("/licences", adminController.getlicences);
 router.post("/masters", adminController.getmasters);
 

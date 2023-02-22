@@ -1,9 +1,10 @@
 const Admin = require("../models/admins");
 const Lapp = require("../models/Applications");
+const inscription = require("../models/inscription");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-//register user
+//create admins
 const register = async (req, res, next) => {
     let user = new Admin({
         fname: req.body.fname,
@@ -18,6 +19,19 @@ const register = async (req, res, next) => {
         res.json({ status: "error", message: err });
     }
 };
+//created inscription row
+// const register = async (req, res, next) => {
+//     let user = new inscription({
+//         licence: false,
+//         master: false,
+//     });
+//     try {
+//         const response = await user.save();
+//         res.json({ status: "ok", message: response });
+//     } catch (err) {
+//         res.json({ status: "error", message: err });
+//     }
+// };
 //signin user
 const signinAdmin = async (req, res, next) => {
     try {
@@ -27,7 +41,7 @@ const signinAdmin = async (req, res, next) => {
                 lname: req.body.lname,
                 password: req.body.password,
             },
-            process.env.ACCESS_TOKEN_SECRET,
+            process.env.ACCESS_TOKEN_SECRET
         );
         const refreshToken = jwt.sign(
             {
@@ -145,7 +159,33 @@ const getmasters = async (req, res) => {
     }
 };
 
+const OnOff = async (req, res) => {
+    try {
+        const response = await inscription.findOne();
+        if (req.body.licence) {
+            await inscription.findByIdAndUpdate(response._id, {
+                $set: { licence: !response.licence },
+            });
+            
+        }else if (!req.body.licence) {
+            await inscription.findByIdAndUpdate(response._id, {
+                $set: { master: !response.master },
+            });
+        }
+        res.json({ response });
+    } catch (error) {
+        console.log("something went wrong", error);
+    }
+};
 
+const checkLorM = async (req, res) => {
+    try {
+        const response = await inscription.findOne();
+        res.json({ response });
+    } catch (error) {
+        console.log("something went wrong", error);
+    }
+};
 module.exports = {
     signinAdmin,
     authenticateTokenAdmin,
@@ -153,4 +193,6 @@ module.exports = {
     getmasters,
     index,
     register,
+    OnOff,
+    checkLorM
 };

@@ -28,9 +28,7 @@ const Form = () => {
             setShow1(true);
         }else{
             setShow(true);
-        }
-
-        
+        }   
     };
     //regex
     const NAME_REGEX = /[a-zA-Z ]{2,33}$/;
@@ -120,7 +118,6 @@ const Form = () => {
             sessionStorage.setItem("code", code);
             window.location.href = "/personal";
         }
-
     };
     const poursuivre = async(e)=>{
         e.preventDefault();

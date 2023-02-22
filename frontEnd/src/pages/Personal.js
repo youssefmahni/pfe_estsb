@@ -1,7 +1,6 @@
 import Header from "../userComp/Header";
 import Copyright from "../mainComp/Copyright";
 import End from "./End";
-// import Body from "../userComp/Body";
 const Personal = () => {
     // const [email, setEmail] = useState("");
     // const [applicant, setApplicant] = useState(false);

@@ -24,6 +24,7 @@ router.post(
     applicationController.sendFile
 );
 router.post("/poursuivre", applicationController.poursuivre);
+router.post("/update", applicationController.update);
 router.post(
     "/account",
     applicationController.authenticateToken,

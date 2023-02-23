@@ -1,15 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import GeneratePDFButton from "../userComp/PrintableForm";
 
 const End = () => {
-    const printAndSave = () => {
-        const newWindow = window.open("http://localhost:3000/form");
-        newWindow.onload = () => {
-            setTimeout(() => {
-                newWindow.print();
-            }, 200);
-        };
-    };
     return (
         <div
             className="container rounded p-5"
@@ -27,21 +20,16 @@ const End = () => {
                 </p>
                 <p>
                     votre code d'acces :{" "}
-                    <span className="text-danger">{sessionStorage.getItem("code")}</span>
+                    <span className="text-danger">
+                        {sessionStorage.getItem("code")}
+                    </span>
                 </p>
 
                 <div className="row justify-content-center">
                     <div className="col col-lg-2 m-1 text-center ">
-                        <Button
-                            variant="light"
-                            style={{
-                                boxShadow:
-                                    "0 1px 16.83px 0.17px rgba(0, 0, 0, .1)",
-                            }}
-                            onClick={printAndSave}
-                        >
-                            Formulaire de preinscription
-                        </Button>
+                        <GeneratePDFButton
+                            code={sessionStorage.getItem("code")}
+                        />
                     </div>
                     <div className="col col-lg-2 m-1 text-center ">
                         <a

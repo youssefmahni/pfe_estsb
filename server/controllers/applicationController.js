@@ -151,6 +151,22 @@ const update = async (req, res) => {
         res.json({ status: "error", message: err });
     }
 };
+
+const findbycode = async (req, res) => {
+    try {
+        const response = await Lapp.findOne({
+            code: req.body.code,
+        });
+        if(response){
+            res.json({ response, status: "ok" });
+        }else{
+            res.json({status: "ko" });
+        }
+    } catch (err) {
+        res.json({ status: "error", message: err });
+    }
+};
+
 module.exports = {
     apply,
     upload,
@@ -160,4 +176,5 @@ module.exports = {
     check,
     poursuivre,
     update,
+    findbycode,
 };

@@ -30,6 +30,7 @@ router.post(
     applicationController.authenticateToken,
     applicationController.index
 );
+router.post("/findbycode", applicationController.findbycode);
 
 // router.post("/getid", applicationController.getid);
 // router.post("/find", applicationController.findApplicantById);

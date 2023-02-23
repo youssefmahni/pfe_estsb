@@ -9,7 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import { v4 as uuidv4 } from "uuid";
 
 const Form = () => {
-    const [error,setError]= useState("");
+    const [error, setError] = useState("");
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
     const handleClose = () => setShow(false);
@@ -26,9 +26,9 @@ const Form = () => {
         const data = await responce.json();
         if (data.status === "ko") {
             setShow1(true);
-        }else{
+        } else {
             setShow(true);
-        }   
+        }
     };
     //regex
     const NAME_REGEX = /[a-zA-Z ]{2,33}$/;
@@ -109,7 +109,7 @@ const Form = () => {
                 etablissement,
                 email,
                 code: code,
-                etat:"dossier sous traitement"
+                etat: "dossier sous traitement",
             }),
         });
         const data = await responce.json();
@@ -119,7 +119,7 @@ const Form = () => {
             window.location.href = "/personal";
         }
     };
-    const poursuivre = async(e)=>{
+    const poursuivre = async (e) => {
         e.preventDefault();
         const responce = await fetch("http://localhost:3500/poursuivre", {
             method: "POST",
@@ -134,11 +134,10 @@ const Form = () => {
             sessionStorage.setItem("token", data.accessToken);
             console.log(data.accessToken);
             window.location.href = `/poursuivre/${code}`;
-        }else{
+        } else {
             setError("CIN or code d’accès incorrect !");
         }
-        
-    }
+    };
     return (
         <div className=" border p-4 bg-light rounded">
             <div className="border p-2 rounded">

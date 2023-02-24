@@ -9,6 +9,10 @@ import TabCSTC from "./TabCSTC";
 import TabMO from "./TabMO";
 import "animate.css";
 import UpperMenu from "../mainComp/UpperMenu";
+import TabMCSTC from "./TabMCSTC";
+import TabMCCA from "./TabMCCA";
+import TabMISITW from "./TabMISITW";
+
 
 const DashBoard = () => {
     const [admin, setAdmin] = useState("");
@@ -56,7 +60,7 @@ const DashBoard = () => {
         fetchData();
     }, [arg]);
     const logout = async () => {
-        sessionStorage.setItem("token", "");
+        sessionStorage.setItem("token","");
         window.location.href = "/admin/signin";
     };
     const onoff = async () => {
@@ -82,7 +86,7 @@ const DashBoard = () => {
             <UpperMenu />
             <div
                 className="d-flex justify-content-between p-4"
-                style={{ height: "20vh" }}
+                style={{ height: "28vh" }}
             >
                 <div>
                     <button
@@ -112,19 +116,18 @@ const DashBoard = () => {
                 </div>
                 <div>
                     <h1 className="title animate__bounceIn">{LorM}</h1>
-                    
 
                     {LorM === "Les licences" ? (
-                        <button onClick={onoff}>
+                        <button className="button" onClick={onoff}>
                             {lopen
-                                ? "inscription en licences ouverte"
-                                : "inscription en licences fermer"}
+                                ? "inscription ouverte"
+                                : "inscription fermer"}
                         </button>
                     ) : (
-                        <button onClick={onoff}>
+                        <button className="button" onClick={onoff}>
                             {mopen
-                                ? "inscription en masters ouverte"
-                                : "inscription en masters fermer"}
+                                ? "inscription ouverte"
+                                : "inscription fermer"}
                         </button>
                     )}
                 </div>
@@ -141,7 +144,6 @@ const DashBoard = () => {
             {LorM === "Les licences" ? (
                 <Tabs
                     defaultActiveKey="home"
-                    // id="uncontrolled-tab-exampl"
                     justify
                     style={{ background: "transparent" }}
                 >
@@ -235,7 +237,57 @@ const DashBoard = () => {
                     </Tab>
                 </Tabs>
             ) : (
-                <h1 style={ {textAlign:"center" , margin:"300px"}}>master tables</h1>
+                <Tabs
+                    defaultActiveKey="home"
+                    justify
+                    style={{ background: "transparent" }}
+                >
+                    <Tab eventKey="home" title="MCSTC">
+                        <div
+                            className="p-3"
+                            style={{
+                                overflowX: "auto",
+                                background: "#fff",
+                                color: "#000",
+                                minHeight: "71.7vh",
+                            }}
+                        >
+                            <h3>Master Cyber Securite et Technologie Cloud</h3>
+                            <TabMCSTC />
+                        </div>
+                    </Tab>
+                    <Tab eventKey="profile4" title="MISITW">
+                        <div
+                            className="p-3 "
+                            style={{
+                                overflowX: "auto",
+                                background: "#fff",
+                                color: "#000",
+                                minHeight: "71.7vh",
+                            }}
+                        >
+                            <h3>
+                                Master Ingenierie des Systemes Informatiques et
+                                Technologies Web
+                            </h3>
+                            <TabMISITW />
+                        </div>
+                    </Tab>
+                    <Tab eventKey="profile" title="MCCA">
+                        <div
+                            className="p-3 "
+                            style={{
+                                overflowX: "auto",
+                                background: "#fff",
+                                color: "#000",
+                                minHeight: "71.7vh",
+                            }}
+                        >
+                            <h3>Comptabilite, Controle et Audit</h3>
+                            <TabMCCA />
+                        </div>
+                    </Tab>
+                </Tabs>
             )}
         </div>
     );

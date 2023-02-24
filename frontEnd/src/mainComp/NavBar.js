@@ -40,7 +40,7 @@ const NavBar = () => {
                                   </Link>
                               </NavDropdown.Item>
                           </NavDropdown>
-                          <NavDropdown title="l'ecole">
+                          <NavDropdown title="Ecole">
                               <NavDropdown.Item>
                                   <Link to={"#"} className="link">
                                       Mot du directeur
@@ -56,18 +56,14 @@ const NavBar = () => {
                               </NavDropdown.Item>
                               <NavDropdown.Item>
                                   <Link
-                                      to={"/estsb/presentation"}
+                                      to={"#"}
                                       className="link"
                                   >
                                       Galerie
                                   </Link>
                               </NavDropdown.Item>
                           </NavDropdown>
-                          <Nav.Link>
-                              <Link to={"/"} className="link-text">
-                                  contact
-                              </Link>
-                          </Nav.Link>
+                          
                       </Nav>
                   </Navbar.Collapse>
               </Navbar>

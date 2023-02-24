@@ -28,7 +28,11 @@ const Formations = () => {
                                 Professionnelle
                             </p>
                             <p class="text-body">
-                                Here are the details of the card
+                                Un diplôme de l'enseignement supérieur de niveau
+                                bac+3 qui permet d'acquérir des connaissances et
+                                compétences spécialisées dans un domaine
+                                professionnel précis, afin de faciliter
+                                l'insertion professionnelle des étudiants.
                             </p>
                         </div>
                         <Link
@@ -47,13 +51,15 @@ const Formations = () => {
                                 Diplôme Universitaire du Master Spécialisé
                             </p>
                             <p class="text-body">
-                                Here are the details of the card
+                                Un diplôme de l'enseignement supérieur de niveau
+                                bac+5 qui permet aux étudiants de se spécialiser
+                                dans un domaine professionnel spécifique, en
+                                acquérant des compétences pointues et en
+                                approfondissant leurs connaissances dans ce
+                                domaine.
                             </p>
                         </div>
-                        <Link
-                            to={"/master"}
-                            className="formation card-button "
-                        >
+                        <Link to={"/master"} className="formation card-button ">
                             <p>Plus d'info</p>
                         </Link>
                     </div>

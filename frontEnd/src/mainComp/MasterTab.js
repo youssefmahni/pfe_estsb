@@ -8,7 +8,7 @@ const MasterTab = () => {
                 <div className="col col-lg-6 p-3">
                     <div className="card">
                         <img
-                            src={"http://localhost:3500/media/laptop.jpeg"}
+                            src={"http://localhost:3500/media/mastergi.jpg"}
                             className="card-img-top"
                             alt="..."
                             style={{ height: "20rem", width: "auto" }}
@@ -19,23 +19,18 @@ const MasterTab = () => {
                                 className="card-title"
                                 style={{ fontWeight: "170" }}
                             >
-                                Génie Informatique
+                                Masters Génie Informatique
                             </h1>
-                            <p className="card-text">
-                                Some quick example text to build on the card
-                                title and make up the bulk of the card's
-                                content.
-                            </p>
                         </div>
                         <ul className="list-group list-group-flush">
-                            <Link to={"/estsb/cstc"} className="link">
+                            <Link to={"/estsb/mcstc"} className="link">
                                 <li className="list-group-item item">
-                                    CSTC : CYBER SECURITE ET TECHNOLOGIES CLOUD
+                                    MCSTC : MASTER CYBER SECURITE ET TECHNOLOGIES CLOUD
                                 </li>
                             </Link>
-                            <Link to={"/estsb/isitw"} className="link">
+                            <Link to={"/estsb/misitw"} className="link">
                                 <li className="list-group-item item">
-                                    ISITW : INGENIERIE DES SYSTEMES
+                                    MISITW : MASTER INGENIERIE DES SYSTEMES
                                     INFORMATIQUES ET TECHNOLOGIES WEB
                                 </li>
                             </Link>
@@ -45,7 +40,7 @@ const MasterTab = () => {
                 <div className="col col-lg-6 p-3">
                     <div className="card">
                         <img
-                            src={"http://localhost:3500/media/bisness.jpeg"}
+                            src={"http://localhost:3500/media/mastertm.jpg"}
                             className="card-img-top"
                             alt="..."
                             style={{ height: "20rem", width: "auto" }}
@@ -56,33 +51,13 @@ const MasterTab = () => {
                                 className="card-title"
                                 style={{ fontWeight: "170" }}
                             >
-                                Techniques de Management
+                                Masters Techniques de Management
                             </h1>
-                            <p className="card-text">
-                                Some quick example text to build on the card
-                                title and make up the bulk of the card's
-                                content.
-                            </p>
                         </div>
                         <ul className="list-group list-group-flush">
-                            <Link to={"/estsb/cca"} className="link">
+                            <Link to={"/estsb/mcca"} className="link">
                                 <li className="list-group-item item">
-                                    CCA : COMPTABILITE, CONTROLE ET AUDIT
-                                </li>
-                            </Link>
-                            <Link to={"/estsb/fba"} className="link">
-                                <li className="list-group-item item">
-                                    FBA : FINANCE, BANQUE ET ASSURANCE
-                                </li>
-                            </Link>
-                            <Link to={"/estsb/gcf"} className="link">
-                                <li className="list-group-item item">
-                                    GCF : GESTION COMPTABLE ET FINANCIERE
-                                </li>
-                            </Link>
-                            <Link to={"/estsb/mo"} className="link">
-                                <li className="list-group-item item">
-                                    MO : MANAGEMENT DES ORGANISATIONS
+                                    MCCA : MASTER COMPTABILITE, CONTROLE ET AUDIT
                                 </li>
                             </Link>
                         </ul>

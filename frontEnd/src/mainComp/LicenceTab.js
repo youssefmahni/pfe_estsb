@@ -19,7 +19,7 @@ const LicenceTab = () => {
                                 className="card-title"
                                 style={{ fontWeight: "170" }}
                             >
-                                Génie Informatique
+                                Licences Génie Informatique
                             </h1>
                             <p className="card-text">
                                 Some quick example text to build on the card
@@ -56,7 +56,7 @@ const LicenceTab = () => {
                                 className="card-title"
                                 style={{ fontWeight: "170" }}
                             >
-                                Techniques de Management
+                                Licences Techniques de Management
                             </h1>
                             <p className="card-text">
                                 Some quick example text to build on the card

@@ -21,6 +21,9 @@ import CCA from './pages/CCA';
 import FBA from "./pages/FBA";
 import GCF from "./pages/GCF";
 import MO from "./pages/MO";
+import MCSTC from "./pages/MCSTC";
+import MISITW from "./pages/MISITW";
+import MCCA from "./pages/MCCA";
 
 function App() {
   return (
@@ -48,6 +51,9 @@ function App() {
                   <Route path="/estsb/fba" element={<FBA />} />
                   <Route path="/estsb/gcf" element={<GCF />} />
                   <Route path="/estsb/mo" element={<MO />} />
+                  <Route path="/estsb/mcstc" element={<MCSTC />} />
+                  <Route path="/estsb/misitw" element={<MISITW />} />
+                  <Route path="/estsb/mcca" element={<MCCA />} />
                   <Route path="*" element={<Missing />} />
               </Routes>
           </BrowserRouter>

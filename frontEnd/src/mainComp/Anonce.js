@@ -7,16 +7,14 @@ const Anonce = () => {
                 <div>
                     <Carousel>
                         <Carousel.Item>
-                            <img
-                                className="d-block rounded"
-                                src={"http://localhost:3500/media/est3.jpg"}
-                                alt="First slide"
+                            <video
+                                src="http://localhost:3500/media/colaboration.mp4"
+                                autoPlay
+                                loop
                                 style={{
-                                    height: "500px",
                                     width: "100%",
-                                    filter: "blur(5px)",
                                 }}
-                            />
+                            ></video>
                             <Carousel.Caption>
                                 <h3>First slide label</h3>
                                 <p>
@@ -28,11 +26,13 @@ const Anonce = () => {
 
                         <Carousel.Item>
                             <img
-                                className="d-block  rounded"
-                                src={"http://localhost:3500/media/est2.jpg"}
-                                alt="Second slide"
-                                style={{ height: "500px", filter: "blur(5px)" }}
-                            />
+                                src="http://localhost:3500/media/class.jpg"
+                                alt="classroom"
+                                style={{
+                                    width: "100%",
+                                    height:"715px"
+                                }}
+                            ></img>
 
                             <Carousel.Caption>
                                 <h3>Second slide label</h3>
@@ -44,12 +44,14 @@ const Anonce = () => {
                         </Carousel.Item>
 
                         <Carousel.Item>
-                            <img
-                                className="d-block rounded"
-                                src={"http://localhost:3500/media/est1.jpg"}
-                                alt="Third slide"
-                                style={{ height: "500px", filter: "blur(5px)" }}
-                            />
+                            <video
+                                src="http://localhost:3500/media/code.mp4"
+                                autoPlay
+                                loop
+                                style={{
+                                    width: "100%",
+                                }}
+                            ></video>
 
                             <Carousel.Caption>
                                 <h3>Third slide label</h3>

@@ -5,7 +5,7 @@ function Body() {
     return (
         <div className="container rounded p-5" style={{ background: "#eee" }}>
             <div className="d-flex align-items-center flex-column pb-3">
-                {sessionStorage.getItem("licence") ? (
+                {sessionStorage.getItem("licence") !== "null" ? (
                     <>
                         <h2>
                             Formulaire de pré-inscription en ligne - Formation

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Alert from "../mainComp/Alert";
+import Alert from "./Alert";
 import NavBar from "../mainComp/NavBar";
 import Footer from "../mainComp/Footer";
 import UpperMenu from "../mainComp/UpperMenu";
@@ -44,6 +44,7 @@ const SignInForm = () => {
                         className="col-lg-5 mt-3 p-4 shadow"
                         style={{ background: "white" }}
                     >
+                        <Alert show={show} setShow={setShow} />
                         <h2 className="mb-4 p-3 pb-0 ">ZONE ADMINS</h2>
                         <form
                             className="d-flex flex-column"
@@ -126,7 +127,7 @@ const SignInForm = () => {
                     </div>
                 </div>
             </div>
-            <Alert show={show} setShow={setShow} />
+
             <Footer />
             <Copyright />
         </div>

@@ -4,10 +4,9 @@ import Home from './pages/Home';
 import Faq from "./pages/Faq";
 import Licence from "./pages/Licence";
 import Master from "./pages/Master";
-import SignIn from "./pages/SignIn";
-import Register from "./pages/Register";
 import Personal from "./pages/Personal";
 import Missing from "./pages/Missing";
+import Noauth from "./pages/Noauth";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import SignAdmin from "./adminComp/SignAdmin"
@@ -34,8 +33,6 @@ function App() {
                   <Route path="/faq" element={<Faq />} />
                   <Route path="/licence" element={<Licence />} />
                   <Route path="/master" element={<Master />} />
-                  <Route path="/signin" element={<SignIn />} />
-                  <Route path="/register" element={<Register />} />
                   <Route path="/personal" element={<Personal />} />
                   <Route path="/application" element={<Application />} />
                   <Route path="/poursuivre/:code" element={<Poursuivre />} />
@@ -54,7 +51,8 @@ function App() {
                   <Route path="/estsb/mcstc" element={<MCSTC />} />
                   <Route path="/estsb/misitw" element={<MISITW />} />
                   <Route path="/estsb/mcca" element={<MCCA />} />
-                  <Route path="*" element={<Missing />} />
+                  <Route path="/missing" element={<Missing />} />
+                  <Route path="/*" element={<Noauth />} />
               </Routes>
           </BrowserRouter>
       </div>

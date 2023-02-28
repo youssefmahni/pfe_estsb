@@ -8,8 +8,8 @@ import Tabs from "react-bootstrap/Tabs";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-const MCSTC = () => {
-    const applyMcstc = () => {
+const MCCA = () => {
+    const applyMcca = () => {
         sessionStorage.setItem(
             "master",
             "master comptabilitie, controle et audit"
@@ -90,17 +90,18 @@ const MCSTC = () => {
                             </Tab>
                             <Tab
                                 eventKey="contact"
-                                title="Contact"
+                                title="Condidature"
                                 className="p-4"
                             >
                                 <div>
                                     <h3>Condidature</h3>
                                     <Button
                                         variant="secondary"
-                                        onClick={applyMcstc}
+                                        onClick={applyMcca}
                                     >
                                         Pre-inscription
                                     </Button>
+                                    <br />
                                     <br />
                                     <h3>Contact</h3>
                                     <ul>
@@ -114,6 +115,11 @@ const MCSTC = () => {
                                             7, CASABLANCA, Maroc
                                         </li>
                                     </ul>
+                                    <br />
+                                    <h6 className="text-danger">
+                                        La derniere date pour postuler pour ce
+                                        programme est le 17-08-2023
+                                    </h6>
                                 </div>
                             </Tab>
                             <Tab
@@ -287,4 +293,4 @@ const MCSTC = () => {
     );
 };
 
-export default MCSTC;
+export default MCCA;

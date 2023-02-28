@@ -90,7 +90,7 @@ const MCSTC = () => {
                             </Tab>
                             <Tab
                                 eventKey="contact"
-                                title="Contact"
+                                title="Condidature"
                                 className="p-4"
                             >
                                 <div>
@@ -101,6 +101,7 @@ const MCSTC = () => {
                                     >
                                         Pre-inscription
                                     </Button>
+                                    <br />
                                     <br />
                                     <h3>Contact</h3>
                                     <ul>
@@ -114,6 +115,11 @@ const MCSTC = () => {
                                             7, CASABLANCA, Maroc
                                         </li>
                                     </ul>
+                                    <br />
+                                    <h6 className="text-danger">
+                                        La derniere date pour postuler pour ce
+                                        programme est le 17-08-2023
+                                    </h6>
                                 </div>
                             </Tab>
                             <Tab
@@ -248,8 +254,8 @@ const MCSTC = () => {
                             <ul className="list-group list-group-flush">
                                 <Link to={"/estsb/mcstc"} className="link">
                                     <li className="list-group-item item">
-                                        MCSTC : MASTER CYBER SECURITE ET TECHNOLOGIES
-                                        CLOUD
+                                        MCSTC : MASTER CYBER SECURITE ET
+                                        TECHNOLOGIES CLOUD
                                     </li>
                                 </Link>
                                 <Link to={"/estsb/misitw"} className="link">
@@ -272,10 +278,10 @@ const MCSTC = () => {
                             <ul className="list-group list-group-flush">
                                 <Link to={"/estsb/mcca"} className="link">
                                     <li className="list-group-item item">
-                                        MCCA : MASTER COMPTABILITE, CONTROLE ET AUDIT
+                                        MCCA : MASTER COMPTABILITE, CONTROLE ET
+                                        AUDIT
                                     </li>
                                 </Link>
-                               
                             </ul>
                         </div>
                     </div>

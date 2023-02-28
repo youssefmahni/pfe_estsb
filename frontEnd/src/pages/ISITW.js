@@ -90,7 +90,7 @@ const ISITW = () => {
                             </Tab>
                             <Tab
                                 eventKey="contact"
-                                title="Contact"
+                                title="Condidature"
                                 className="p-4"
                             >
                                 <div>
@@ -101,6 +101,7 @@ const ISITW = () => {
                                     >
                                         Pre-inscription
                                     </Button>
+                                    <br />
                                     <br />
                                     <h3>Contact</h3>
                                     <ul>
@@ -114,6 +115,11 @@ const ISITW = () => {
                                             7, CASABLANCA, Maroc
                                         </li>
                                     </ul>
+                                    <br />
+                                    <h6 className="text-danger">
+                                        La derniere date pour postuler pour ce
+                                        programme est le 17-08-2023
+                                    </h6>
                                 </div>
                             </Tab>
                             <Tab

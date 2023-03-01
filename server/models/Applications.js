@@ -23,7 +23,14 @@ const lappSchema = new Schema(
         etablissement: { type: String, required: true },
         email: { type: String, required: true },
         code: { type: String, required: true },
-        etat: { type: String },
+        s1: { type: Number, required: true },
+        s2: { type: Number, required: true },
+        s3: { type: Number, required: true },
+        s4: { type: Number, required: true },
+        relves1: { type: String, required: true },
+        relves2: { type: String, required: true },
+        relves3: { type: String, required: true },
+        relves4: { type: String, required: true },
     },
     { timestamps: true }
 );

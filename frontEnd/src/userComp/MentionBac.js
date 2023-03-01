@@ -8,13 +8,13 @@ const MentionBac = () => {
                   ---
               </option>
 
-              <option value="PASSABLE">PASSABLE</option>
+              <option value="PASSABLE">passable</option>
 
-              <option value="ASSEZ BIEN">ASSEZ BIEN</option>
+              <option value="ASSEZ BIEN">assez bien</option>
 
-              <option value="BIEN">BIEN</option>
+              <option value="BIEN">bien</option>
 
-              <option value="TRÉS BIEN">TRÉS BIEN</option>
+              <option value="TRÉS BIEN">tres bien</option>
       </>
   );
 }

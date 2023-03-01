@@ -7,19 +7,16 @@ const TabCSTC = () => {
     const [etablissement, setEtablissement] = useState("");
     const [specialite, setSpecialite] = useState("");
     const [diplom, setDiplom] = useState("");
-    const [cin, setCin] = useState("");
-    const [nom, setNom] = useState("");
-    const [prenom, setPrenom] = useState("");
-    const [sexe, setSexe] = useState("");
     const [datenaissance, setDatenaissance] = useState("");
-    const [ville, setVille] = useState("");
     const [natio, setNatio] = useState("");
-    const [mobile, setMobile] = useState("");
     const [serie, setSerie] = useState("");
     const [anneeb, setAnneeb] = useState("");
     const [mention, setMention] = useState("");
     const [anneed, setAnneed] = useState("");
-    const [email, setEmail] = useState("");
+    const [s1, setS1] = useState("");
+    const [s2, setS2] = useState("");
+    const [s3, setS3] = useState("");
+    const [s4, setS4] = useState("");
     useEffect(() => {
         const fetchTable = async () => {
             try {
@@ -45,43 +42,6 @@ const TabCSTC = () => {
         fetchTable();
     }, []);
     const exportExcel = () => {
-        // const minimalized = CCA.map(
-        //     ({
-        //         cin,
-        //         nom,
-        //         prenom,
-        //         sex,
-        //         datenaissance,
-        //         ville,
-        //         nationalite,
-        //         phone,
-        //         seriebac,
-        //         anneebac,
-        //         mentionbac,
-        //         dernierdiplom,
-        //         anneediplom,
-        //         specialitediplom,
-        //         etablissement,
-        //         email,
-        //     }) => ({
-        //         cin,
-        //         nom,
-        //         prenom,
-        //         sex,
-        //         datenaissance,
-        //         ville,
-        //         nationalite,
-        //         phone,
-        //         seriebac,
-        //         anneebac,
-        //         mentionbac,
-        //         dernierdiplom,
-        //         anneediplom,
-        //         specialitediplom,
-        //         etablissement,
-        //         email,
-        //     })
-        // );
         var wb = XLSX.utils.book_new();
         var ws = XLSX.utils.json_to_sheet(printable);
         XLSX.utils.book_append_sheet(wb, ws, "CSTC");
@@ -98,122 +58,185 @@ const TabCSTC = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>
-                            CIN <br />
-                            <input
-                                type="text"
-                                onChange={(e) => setCin(e.target.value)}
-                            />
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            CIN
                         </th>
-                        <th>
-                            Nom <br />
-                            <input
-                                type="text"
-                                onChange={(e) => setNom(e.target.value)}
-                            />
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            Nom
                         </th>
-                        <th>
-                            Prenom <br />
-                            <input
-                                type="text"
-                                onChange={(e) => setPrenom(e.target.value)}
-                            />
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            Prenom
                         </th>
-                        <th>
-                            Sexe <br />
-                            <input
-                                type="text"
-                                onChange={(e) => setSexe(e.target.value)}
-                            />
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            Sexe
                         </th>
-                        <th>
-                            Date naissance <br />
+                        <th style={{ minWidth: "150px" }}>
                             <input
                                 type="text"
                                 onChange={(e) =>
                                     setDatenaissance(e.target.value)
                                 }
                             />
+                            Date naissance
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            Ville
                         </th>
                         <th>
-                            Ville <br />
-                            <input
-                                type="text"
-                                onChange={(e) => setVille(e.target.value)}
-                            />
-                        </th>
-                        <th>
-                            Nationalte <br />
                             <input
                                 type="text"
                                 onChange={(e) => setNatio(e.target.value)}
                             />
+                            Nationalte
                         </th>
-                        <th>
-                            Mobile <br />
-                            <input
-                                type="text"
-                                onChange={(e) => setMobile(e.target.value)}
-                            />
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            Mobile
                         </th>
-                        <th>
-                            Serie bac <br />
+                        <th style={{ minWidth: "150px" }}>
                             <input
                                 type="text"
                                 onChange={(e) => setSerie(e.target.value)}
                             />
+                            Serie bac
                         </th>
-                        <th>
-                            Annee bac <br />
+                        <th style={{ minWidth: "150px" }}>
                             <input
                                 type="text"
                                 onChange={(e) => setAnneeb(e.target.value)}
                             />
+                            Annee bac
                         </th>
-                        <th>
-                            Mention bac <br />
+                        <th style={{ minWidth: "150px" }}>
                             <input
                                 type="text"
                                 onChange={(e) => setMention(e.target.value)}
                             />
+                            Mention bac
                         </th>
-                        <th>
-                            Diplom <br />
+                        <th style={{ minWidth: "150px" }}>
                             <input
                                 type="text"
                                 onChange={(e) => setDiplom(e.target.value)}
                             />
+                            Diplom
                         </th>
-                        <th>
-                            Annee diplom <br />
+                        <th style={{ minWidth: "150px" }}>
                             <input
                                 type="text"
                                 onChange={(e) => setAnneed(e.target.value)}
                             />
+                            Annee diplom
                         </th>
-                        <th>
-                            Specialite <br />
+                        <th style={{ minWidth: "150px" }}>
                             <input
                                 type="text"
                                 onChange={(e) => setSpecialite(e.target.value)}
                             />
+                            Specialite
                         </th>
-                        <th>
-                            Nom etablissement
-                            <br />
+                        <th style={{ minWidth: "150px" }}>
                             <input
                                 type="text"
                                 onChange={(e) =>
                                     setEtablissement(e.target.value)
                                 }
                             />
+                            Nom etablissement
                         </th>
-                        <th>
-                            Email <br />
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            Email
+                        </th>
+                        {/* added */}
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            Profile
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
                             <input
                                 type="text"
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => setS1(e.target.value)}
                             />
+                            Note_S1
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            RN_S1
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            <input
+                                type="text"
+                                onChange={(e) => setS2(e.target.value)}
+                            />
+                            Note_S2
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            RN_S2
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            <input
+                                type="text"
+                                onChange={(e) => setS3(e.target.value)}
+                            />
+                            Note_S3
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            RN_S3
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            <input
+                                type="text"
+                                onChange={(e) => setS4(e.target.value)}
+                            />
+                            Note_S4
+                        </th>
+                        <th
+                            style={{ minWidth: "150px" }}
+                            className="text-center"
+                        >
+                            RN_S4
                         </th>
                     </tr>
                 </thead>
@@ -229,18 +252,12 @@ const TabCSTC = () => {
                             item.dernierdiplom
                                 .toLocaleLowerCase()
                                 .includes(diplom) &&
-                            item.cin.toLocaleLowerCase().includes(cin) &&
-                            item.nom.toLocaleLowerCase().includes(nom) &&
-                            item.prenom.toLocaleLowerCase().includes(prenom) &&
-                            item.sex.toLocaleLowerCase().includes(sexe) &&
                             item.datenaissance
                                 .toLocaleLowerCase()
                                 .includes(datenaissance) &&
-                            item.ville.toLocaleLowerCase().includes(ville) &&
                             item.nationalite
                                 .toLocaleLowerCase()
                                 .includes(natio) &&
-                            item.phone.toLocaleLowerCase().includes(mobile) &&
                             item.seriebac.toLocaleLowerCase().includes(serie) &&
                             item.anneebac
                                 .toLocaleLowerCase()
@@ -251,7 +268,10 @@ const TabCSTC = () => {
                             item.anneediplom
                                 .toLocaleLowerCase()
                                 .includes(anneed) &&
-                            item.email.toLocaleLowerCase().includes(email)
+                            +item.s1 >= s1 &&
+                            +item.s2 >= s2 &&
+                            +item.s3 >= s3 &&
+                            +item.s4 >= s4
                         ) {
                             printable = [
                                 ...printable,
@@ -263,7 +283,6 @@ const TabCSTC = () => {
                                     datenaissance: item.datenaissance,
                                     ville: item.ville,
                                     nationalite: item.nationalite,
-                                    phone: item.phone,
                                     seriebac: item.seriebac,
                                     anneebac: item.anneebac,
                                     mentionbac: item.mentionbac,
@@ -271,6 +290,11 @@ const TabCSTC = () => {
                                     anneediplom: item.anneediplom,
                                     specialitediplom: item.specialitediplom,
                                     etablissement: item.etablissement,
+                                    noteS1: item.s1,
+                                    noteS2: item.s2,
+                                    noteS3: item.s3,
+                                    noteS4: item.s4,
+                                    phone: item.phone,
                                     email: item.email,
                                 },
                             ];
@@ -292,6 +316,75 @@ const TabCSTC = () => {
                                     <td>{item.specialitediplom}</td>
                                     <td>{item.etablissement}</td>
                                     <td>{item.email}</td>
+                                    <td>
+                                        <a
+                                            href={`http://localhost:3500/uploads/${item.profile.slice(
+                                                12
+                                            )}`}
+                                            target="_blank"
+                                        >
+                                            {"profile_" +
+                                                item.nom +
+                                                item.prenom +
+                                                item.profile.slice(-4)}
+                                        </a>
+                                    </td>
+                                    <td>{item.s1}</td>
+                                    <td>
+                                        <a
+                                            href={`http://localhost:3500/uploads/${item.relves1.slice(
+                                                12
+                                            )}`}
+                                            target="_blank"
+                                        >
+                                            {"s1_" +
+                                                item.nom +
+                                                item.prenom +
+                                                item.profile.slice(-4)}
+                                        </a>
+                                    </td>
+                                    <td>{item.s2}</td>
+                                    <td>
+                                        <a
+                                            href={`http://localhost:3500/uploads/${item.relves2.slice(
+                                                12
+                                            )}`}
+                                            target="_blank"
+                                        >
+                                            {"s2_" +
+                                                item.nom +
+                                                item.prenom +
+                                                item.profile.slice(-4)}
+                                        </a>
+                                    </td>
+                                    <td>{item.s3}</td>
+                                    <td>
+                                        <a
+                                            href={`http://localhost:3500/uploads/${item.relves3.slice(
+                                                12
+                                            )}`}
+                                            target="_blank"
+                                        >
+                                            {"s3_" +
+                                                item.nom +
+                                                item.prenom +
+                                                item.profile.slice(-4)}
+                                        </a>
+                                    </td>
+                                    <td>{item.s4}</td>
+                                    <td>
+                                        <a
+                                            href={`http://localhost:3500/uploads/${item.relves4.slice(
+                                                12
+                                            )}`}
+                                            target="_blank"
+                                        >
+                                            {"s4_" +
+                                                item.nom +
+                                                item.prenom +
+                                                item.profile.slice(-4)}
+                                        </a>
+                                    </td>
                                 </tr>
                             );
                         } else {

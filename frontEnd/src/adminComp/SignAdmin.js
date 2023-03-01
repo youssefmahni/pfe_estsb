@@ -58,9 +58,10 @@ const SignInForm = () => {
                                         id="fname"
                                         required
                                         autoComplete="off"
-                                        onChange={(e) =>
-                                            setFname(e.target.value)
-                                        }
+                                        onChange={(e) => {
+                                            setFname(e.target.value);
+                                            setShow(false);
+                                        }}
                                         class="input"
                                     />
                                     <span class="highlight"></span>
@@ -76,9 +77,10 @@ const SignInForm = () => {
                                         id="fname"
                                         required
                                         autoComplete="off"
-                                        onChange={(e) =>
-                                            setLname(e.target.value)
-                                        }
+                                        onChange={(e) => {
+                                            setLname(e.target.value);
+                                            setShow(false);
+                                        }}
                                         class="input"
                                     />
                                     <span class="highlight"></span>
@@ -94,9 +96,10 @@ const SignInForm = () => {
                                         id="fname"
                                         required
                                         autoComplete="off"
-                                        onChange={(e) =>
-                                            setPassword(e.target.value)
-                                        }
+                                        onChange={(e) => {
+                                            setPassword(e.target.value);
+                                            setShow(false);
+                                        }}
                                         class="input"
                                     />
                                     <span class="highlight"></span>
@@ -104,22 +107,7 @@ const SignInForm = () => {
                                     <label className="label">Password</label>
                                 </div>
                             </div>
-
-                            {/* <div className="d-flex flex-column p-2">
-                                <label htmlFor="pw">Mot de passe</label>
-                                <input
-                                    type="password"
-                                    value={password}
-                                    id="pw"
-                                    placeholder="aaAA11!@#$_-"
-                                    className="p-1 border"
-                                    required
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
-                                />
-                            </div> */}
-
+                            <br />
                             <button type="submit" class="btn btn-primary mt-3">
                                 Entrer
                             </button>

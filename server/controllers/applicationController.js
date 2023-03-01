@@ -6,14 +6,14 @@ require("dotenv").config();
 const multer = require("multer");
 const storage1 = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "./public/photos");
+        cb(null, "./public/uploads");
     },
     filename: (req, file, cb) => {
         const fileName = file.originalname;
         cb(null, fileName);
     },
 });
-const upload = multer({ storage: storage1 }).single("profile");
+const upload = multer({ storage: storage1 }).array("uploads");
 const sendFile = async (req, res) => {
     try {
         res.json({ status: "ok", message: "uploaded successfuly" });
@@ -44,6 +44,14 @@ const apply = async (req, res) => {
         email: req.body.email,
         code: req.body.code,
         etat: req.body.etat,
+        s1: req.body.s1,
+        s2: req.body.s2,
+        s3: req.body.s3,
+        s4: req.body.s4,
+        relves1: req.body.relves1,
+        relves2: req.body.relves2,
+        relves3: req.body.relves3,
+        relves4: req.body.relves4,
     });
     try {
         const response = await applicant.save();

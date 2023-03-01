@@ -23,6 +23,7 @@ import MO from "./pages/MO";
 import MCSTC from "./pages/MCSTC";
 import MISITW from "./pages/MISITW";
 import MCCA from "./pages/MCCA";
+import SignUser from './userComp/SignUser';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                   <Route path="/master" element={<Master />} />
                   <Route path="/personal" element={<Personal />} />
                   <Route path="/application" element={<Application />} />
+                  <Route path="/signin" element={<SignUser />} />
                   <Route path="/poursuivre/:code" element={<Poursuivre />} />
                   <Route path="/admin/signin" element={<SignAdmin />} />
                   <Route path="/admin/dashboard" element={<DashBoard />} />

@@ -3,17 +3,19 @@ import BacSeries from "./BacSeries";
 import MentionBac from "./MentionBac";
 import Nationalities from "./Nationalities";
 import Diploms from "./Diploms";
+import Etablissements from "./Etablissements";
 import Specialities from "./Specialities";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 const Form = () => {
-    const [error, setError] = useState("");
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
     const handleClose = () => setShow(false);
     const handleClose1 = () => setShow1(false);
+
     const handleShow = async (e) => {
         e.preventDefault();
         const responce = await fetch("http://localhost:3500/check", {
@@ -55,6 +57,14 @@ const Form = () => {
     const specialiteRef = useRef(null);
     const etabliRef = useRef(null);
     const emailRef = useRef(null);
+    const s1Ref = useRef(null);
+    const s2Ref = useRef(null);
+    const s3Ref = useRef(null);
+    const s4Ref = useRef(null);
+    const relves1Ref = useRef(null);
+    const relves2Ref = useRef(null);
+    const relves3Ref = useRef(null);
+    const relves4Ref = useRef(null);
 
     const [cin, setCin] = useState("");
     const [prenom, setPrenom] = useState("");
@@ -73,14 +83,24 @@ const Form = () => {
     const [specialitediplom, setSpecialitediplom] = useState("");
     const [etablissement, setEtablissement] = useState("");
     const [email, setEmail] = useState("");
+    const [s1, setS1] = useState("");
+    const [s2, setS2] = useState("");
+    const [s3, setS3] = useState("");
+    const [s4, setS4] = useState("");
+    const [relves1, setRelves1] = useState("");
+    const [relves2, setRelves2] = useState("");
+    const [relves3, setRelves3] = useState("");
+    const [relves4, setRelves4] = useState("");
     const code = uuidv4();
-    const [cin1, setCin1] = useState("");
-    const [code1, setCode1] = useState("");
 
     const apply = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("profile", fileInput.current.files[0]);
+        formData.append("uploads", fileInput.current.files[0]);
+        formData.append("uploads", relves1Ref.current.files[0]);
+        formData.append("uploads", relves2Ref.current.files[0]);
+        formData.append("uploads", relves3Ref.current.files[0]);
+        formData.append("uploads", relves4Ref.current.files[0]);
         await fetch("http://localhost:3500/upload", {
             method: "POST",
             body: formData,
@@ -109,7 +129,14 @@ const Form = () => {
                 etablissement,
                 email,
                 code: code,
-                etat: "dossier sous traitement",
+                s1,
+                s2,
+                s3,
+                s4,
+                relves1,
+                relves2,
+                relves3,
+                relves4,
             }),
         });
         const data = await responce.json();
@@ -119,61 +146,19 @@ const Form = () => {
             window.location.href = "/personal";
         }
     };
-    const poursuivre = async (e) => {
-        e.preventDefault();
-        const responce = await fetch("http://localhost:3500/poursuivre", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                cin: cin1,
-                code: code1,
-            }),
-        });
-        const data = await responce.json();
-        if (data.status === "ok") {
-            sessionStorage.setItem("token", data.accessToken);
-            console.log(data.accessToken);
-            window.location.href = `/poursuivre/${code}`;
-        } else {
-            setError("CIN or code d’accès incorrect !");
-        }
-    };
+    
     return (
         <div className=" border p-4 bg-light rounded">
-            <div className="border p-2 rounded">
+            <div className=" p-2">
                 <p>
-                    Pour poursuivre votre dossier de préinscription, veuillez
-                    saisir votre numéro de CIN ainsi que votre code d’accès.
+                    Êtes-vous déjà inscrit ?{" "}
+                    <Link to={"/signin"}>se connecter</Link>
                 </p>
-                <form onSubmit={poursuivre}>
-                    <input
-                        className="m-1 p-1"
-                        type="text"
-                        placeholder="votre cin"
-                        value={cin1}
-                        onChange={(e) => {
-                            setCin1(e.target.value);
-                        }}
-                    />
-                    <input
-                        className="m-1 p-1"
-                        type="text"
-                        placeholder="votre code d'acces"
-                        value={code1}
-                        onChange={(e) => {
-                            setCode1(e.target.value);
-                        }}
-                    />
-                    <button className="m-1 p-1 rounded" type="submit">
-                        acceder
-                    </button>
-                </form>
-                <p className="text-danger">{error}</p>
             </div>
             <form className="row g-3" onSubmit={handleShow}>
                 <div className="container mt-4">
                     <div className="row">
-                        <div className="col">
+                        <div className="col-md-6">
                             <img
                                 src="http://localhost:3500/media/profile.png"
                                 alt="profile"
@@ -198,7 +183,6 @@ const Form = () => {
                                 />
                             </div>
                         </div>
-                        <div className="col"></div>
                     </div>
                 </div>
                 {/* prenom */}
@@ -555,34 +539,178 @@ const Form = () => {
                         </select>
                     </div>
                 </div>
-                {/* etablissement */}
-                <div className="col-md-5">
-                    <label for="fname" className="form-label">
-                        Nom d'etablissement du dernier diplom
+
+                {/* notes */}
+                <div className="col-md-3">
+                    <label for="s1" className="form-label">
+                        Note du premier semestre
                     </label>
                     <input
-                        type="text"
+                        autoComplete="off"
+                        type="number"
                         className="form-control"
-                        id="fname"
-                        value={etablissement}
-                        ref={etabliRef}
+                        id="s1"
+                        value={s1}
+                        required
+                        ref={s1Ref}
                         onChange={(e) => {
-                            setEtablissement(e.target.value);
-                            if (NAME_REGEX.test(etablissement)) {
+                            setS1(e.target.value);
+                            s1Ref.current.className = "form-control is-valid";
+                        }}
+                    />
+                </div>
+                <div className="col-md-3">
+                    <label for="s2" className="form-label">
+                        Note du deuxieme semestre
+                    </label>
+                    <input
+                        autoComplete="off"
+                        type="number"
+                        className="form-control"
+                        id="s2"
+                        value={s2}
+                        required
+                        ref={s2Ref}
+                        onChange={(e) => {
+                            setS2(e.target.value);
+                            s2Ref.current.className = "form-control is-valid";
+                        }}
+                    />
+                </div>
+                <div className="col-md-3">
+                    <label for="s3" className="form-label">
+                        Note du troisieme semestre
+                    </label>
+                    <input
+                        autoComplete="off"
+                        type="number"
+                        className="form-control"
+                        id="s3"
+                        value={s3}
+                        required
+                        ref={s3Ref}
+                        onChange={(e) => {
+                            setS3(e.target.value);
+                            s3Ref.current.className = "form-control is-valid";
+                        }}
+                    />
+                </div>
+                <div className="col-md-3">
+                    <label for="s4" className="form-label">
+                        Note du quatrieme semestre
+                    </label>
+                    <input
+                        autoComplete="off"
+                        type="number"
+                        className="form-control"
+                        id="s4"
+                        value={s4}
+                        required
+                        ref={s4Ref}
+                        onChange={(e) => {
+                            setS4(e.target.value);
+                            s4Ref.current.className = "form-control is-valid";
+                        }}
+                    />
+                </div>
+                {/* notes */}
+                {/* relves de notes */}
+                <div className="col-md-3">
+                    <label for="relves2" className="form-label">
+                        Relvee de note du s2
+                    </label>
+                    <input
+                        className="form-control"
+                        type="file"
+                        id="relves2"
+                        name="profile"
+                        value={relves2}
+                        onChange={(e) => {
+                            setRelves2(e.target.value);
+                            relves2Ref.current.className =
+                                "form-control is-valid";
+                        }}
+                        ref={relves2Ref}
+                    />
+                </div>
+                <div className="col-md-3">
+                    <label for="relves1" className="form-label">
+                        Relvee de note du s1
+                    </label>
+                    <input
+                        className="form-control"
+                        type="file"
+                        id="relves1"
+                        name="profile"
+                        value={relves1}
+                        onChange={(e) => {
+                            setRelves1(e.target.value);
+                            relves1Ref.current.className =
+                                "form-control is-valid";
+                        }}
+                        ref={relves1Ref}
+                    />
+                </div>
+                <div className="col-md-3">
+                    <label for="relves3" className="form-label">
+                        Relvee de note du s3
+                    </label>
+                    <input
+                        className="form-control"
+                        type="file"
+                        id="relves3"
+                        name="profile"
+                        value={relves3}
+                        onChange={(e) => {
+                            setRelves3(e.target.value);
+                            relves3Ref.current.className =
+                                "form-control is-valid";
+                        }}
+                        ref={relves3Ref}
+                    />
+                </div>
+                <div className="col-md-3">
+                    <label for="relves4" className="form-label">
+                        Relvee de note du s4
+                    </label>
+                    <input
+                        className="form-control"
+                        type="file"
+                        id="relves4"
+                        name="profile"
+                        value={relves4}
+                        onChange={(e) => {
+                            setRelves4(e.target.value);
+                            relves4Ref.current.className =
+                                "form-control is-valid";
+                        }}
+                        ref={relves4Ref}
+                    />
+                </div>
+                {/* relves de notes */}
+
+                {/* etablissement */}
+                <div className="col-md-5">
+                    <label for="etablissement" className="form-label">
+                        Nom d'etablissement du dernier diplom
+                    </label>
+                    <div>
+                        <select
+                            class="form-select"
+                            id="etablissement"
+                            value={etablissement}
+                            ref={etabliRef}
+                            onChange={(e) => {
+                                setEtablissement(e.target.value);
                                 etabliRef.current.className =
                                     "form-control is-valid";
-                            } else {
-                                etabliRef.current.className =
-                                    "form-control is-invalid";
-                            }
-                        }}
-                        required
-                        autoComplete="off"
-                    />
-                    <div className="invalid-feedback">
-                        fournir un nom d'etablissement correct
+                            }}
+                        >
+                            <Etablissements />
+                        </select>
                     </div>
                 </div>
+
                 {/* email */}
                 <div className="col-md-7">
                     <label for="mail" className="form-label">
@@ -612,7 +740,7 @@ const Form = () => {
                     </div>
                 </div>
                 {/* button */}
-                <div className="col-12">
+                <div className="col-12 pt-4">
                     <button className="btn btn-primary" type="submit">
                         Terminer
                     </button>

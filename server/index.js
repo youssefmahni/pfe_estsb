@@ -5,12 +5,12 @@ const mongoose = require("mongoose");
 const userRoute = require("./routes/user");
 const userRout2 = require("./routes/admin");
 const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser"); 
 
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 app.use(express.static('public'))
 
 mongoose.set("strictQuery", true);

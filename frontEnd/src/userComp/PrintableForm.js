@@ -62,7 +62,7 @@ const MyDocument = ({ data }) => {
                     <View style={styles.header}>
                         <Image
                             style={styles.img}
-                            src={`http://localhost:3500/photos/${
+                            src={`http://localhost:3500/uploads/${
                                 data
                                     ? data.profile.slice(12)
                                     : "logo.jpg"

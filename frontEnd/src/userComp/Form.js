@@ -149,12 +149,6 @@ const Form = () => {
     
     return (
         <div className=" border p-4 bg-light rounded">
-            <div className=" p-2">
-                <p>
-                    Êtes-vous déjà inscrit ?{" "}
-                    <Link to={"/signin"}>se connecter</Link>
-                </p>
-            </div>
             <form className="row g-3" onSubmit={handleShow}>
                 <div className="container mt-4">
                     <div className="row">

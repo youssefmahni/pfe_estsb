@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/esm/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -55,15 +56,14 @@ const NavBar = () => {
                                   </Link>
                               </NavDropdown.Item>
                               <NavDropdown.Item>
-                                  <Link
-                                      to={"#"}
-                                      className="link"
-                                  >
+                                  <Link to={"#"} className="link">
                                       Galerie
                                   </Link>
                               </NavDropdown.Item>
                           </NavDropdown>
-                          
+                          <Link to={"/signin"}>
+                              <Button>se conncter</Button>
+                          </Link>
                       </Nav>
                   </Navbar.Collapse>
               </Navbar>

@@ -8,7 +8,6 @@ import Specialities from "./Specialities";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
 
 const Form = () => {
     const [show, setShow] = useState(false);

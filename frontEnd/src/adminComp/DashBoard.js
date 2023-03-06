@@ -133,7 +133,7 @@ const DashBoard = () => {
                 </div>
 
                 <div>
-                    <h3>{admin}</h3>
+                    <h3 style={ {color:"#000000" , fontWeight:"700"}}>{admin}</h3>
                     <br />
                     <button className="logout" onClick={logout}>
                         Log Out

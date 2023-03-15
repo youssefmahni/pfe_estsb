@@ -122,7 +122,7 @@ const Poursuivre = () => {
                         </h6>
                     </div>
                     <div className="row mb-5 border p-3">
-                        <div className="col">
+                        <div className="col p-5 pt-0">
                             <h2>informations personel</h2>
                             <h5>CIN : {user[6]}</h5>
 
@@ -133,7 +133,7 @@ const Poursuivre = () => {
                             <h5>Lieu de naissance : {user[4]}</h5>
                             <h5>Nationalite : {user[5]}</h5>
                         </div>
-                        <div className="col">
+                        <div className="col p-5 pt-0">
                             <h2>Informations acadymique</h2>
                             <h5>serie bac : {user[8]}</h5>
 
@@ -152,26 +152,65 @@ const Poursuivre = () => {
                             <br />
                             <br />
                             <h5>Note s1 : {user[17]}/20</h5>
-                            <h5>Note s2 : {user[18]}/20</h5>
-                            <h5>Note s3 : {user[19]}/20</h5>
-                            <h5>Note s4 : {user[20]}/20</h5>
                             <h5>
                                 relevee de note s1 :{" "}
                                 <a
-                                    href={`http://localhost:3500/uploads/${user[21].slice(
-                                        12
-                                    )}`}
+                                    href={`http://localhost:3500/uploads/${
+                                        user[21] === undefined
+                                            ? user[21]
+                                            : user[21].slice(12)
+                                    }`}
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    {"s4_" +
-                                        user[0] +
-                                        user[1] }
+                                    {"releveeS1"}
                                 </a>
                             </h5>
-                            <h5>relevee de note s2 : ggg</h5>
-                            <h5>relevee de note s3 : ggg</h5>
-                            <h5>relevee de note s4 : ggg</h5>
+                            <h5>Note s2 : {user[18]}/20</h5>
+                            <h5>
+                                relevee de note s2 :{" "}
+                                <a
+                                    href={`http://localhost:3500/uploads/${
+                                        user[22] === undefined
+                                            ? user[22]
+                                            : user[22].slice(12)
+                                    }`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {"releveeS2"}
+                                </a>
+                            </h5>
+                            <h5>Note s3 : {user[19]}/20</h5>
+                            <h5>
+                                relevee de note s3 :{" "}
+                                <a
+                                    href={`http://localhost:3500/uploads/${
+                                        user[23] === undefined
+                                            ? user[23]
+                                            : user[23].slice(12)
+                                    }`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {"releveeS3"}
+                                </a>
+                            </h5>
+                            <h5>Note s4 : {user[20]}/20</h5>
+                            <h5>
+                                relevee de note s4 :{" "}
+                                <a
+                                    href={`http://localhost:3500/uploads/${
+                                        user[24] === undefined
+                                            ? user[24]
+                                            : user[24].slice(12)
+                                    }`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {"releveeS4"}
+                                </a>
+                            </h5>
                         </div>
                     </div>
                     <form className="row g-3 border p-3" onSubmit={handleShow}>

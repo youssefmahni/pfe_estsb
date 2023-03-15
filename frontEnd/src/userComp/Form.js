@@ -371,7 +371,7 @@ const Form = () => {
                                     phoneRef.current.className =
                                         "form-control is-valid";
                                 }
-                                if (e.target.value === "") {
+                                else if (e.target.value === "") {
                                     phoneRef.current.className = "form-control";
                                 } else {
                                     phoneRef.current.className =

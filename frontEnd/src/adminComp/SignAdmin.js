@@ -7,8 +7,6 @@ import UpperMenu from "../mainComp/UpperMenu";
 import Copyright from "../mainComp/Copyright";
 
 const SignInForm = () => {
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
     const [password, setPassword] = useState("");
     const [show, setShow] = useState(false);
 
@@ -18,7 +16,7 @@ const SignInForm = () => {
             const responce = await fetch("http://localhost:3500/admin/signin", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ fname, lname, password }),
+                body: JSON.stringify({ password }),
             });
             const data = await responce.json();
             if (data.status === "ok") {
@@ -46,49 +44,8 @@ const SignInForm = () => {
                     >
                         <Alert show={show} setShow={setShow} />
                         <h2 className="mb-4 p-3 pb-0 ">ZONE ADMINS</h2>
-                        <form
-                            className="d-flex flex-column"
-                            onSubmit={loginUser}
-                        >
-                            <div className="d-flex flex-column p-3">
-                                <div class="group">
-                                    <input
-                                        type="text"
-                                        value={fname}
-                                        id="fname"
-                                        required
-                                        autoComplete="off"
-                                        onChange={(e) => {
-                                            setFname(e.target.value);
-                                            setShow(false);
-                                        }}
-                                        class="input"
-                                    />
-                                    <span class="highlight"></span>
-                                    <span class="bar"></span>
-                                    <label className="label">Prenom</label>
-                                </div>
-                            </div>
-                            <div className="d-flex flex-column p-3">
-                                <div class="group">
-                                    <input
-                                        type="text"
-                                        value={lname}
-                                        id="fname"
-                                        required
-                                        autoComplete="off"
-                                        onChange={(e) => {
-                                            setLname(e.target.value);
-                                            setShow(false);
-                                        }}
-                                        class="input"
-                                    />
-                                    <span class="highlight"></span>
-                                    <span class="bar"></span>
-                                    <label className="label">Nom</label>
-                                </div>
-                            </div>
-                            <div className="d-flex flex-column p-3">
+                        <form onSubmit={loginUser}>
+                            <div className="d-flex flex-column p-3 mt-5">
                                 <div class="group">
                                     <input
                                         type="password"
@@ -100,11 +57,13 @@ const SignInForm = () => {
                                             setPassword(e.target.value);
                                             setShow(false);
                                         }}
-                                        class="input"
+                                        class="input "
                                     />
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
-                                    <label className="label">Password</label>
+                                    <label className="label">
+                                        Pièce d'identité délivrée par l'école
+                                    </label>
                                 </div>
                             </div>
                             <br />

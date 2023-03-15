@@ -323,6 +323,7 @@ const TabMISITW = () => {
                                                 12
                                             )}`}
                                             target="_blank"
+                                            rel="noreferrer"
                                         >
                                             {"profile_" +
                                                 item.nom +
@@ -337,11 +338,12 @@ const TabMISITW = () => {
                                                 12
                                             )}`}
                                             target="_blank"
+                                            rel="noreferrer"
                                         >
                                             {"s1_" +
                                                 item.nom +
                                                 item.prenom +
-                                                item.profile.slice(-4)}
+                                                item.relves1.slice(-4)}
                                         </a>
                                     </td>
                                     <td>{item.s2}</td>
@@ -351,11 +353,12 @@ const TabMISITW = () => {
                                                 12
                                             )}`}
                                             target="_blank"
+                                            rel="noreferrer"
                                         >
                                             {"s2_" +
                                                 item.nom +
                                                 item.prenom +
-                                                item.profile.slice(-4)}
+                                                item.relves2.slice(-4)}
                                         </a>
                                     </td>
                                     <td>{item.s3}</td>
@@ -365,11 +368,12 @@ const TabMISITW = () => {
                                                 12
                                             )}`}
                                             target="_blank"
+                                            rel="noreferrer"
                                         >
                                             {"s3_" +
                                                 item.nom +
                                                 item.prenom +
-                                                item.profile.slice(-4)}
+                                                item.relves3.slice(-4)}
                                         </a>
                                     </td>
                                     <td>{item.s4}</td>
@@ -379,11 +383,12 @@ const TabMISITW = () => {
                                                 12
                                             )}`}
                                             target="_blank"
+                                            rel="noreferrer"
                                         >
                                             {"s4_" +
                                                 item.nom +
                                                 item.prenom +
-                                                item.profile.slice(-4)}
+                                                item.relves4.slice(-4)}
                                         </a>
                                     </td>
                                 </tr>

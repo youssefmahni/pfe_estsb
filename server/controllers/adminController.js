@@ -54,8 +54,6 @@ const signinAdmin = async (req, res, next) => {
         );
 
         const response = await Admin.findOne({
-            fname: req.body.fname,
-            lname: req.body.lname,
             password: req.body.password,
         });
         if (response) {
@@ -96,8 +94,6 @@ const authenticateTokenAdmin = (req, res, next) => {
 const index = async (req, res) => {
     try {
         const response = await Admin.findOne({
-            fname: req.user.fname,
-            lname: req.user.lname,
             password: req.user.password,
         });
         res.json({ response });

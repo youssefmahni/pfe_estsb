@@ -19,7 +19,5 @@ router.post(
 );
 router.post("/findbycode", applicationController.findbycode);
 
-// router.post("/getid", applicationController.getid);
-// router.post("/find", applicationController.findApplicantById);
 
 module.exports = router;

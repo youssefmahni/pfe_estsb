@@ -281,26 +281,28 @@ const TabISITW = () => {
                         if (
                             item.etablissement
                                 .toLocaleLowerCase()
-                                .includes(etablissement) &&
+                                .includes(etablissement.toLocaleLowerCase()) &&
                             item.specialitediplom
                                 .toLocaleLowerCase()
-                                .includes(specialite) &&
+                                .includes(specialite.toLocaleLowerCase()) &&
                             item.dernierdiplom
                                 .toLocaleLowerCase()
-                                .includes(diplom) &&
+                                .includes(diplom.toLocaleLowerCase()) &&
                             item.datenaissance
                                 .toLocaleLowerCase()
                                 .includes(datenaissance) &&
                             item.nationalite
                                 .toLocaleLowerCase()
-                                .includes(natio) &&
-                            item.seriebac.toLocaleLowerCase().includes(serie) &&
+                                .includes(natio.toLocaleLowerCase()) &&
+                            item.seriebac
+                                .toLocaleLowerCase()
+                                .includes(serie.toLocaleLowerCase()) &&
                             item.anneebac
                                 .toLocaleLowerCase()
                                 .includes(anneeb) &&
                             item.mentionbac
                                 .toLocaleLowerCase()
-                                .includes(mention) &&
+                                .includes(mention.toLocaleLowerCase()) &&
                             item.anneediplom
                                 .toLocaleLowerCase()
                                 .includes(anneed) &&

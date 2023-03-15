@@ -3,16 +3,17 @@ import Carousel from "react-bootstrap/Carousel";
 const Anonce = () => {
     return (
         <div>
-            <div className="row justify-content-center">
-                <div>
-                    <Carousel>
-                        <Carousel.Item>
+            <div className="row justify-content-center" >
+                <div >
+                    <Carousel >
+                        <Carousel.Item style={ { maxHeight:"500px"}}>
                             <video
                                 src="http://localhost:3500/media/colaboration.mp4"
                                 autoPlay
                                 loop
                                 style={{
                                     width: "100%",
+                                    
                                 }}
                             ></video>
                             <Carousel.Caption>
@@ -24,7 +25,7 @@ const Anonce = () => {
                             </Carousel.Caption>
                         </Carousel.Item>
 
-                        <Carousel.Item>
+                        <Carousel.Item style={ { maxHeight:"500px"}}>
                             <img
                                 src="http://localhost:3500/media/class.jpg"
                                 alt="classroom"
@@ -43,7 +44,7 @@ const Anonce = () => {
                             </Carousel.Caption>
                         </Carousel.Item>
 
-                        <Carousel.Item>
+                        <Carousel.Item style={ { maxHeight:"500px"}}>
                             <video
                                 src="http://localhost:3500/media/code.mp4"
                                 autoPlay

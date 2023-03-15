@@ -9,7 +9,7 @@ const Poursuivre = () => {
     //states
     const [user, setUser] = useState([]);
     const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState(user[15]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = async (e) => {
@@ -49,7 +49,7 @@ const Poursuivre = () => {
     };
 
     //regex
-    const PHONE_REGEX = /[6,7]{1}[0-9]{7}$/;
+    const PHONE_REGEX = /^[6,7]{1}[0-9]{8}$/;
     const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     //refs
     const phoneRef = useRef(null);
@@ -87,6 +87,14 @@ const Poursuivre = () => {
                     data.response.etablissement,
                     data.response.email,
                     data.response.code,
+                    data.response.s1,
+                    data.response.s2,
+                    data.response.s3,
+                    data.response.s4,
+                    data.response.relves1,
+                    data.response.relves2,
+                    data.response.relves3,
+                    data.response.relves4,
                 ]);
             } catch (error) {
                 window.location.href = "/missing";
@@ -140,6 +148,31 @@ const Poursuivre = () => {
                                 {user[14]}
                             </h5>
                         </div>
+                        <div className="col">
+                            <br />
+                            <br />
+                            <h5>Note s1 : {user[17]}/20</h5>
+                            <h5>Note s2 : {user[18]}/20</h5>
+                            <h5>Note s3 : {user[19]}/20</h5>
+                            <h5>Note s4 : {user[20]}/20</h5>
+                            <h5>
+                                relevee de note s1 :{" "}
+                                <a
+                                    href={`http://localhost:3500/uploads/${user[21].slice(
+                                        12
+                                    )}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {"s4_" +
+                                        user[0] +
+                                        user[1] }
+                                </a>
+                            </h5>
+                            <h5>relevee de note s2 : ggg</h5>
+                            <h5>relevee de note s3 : ggg</h5>
+                            <h5>relevee de note s4 : ggg</h5>
+                        </div>
                     </div>
                     <form className="row g-3 border p-3" onSubmit={handleShow}>
                         <div className="col-md-7">
@@ -157,15 +190,17 @@ const Poursuivre = () => {
                                     ref={phoneRef}
                                     onChange={(e) => {
                                         setPhone(e.target.value);
-                                        if (PHONE_REGEX.test(phone)) {
+                                        if (PHONE_REGEX.test(e.target.value)) {
                                             phoneRef.current.className =
                                                 "form-control is-valid";
+                                        } else if (e.target.value === "") {
+                                            phoneRef.current.className =
+                                                "form-control";
                                         } else {
                                             phoneRef.current.className =
                                                 "form-control is-invalid";
                                         }
                                     }}
-                                    required
                                     style={{ fontSize: "20px" }}
                                     autoComplete="off"
                                 />
@@ -186,21 +221,24 @@ const Poursuivre = () => {
                                 ref={emailRef}
                                 onChange={(e) => {
                                     setEmail(e.target.value);
-                                    if (EMAIL_REGEX.test(email)) {
+                                    if (EMAIL_REGEX.test(e.target.value)) {
                                         emailRef.current.className =
                                             "form-control is-valid";
+                                    } else if (e.target.value === "") {
+                                        emailRef.current.className =
+                                            "form-control";
                                     } else {
                                         emailRef.current.className =
                                             "form-control is-invalid";
                                     }
                                 }}
-                                required
                                 placeholder={user[15]}
                                 autoComplete="off"
                                 style={{ fontSize: "20px" }}
                             />
                             <div className="invalid-feedback">
-                                fournir une adresse email correct!
+                                une adresse email correct come
+                                "exemple@example.abc"
                             </div>
                         </div>
                         <div className="col-md-7 m-2">
@@ -211,7 +249,10 @@ const Poursuivre = () => {
                                 className="btn btn-primary m-2"
                                 type="submit"
                                 ref={buttonRef}
-                                disabled={!phone && !email}
+                                disabled={
+                                    (!phone && !email) ||
+                                    document.querySelector(".is-invalid")
+                                }
                             >
                                 Enregistrer
                             </button>

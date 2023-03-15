@@ -62,7 +62,7 @@ const NavBar = () => {
                               </NavDropdown.Item>
                           </NavDropdown>
                           <Link to={"/signin"}>
-                              <Button>se conncter</Button>
+                              <Button >se conncter</Button>
                           </Link>
                       </Nav>
                   </Navbar.Collapse>

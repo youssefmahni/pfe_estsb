@@ -14,15 +14,15 @@ const Specialities = () => {
 
               <option value="COMMERCE">COMMERCE</option>
 
-              <option value="MÉCANIQUE">MÉCANIQUE</option>
+              <option value="MÉCANIQUE">MECANIQUE</option>
 
-              <option value="ÉLECTRIQUE">ÉLECTRIQUE</option>
+              <option value="ÉLECTRIQUE">ELECTRIQUE</option>
 
               <option value="MAINTENANCE">MAINTENANCE</option>
 
               <option value="INFORMATIQUE">INFORMATIQUE</option>
 
-              <option value="ÉLECTRONIQUE">ÉLECTRONIQUE</option>
+              <option value="ÉLECTRONIQUE">ELECTRONIQUE</option>
 
               <option value="SCIENTIFIQUE">SCIENTIFIQUE</option>
 

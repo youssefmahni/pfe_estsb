@@ -32,11 +32,12 @@ const Form = () => {
         }
     };
     //regex
-    const NAME_REGEX = /[a-zA-Z ]{2,33}$/;
-    const PHONE_REGEX = /[6,7]{1}[0-9]{7}$/;
-    const CIN_REGEX = /^[A-Z]{2}[0-9]{5}$/;
-    const DATE_REGEX = /^(20[0-2])$/;
+    const NAME_REGEX = /[a-zA-Z ]{3,33}$/;
+    const PHONE_REGEX = /^[6,7]{1}[0-9]{8}$/;
+    const CIN_REGEX = /^[A-Z]{2}[0-9]{6}$/;
+    const DATE_REGEX = /^(201[0-9]|202[0-3])$/;
     const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const NOTE_REGEX = /^([0-9]|1[0-9]|20)$/;
 
     //refs
     const fileInput = useRef(null);
@@ -145,7 +146,7 @@ const Form = () => {
             window.location.href = "/personal";
         }
     };
-    
+
     return (
         <div className=" border p-4 bg-light rounded">
             <form className="row g-3" onSubmit={handleShow}>
@@ -191,9 +192,11 @@ const Form = () => {
                         ref={prenomRef}
                         onChange={(e) => {
                             setPrenom(e.target.value);
-                            if (NAME_REGEX.test(prenom)) {
+                            if (NAME_REGEX.test(e.target.value)) {
                                 prenomRef.current.className =
                                     "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                prenomRef.current.className = "form-control";
                             } else {
                                 prenomRef.current.className =
                                     "form-control is-invalid";
@@ -221,9 +224,11 @@ const Form = () => {
                         ref={nomRef}
                         onChange={(e) => {
                             setNom(e.target.value);
-                            if (NAME_REGEX.test(nom)) {
+                            if (NAME_REGEX.test(e.target.value)) {
                                 nomRef.current.className =
                                     "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                nomRef.current.className = "form-control";
                             } else {
                                 nomRef.current.className =
                                     "form-control is-invalid";
@@ -247,8 +252,12 @@ const Form = () => {
                             ref={sexRef}
                             onChange={(e) => {
                                 setSex(e.target.value);
-                                sexRef.current.className =
-                                    "form-control is-valid";
+                                if (e.target.value === "") {
+                                    sexRef.current.className = "form-control";
+                                } else {
+                                    sexRef.current.className =
+                                        "form-control is-valid";
+                                }
                             }}
                         >
                             <option value={""}>---</option>
@@ -272,8 +281,12 @@ const Form = () => {
                         value={datenaissance}
                         onChange={(e) => {
                             setDatenaissance(e.target.value);
-                            dnaissaceRef.current.className =
-                                "form-control is-valid";
+                            if (e.target.value === "") {
+                                dnaissaceRef.current.className = "form-control";
+                            } else {
+                                dnaissaceRef.current.className =
+                                    "form-control is-valid";
+                            }
                         }}
                         required
                         ref={dnaissaceRef}
@@ -297,9 +310,11 @@ const Form = () => {
                         ref={lieuRef}
                         onChange={(e) => {
                             setVille(e.target.value);
-                            if (NAME_REGEX.test(ville)) {
+                            if (NAME_REGEX.test(e.target.value)) {
                                 lieuRef.current.className =
                                     "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                lieuRef.current.className = "form-control";
                             } else {
                                 lieuRef.current.className =
                                     "form-control is-invalid";
@@ -323,8 +338,12 @@ const Form = () => {
                             ref={natioRef}
                             onChange={(e) => {
                                 setNationalite(e.target.value);
-                                natioRef.current.className =
-                                    "form-select is-valid";
+                                if (e.target.value === "") {
+                                    natioRef.current.className = "form-select";
+                                } else {
+                                    natioRef.current.className =
+                                        "form-select is-valid";
+                                }
                             }}
                         >
                             <option value={""}>---</option>
@@ -348,9 +367,12 @@ const Form = () => {
                             ref={phoneRef}
                             onChange={(e) => {
                                 setPhone(e.target.value);
-                                if (PHONE_REGEX.test(phone)) {
+                                if (PHONE_REGEX.test(e.target.value)) {
                                     phoneRef.current.className =
                                         "form-control is-valid";
+                                }
+                                if (e.target.value === "") {
+                                    phoneRef.current.className = "form-control";
                                 } else {
                                     phoneRef.current.className =
                                         "form-control is-invalid";
@@ -377,9 +399,11 @@ const Form = () => {
                         ref={cinRef}
                         onChange={(e) => {
                             setCin(e.target.value);
-                            if (CIN_REGEX.test(cin)) {
+                            if (CIN_REGEX.test(e.target.value)) {
                                 cinRef.current.className =
                                     "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                cinRef.current.className = "form-control";
                             } else {
                                 cinRef.current.className =
                                     "form-control is-invalid";
@@ -389,7 +413,8 @@ const Form = () => {
                         autoComplete="off"
                     />
                     <div className="invalid-feedback">
-                        Founie un CIN morocain
+                        Le CIN morocain comprte 2 Lettres Majuscules puis 6
+                        chiffres
                     </div>
                 </div>
                 {/* serie bac */}
@@ -405,8 +430,12 @@ const Form = () => {
                             ref={seriebacRef}
                             onChange={(e) => {
                                 setSeriebac(e.target.value);
-                                seriebacRef.current.className =
-                                    "form-control is-valid";
+                                if (e.target.value === "") {
+                                    seriebacRef.current.className =
+                                        "form-control ";
+                                } else
+                                    seriebacRef.current.className =
+                                        "form-control is-valid";
                             }}
                         >
                             <BacSeries />
@@ -426,9 +455,11 @@ const Form = () => {
                         ref={anneebacRef}
                         onChange={(e) => {
                             setAnneebac(e.target.value);
-                            if (DATE_REGEX.test(anneebac)) {
+                            if (DATE_REGEX.test(e.target.value)) {
                                 anneebacRef.current.className =
                                     "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                anneebacRef.current.className = "form-control";
                             } else {
                                 anneebacRef.current.className =
                                     "form-control is-invalid";
@@ -438,7 +469,7 @@ const Form = () => {
                         autoComplete="off"
                     />
                     <div className="invalid-feedback">
-                        fourni une annee valid
+                        les bacs valides sont entre 2010 et 2023
                     </div>
                 </div>
                 {/* mention bac */}
@@ -454,8 +485,12 @@ const Form = () => {
                             ref={mentionRef}
                             onChange={(e) => {
                                 setMentionbac(e.target.value);
-                                mentionRef.current.className =
-                                    "form-control is-valid";
+                                if (e.target.value === "")
+                                    mentionRef.current.className =
+                                        "form-control";
+                                else
+                                    mentionRef.current.className =
+                                        "form-control is-valid";
                             }}
                         >
                             <MentionBac />
@@ -475,8 +510,12 @@ const Form = () => {
                             ref={diplomRef}
                             onChange={(e) => {
                                 setDernierdiplom(e.target.value);
-                                diplomRef.current.className =
-                                    "form-control is-valid";
+                                if (e.target.value === "") {
+                                    diplomRef.current.className =
+                                        "form-control";
+                                } else
+                                    diplomRef.current.className =
+                                        "form-control is-valid";
                             }}
                         >
                             <Diploms />
@@ -496,9 +535,11 @@ const Form = () => {
                         ref={anneedipRef}
                         onChange={(e) => {
                             setAnneediplom(e.target.value);
-                            if (DATE_REGEX.test(anneediplom)) {
+                            if (DATE_REGEX.test(e.target.value)) {
                                 anneedipRef.current.className =
                                     "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                anneedipRef.current.className = "form-control";
                             } else {
                                 anneedipRef.current.className =
                                     "form-control is-invalid";
@@ -508,7 +549,7 @@ const Form = () => {
                         autoComplete="off"
                     />
                     <div className="invalid-feedback">
-                        fourni une annee valid
+                        les diploms valides sont entre 2010 et 2023
                     </div>
                 </div>
                 {/* specialite */}
@@ -524,15 +565,18 @@ const Form = () => {
                             ref={specialiteRef}
                             onChange={(e) => {
                                 setSpecialitediplom(e.target.value);
-                                specialiteRef.current.className =
-                                    "form-select is-valid";
+                                if (e.target.value === "") {
+                                    specialiteRef.current.className =
+                                        "form-select";
+                                } else
+                                    specialiteRef.current.className =
+                                        "form-select is-valid";
                             }}
                         >
                             <Specialities />
                         </select>
                     </div>
                 </div>
-
                 {/* notes */}
                 <div className="col-md-3">
                     <label for="s1" className="form-label">
@@ -548,9 +592,20 @@ const Form = () => {
                         ref={s1Ref}
                         onChange={(e) => {
                             setS1(e.target.value);
-                            s1Ref.current.className = "form-control is-valid";
+                            if (NOTE_REGEX.test(e.target.value)) {
+                                s1Ref.current.className =
+                                    "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                s1Ref.current.className = "form-control";
+                            } else {
+                                s1Ref.current.className =
+                                    "form-control is-invalid";
+                            }
                         }}
                     />
+                    <div className="invalid-feedback">
+                        les notes valides sont entre 0 et 20
+                    </div>
                 </div>
                 <div className="col-md-3">
                     <label for="s2" className="form-label">
@@ -566,9 +621,20 @@ const Form = () => {
                         ref={s2Ref}
                         onChange={(e) => {
                             setS2(e.target.value);
-                            s2Ref.current.className = "form-control is-valid";
+                            if (NOTE_REGEX.test(e.target.value)) {
+                                s2Ref.current.className =
+                                    "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                s2Ref.current.className = "form-control";
+                            } else {
+                                s2Ref.current.className =
+                                    "form-control is-invalid";
+                            }
                         }}
                     />
+                    <div className="invalid-feedback">
+                        les notes valides sont entre 0 et 20
+                    </div>
                 </div>
                 <div className="col-md-3">
                     <label for="s3" className="form-label">
@@ -584,9 +650,20 @@ const Form = () => {
                         ref={s3Ref}
                         onChange={(e) => {
                             setS3(e.target.value);
-                            s3Ref.current.className = "form-control is-valid";
+                            if (NOTE_REGEX.test(e.target.value)) {
+                                s3Ref.current.className =
+                                    "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                s3Ref.current.className = "form-control";
+                            } else {
+                                s3Ref.current.className =
+                                    "form-control is-invalid";
+                            }
                         }}
                     />
+                    <div className="invalid-feedback">
+                        les notes valides sont entre 0 et 20
+                    </div>
                 </div>
                 <div className="col-md-3">
                     <label for="s4" className="form-label">
@@ -602,9 +679,20 @@ const Form = () => {
                         ref={s4Ref}
                         onChange={(e) => {
                             setS4(e.target.value);
-                            s4Ref.current.className = "form-control is-valid";
+                            if (NOTE_REGEX.test(e.target.value)) {
+                                s4Ref.current.className =
+                                    "form-control is-valid";
+                            } else if (e.target.value === "") {
+                                s4Ref.current.className = "form-control";
+                            } else {
+                                s4Ref.current.className =
+                                    "form-control is-invalid";
+                            }
                         }}
                     />
+                    <div className="invalid-feedback">
+                        les notes valides sont entre 0 et 20
+                    </div>
                 </div>
                 {/* notes */}
                 {/* relves de notes */}
@@ -695,8 +783,12 @@ const Form = () => {
                             ref={etabliRef}
                             onChange={(e) => {
                                 setEtablissement(e.target.value);
-                                etabliRef.current.className =
-                                    "form-control is-valid";
+                                if (e.target.value === "") {
+                                    etabliRef.current.className =
+                                        "form-control ";
+                                } else
+                                    etabliRef.current.className =
+                                        "form-control is-valid";
                             }}
                         >
                             <Etablissements />
@@ -717,25 +809,30 @@ const Form = () => {
                         ref={emailRef}
                         onChange={(e) => {
                             setEmail(e.target.value);
-                            if (EMAIL_REGEX.test(email)) {
+                            if (EMAIL_REGEX.test(e.target.value)) {
                                 emailRef.current.className =
                                     "form-control is-valid";
-                            } else {
+                            } else if (e.target.value === "") {
+                                emailRef.current.className = "form-control";
+                            } else
                                 emailRef.current.className =
                                     "form-control is-invalid";
-                            }
                         }}
                         required
                         autoComplete="off"
                     />
                     <div className="invalid-feedback">
-                        fournir une adresse email correct!
+                        une adresse email correct come "exemple@example.abc"
                     </div>
                 </div>
                 {/* button */}
                 <div className="col-12 pt-4">
-                    <button className="btn btn-primary" type="submit">
-                        Terminer
+                    <button
+                        className="btn btn-primary"
+                        type="submit"
+                        disabled={document.querySelector(".is-invalid")}
+                    >
+                        {document.querySelector(".is-invalid")?"corrige les champs invalides":"Terminer"}
                     </button>
                 </div>
             </form>
